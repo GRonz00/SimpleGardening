@@ -12,6 +12,7 @@ public class SimpleGardeningApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+        stage.setTitle("Simple Gardening");
         stage.setMinWidth(800);
         stage.setMinHeight(600);
         stage.setScene(scene);
