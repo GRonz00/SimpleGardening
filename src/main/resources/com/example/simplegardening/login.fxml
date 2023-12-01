@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <top>
+        <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0"
+              style="-fx-background-color: rgba(20,195,17,0.55); -fx-background-radius: 0 0 16 16;"
+              BorderPane.alignment="CENTER">
+            <Label text="Login">
+                <font>
+                    <Font size="36.0"/>
+                </font>
+            </Label>
+        </HBox>
+    </top>
+    <center>
+        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="520.0" prefWidth="800.0">
+            <TextField fx:id="usernameTextField" alignment="CENTER" layoutX="208.0" layoutY="88.0" prefHeight="40.0"
+                       prefWidth="384.0" promptText="Username"
+                       style="-fx-background-color: WHITE; -fx-background-radius: 12px" AnchorPane.leftAnchor="208.0"
+                       AnchorPane.topAnchor="88.0">
+                <effect>
+                    <DropShadow/>
+                </effect>
+                <font>
+                    <Font size="24.0"/>
+                </font>
+            </TextField>
+            <PasswordField fx:id="passwordTextField" alignment="CENTER" layoutX="208.0" layoutY="228.0"
+                           prefHeight="40.0" prefWidth="384.0" promptText="Password"
+                           style="-fx-background-color: WHITE; -fx-background-radius: 12px"
+                           AnchorPane.leftAnchor="208.0" AnchorPane.topAnchor="228.0">
+                <effect>
+                    <DropShadow/>
+                </effect>
+                <font>
+                    <Font size="24.0"/>
+                </font>
+            </PasswordField>
+            <Button layoutX="100.0" layoutY="466.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="132.0"
+                    style="-fx-background-color: #6EC6FF; -fx-background-radius: 16; -fx-font-size: 24px"
+                    text="Register" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="440.0">
+                <effect>
+                    <DropShadow/>
+                </effect>
+            </Button>
+            <Button defaultButton="true" layoutX="612.0" layoutY="480.0" mnemonicParsing="false" prefHeight="42.0"
+                    prefWidth="132.0"
+                    style="-fx-background-color: #6EC6FF; -fx-font-size: 24px; -fx-background-radius: 16px;"
+                    text="Login" AnchorPane.bottomAnchor="28.666666666666664" AnchorPane.leftAnchor="612.0"
+                    AnchorPane.rightAnchor="56.0" AnchorPane.topAnchor="440.0">
+                <effect>
+                    <DropShadow/>
+                </effect>
+            </Button>
+        </AnchorPane>
+    </center>
+</BorderPane>
