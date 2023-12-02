@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutY="14.0" prefHeight="64.0" prefWidth="64.0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="16.0">
+         <padding>
+            <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+         </padding>
+      </Pane>
+      <Label layoutX="96.0" layoutY="80.0" text="Type:" AnchorPane.topAnchor="80.0" />
+      <Label layoutX="96.0" layoutY="109.0" text="Size:" AnchorPane.topAnchor="109.0" />
+      <Label layoutX="96.0" layoutY="170.0" text="Water:" AnchorPane.topAnchor="170.0" />
+      <Label layoutX="97.0" layoutY="187.0" text="Nebulizes:" AnchorPane.topAnchor="187.0" />
+      <Label layoutX="98.0" layoutY="204.0" text="Fertilize:" AnchorPane.topAnchor="204.0" />
+      <TextField layoutX="96.0" layoutY="35.0" prefHeight="39.0" prefWidth="148.0" promptText="Name" text="cipresso">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <ComboBox layoutX="131.0" layoutY="76.0" prefHeight="25.0" prefWidth="113.0" promptText="indoor" visibleRowCount="2" />
+      <ComboBox layoutX="131.0" layoutY="105.0" prefHeight="25.0" prefWidth="113.0" promptText="small" />
+      <Button layoutX="187.0" layoutY="254.0" mnemonicParsing="false" onAction="#goToRegister" prefHeight="39.0" prefWidth="113.0" style="-fx-background-color: #6EC6FF; -fx-background-radius: 16; -fx-font-size: 24px" text="Add" AnchorPane.bottomAnchor="16.0" AnchorPane.rightAnchor="16.0">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+   </children>
+</AnchorPane>
