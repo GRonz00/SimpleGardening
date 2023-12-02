@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.*?>
+
+
+<?import javafx.scene.effect.DropShadow?>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" spacing="16.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" ><!--xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simplegardening.graphic_controller.HomeGraphicController"-->
+    <children>
+        <BorderPane minHeight="80.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: rgba(20,195,17,0.55); -fx-background-radius: 0 0 16 16;">
+            <left>
+                <Button alignment="CENTER" mnemonicParsing="false"  style="-fx-background-color: transparent" BorderPane.alignment="CENTER">
+                   <!--onAction="#goBack"-->
+                    <graphic>
+                        <FontIcon iconLiteral="mdal-arrow_back" iconSize="32" />
+                    </graphic>
+                    <BorderPane.margin>
+                        <Insets left="48.0" />
+                    </BorderPane.margin>
+                </Button>
+            </left>
+            <center>
+                <Label  alignment="CENTER" contentDisplay="CENTER" text="Home" textAlignment="CENTER" BorderPane.alignment="CENTER">
+                    <font>
+                        <Font size="36.0" />
+                    </font>
+                </Label>
+            </center>
+            <right>
+                <Button alignment="CENTER" mnemonicParsing="false"  style="-fx-background-color: transparent" BorderPane.alignment="CENTER">
+                    <!--onAction="#logout"-->
+                    <graphic>
+                        <FontIcon iconLiteral="mdal-log_out" iconSize="32" />
+                    </graphic>
+                    <BorderPane.margin>
+                        <Insets right="16.0" />
+                    </BorderPane.margin>
+                </Button>
+            </right>
+        </BorderPane>
+        <ScrollPane fitToWidth="true" prefHeight="500.0" prefWidth="800.0" style="-fx-background: #ffffff;" VBox.vgrow="ALWAYS">
+            <content>
+                <FlowPane  />
+            </content>
+        </ScrollPane>
+        <Button layoutX="100.0" layoutY="466.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="132.0" style="-fx-background-color: #6EC6FF; -fx-background-radius: 16; -fx-font-size: 24px" text="Messaggi" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="440.0">
+            <effect>
+                <DropShadow />
+            </effect>
+        </Button>
+        <Button defaultButton="true" layoutX="612.0" layoutY="480.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="132.0" style="-fx-background-color: #6EC6FF; -fx-font-size: 24px; -fx-background-radius: 16px;" text="Request" AnchorPane.bottomAnchor="28.666666666666664" AnchorPane.leftAnchor="612.0" AnchorPane.rightAnchor="56.0" AnchorPane.topAnchor="440.0">
+            <effect>
+                <DropShadow />
+            </effect>
+        </Button>
+    </children>
+</VBox>

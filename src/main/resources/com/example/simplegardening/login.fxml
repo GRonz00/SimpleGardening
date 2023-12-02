@@ -1,48 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
-    <top>
-        <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: rgba(20,195,17,0.55); -fx-background-radius: 0 0 16 16;" BorderPane.alignment="CENTER">
-            <Label text="Login">
-                <font>
-                    <Font size="36.0" />
-                </font>
-            </Label>
-        </HBox>
-    </top>
-    <center>
-        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="520.0" prefWidth="800.0" style="-fx-background-image: url('com/example/simplegardening/img.png')">
-            <TextField fx:id="usernameTextField" alignment="CENTER" layoutX="208.0" layoutY="88.0" prefHeight="40.0" prefWidth="384.0" promptText="Username" style="-fx-background-color: WHITE; -fx-background-radius: 12px" AnchorPane.leftAnchor="208.0" AnchorPane.topAnchor="88.0">
-                <effect>
-                    <DropShadow />
-                </effect>
-                <font>
-                    <Font size="24.0" />
-                </font>
-            </TextField>
-            <PasswordField fx:id="passwordTextField" alignment="CENTER" layoutX="208.0" layoutY="228.0" prefHeight="40.0" prefWidth="384.0" promptText="Password" style="-fx-background-color: WHITE; -fx-background-radius: 12px" AnchorPane.leftAnchor="208.0" AnchorPane.topAnchor="228.0">
-                <effect>
-                    <DropShadow />
-                </effect>
-                <font>
-                    <Font size="24.0" />
-                </font>
-            </PasswordField>
-            <Button layoutX="100.0" layoutY="466.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="132.0" style="-fx-background-color: #6EC6FF; -fx-background-radius: 16; -fx-font-size: 24px" text="Register" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="440.0">
-                <effect>
-                    <DropShadow />
-                </effect>
-            </Button>
-            <Button defaultButton="true" layoutX="612.0" layoutY="480.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="132.0" style="-fx-background-color: #6EC6FF; -fx-font-size: 24px; -fx-background-radius: 16px;" text="Login" AnchorPane.bottomAnchor="28.666666666666664" AnchorPane.leftAnchor="612.0" AnchorPane.rightAnchor="56.0" AnchorPane.topAnchor="440.0">
-                <effect>
-                    <DropShadow />
-                </effect>
-            </Button>
+
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" spacing="16.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <BorderPane minHeight="80.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: rgba(20,195,17,0.55); -fx-background-radius: 0 0 16 16;">
+            <left>
+                <Button alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: transparent" BorderPane.alignment="CENTER">
+                    <graphic>
+                        <FontIcon iconLiteral="mdal-arrow_back" iconSize="32" />
+                    </graphic>
+                    <BorderPane.margin>
+                        <Insets left="48.0" />
+                    </BorderPane.margin>
+                </Button>
+            </left>
+            <right>
+                <Button alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: transparent" BorderPane.alignment="CENTER">
+                    <graphic>
+                        <FontIcon iconLiteral="mdal-log_out" iconSize="32" />
+                    </graphic>
+                    <BorderPane.margin>
+                        <Insets right="16.0" />
+                    </BorderPane.margin>
+                </Button>
+            </right>
+            <center>
+                <Label text="Home" BorderPane.alignment="CENTER">
+                    <font>
+                        <Font size="36.0" />
+                    </font>
+                </Label>
+            </center>
+        </BorderPane>
+        <ScrollPane fitToWidth="true" prefHeight="500.0" prefWidth="800.0" style="-fx-background: #ffffff;" VBox.vgrow="ALWAYS">
+            <content>
+                <FlowPane />
+            </content>
+        </ScrollPane>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <children>
+                <Button layoutX="14.0" layoutY="21.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="137.0" style="-fx-background-color: #6EC6FF; -fx-background-radius: 16; -fx-font-size: 24px" text="Messages" AnchorPane.bottomAnchor="29.0" AnchorPane.leftAnchor="56.0">
+                    <effect>
+                        <DropShadow />
+                    </effect>
+                </Button>
+                <Button defaultButton="true" layoutX="347.0" layoutY="6.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="132.0" style="-fx-background-color: #6EC6FF; -fx-font-size: 24px; -fx-background-radius: 16px;" text="Request" AnchorPane.bottomAnchor="28.666666666666664" AnchorPane.rightAnchor="56.0">
+                    <effect>
+                        <DropShadow />
+                    </effect>
+                </Button>
+            </children>
         </AnchorPane>
-    </center>
-</BorderPane>
+    </children>
+</VBox>
