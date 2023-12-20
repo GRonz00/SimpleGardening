@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.simplegardening.bean.in.WeatherAPIinBean;
-import com.simplegardening.bean.out.WeatherAPIoutBean;
+import com.simplegardening.bean.out.WeatherAPIOutBean;
 import com.simplegardening.utils.Daily;
 import com.simplegardening.utils.ForecastJson;
 
@@ -13,7 +13,7 @@ import java.net.URL;
 import java.net.URLConnection;
 
 public class WeatherAPIGraphicController {
-    public WeatherAPIinBean do_weather_forecast(WeatherAPIoutBean weatherAPIoutBean) {
+    public WeatherAPIinBean doWeatherForecast(WeatherAPIOutBean weatherAPIoutBean) {
         URL url; // creating a url object
         StringBuilder content = new StringBuilder();
         double lon = weatherAPIoutBean.getLongitude();
@@ -32,8 +32,7 @@ public class WeatherAPIGraphicController {
 
 
                 String line;
-                // reading from the urlconnection using the bufferedreader
-                while ((line = bufferedReader.readLine()) != null) {
+                while ((line = bufferedReader.readLine()) != null) {// reading from the urlconnection using the bufferedreader
                     content.append(line).append("\n");
                 }
 

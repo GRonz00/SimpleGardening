@@ -1,6 +1,6 @@
 package com.simplegardening.bean.out;
 
-public class WeatherAPIoutBean {
+public class WeatherAPIOutBean {
     private double longitude;
     private double latitude;
 

@@ -37,7 +37,7 @@ public class WeatherGraphicController {
         week.getChildren().clear();
         WeatherForecastController weatherForecastController = new WeatherForecastController();
         WeatherClientInBean weatherClientInBean = new WeatherClientInBean(idSession);
-        WeatherClientOutBean weatherClientOutBean = weatherForecastController.weekly_weather_forecast(weatherClientInBean);
+        WeatherClientOutBean weatherClientOutBean = weatherForecastController.weeklyWeatherForecast(weatherClientInBean);
         for(int i=0;i<weatherClientOutBean.getDays().size();i++){
             FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("weather_pane.fxml"));
             try {
