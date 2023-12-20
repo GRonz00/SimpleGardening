@@ -5,8 +5,8 @@ import java.io.IOException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.simplegardening.bean.in.WeatherAPIinBean;
 import com.simplegardening.bean.out.WeatherAPIOutBean;
-import com.simplegardening.utils.Daily;
-import com.simplegardening.utils.ForecastJson;
+import com.simplegardening.bean.in.Daily;
+import com.simplegardening.bean.in.ForecastJson;
 
 import java.io.InputStreamReader;
 import java.net.URL;

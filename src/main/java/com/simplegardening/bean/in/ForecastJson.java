@@ -1,6 +1,6 @@
-package com.simplegardening.utils;
+package com.simplegardening.bean.in;
 
-import com.simplegardening.model.Weather;
+import com.simplegardening.bean.in.Daily;
 
 import java.util.Map;
 
