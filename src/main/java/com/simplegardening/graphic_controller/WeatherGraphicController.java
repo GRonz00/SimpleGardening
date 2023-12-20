@@ -1,0 +1,63 @@
+package com.simplegardening.graphic_controller;
+
+import com.simplegardening.SimpleGardeningApplication;
+import com.simplegardening.bean.in.WeatherClientInBean;
+import com.simplegardening.bean.out.WeatherClientOutBean;
+import com.simplegardening.controller.WeatherForecastController;
+import com.simplegardening.utils.ExceptionHandler;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+
+import java.io.IOException;
+
+public class WeatherGraphicController {
+
+    private int idSession;
+
+    public void setIdSession(int idSession){
+        this.idSession = idSession;
+    }
+    @FXML
+    private HBox week;
+    @FXML
+    public void logout(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("login.fxml"));
+        ((Node) event.getSource()).getScene().setRoot(fxmlLoader.load());
+
+    }
+
+    @FXML
+    public void initialize(){
+
+        week.getChildren().clear();
+        WeatherForecastController weatherForecastController = new WeatherForecastController();
+        WeatherClientInBean weatherClientInBean = new WeatherClientInBean(idSession);
+        WeatherClientOutBean weatherClientOutBean = weatherForecastController.weekly_weather_forecast(weatherClientInBean);
+        for(int i=0;i<weatherClientOutBean.getDays().size();i++){
+            FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("weather_pane.fxml"));
+            try {
+                AnchorPane anchorPane = fxmlLoader.load();
+                if(i%2==0){
+                    anchorPane.setStyle("-fx-background-color: #FFF5EE");
+                }else anchorPane.setStyle("-fx-background-color: #C0C0C0");
+                if(weatherClientOutBean.getPrec().get(i)<40)
+                {(anchorPane.lookup("#rainIcon")).setVisible(false); }
+                else (anchorPane.lookup("#sunIcon")).setVisible(false);
+                ((Label)anchorPane.lookup("#day")).setText(weatherClientOutBean.getDays().get(i));
+                ((Label)anchorPane.lookup("#t_max")).setText(weatherClientOutBean.getTemp_max().get(i).toString());
+                ((Label)anchorPane.lookup("#t_min")).setText(weatherClientOutBean.getTemp_min().get(i).toString());
+                ((Label)anchorPane.lookup("#rain")).setText(weatherClientOutBean.getPrec().get(i).toString());
+                week.getChildren().add(anchorPane);
+
+            } catch (IOException e) {
+                ExceptionHandler.handleException("Could not go to next scene", e.getMessage());
+            }
+
+        }
+    }
+}

@@ -1,4 +1,4 @@
-package com.example.simplegardening;
+package com.simplegardening;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,11 +10,11 @@ import java.io.IOException;
 public class SimpleGardeningApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("plant.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 280);
+        FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("login.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
         stage.setTitle("Simple Gardening");
-        //stage.setMinWidth(800);
-        //stage.setMinHeight(600);
+        stage.setMinWidth(800);
+        stage.setMinHeight(600);
         stage.setScene(scene);
         stage.show();
     }

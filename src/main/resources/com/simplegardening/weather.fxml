@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import org.kordamp.ikonli.javafx.*?>
+
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.simplegardening.graphic_controller.WeatherGraphicController">
+   <top>
+      <BorderPane minHeight="80.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #14C3118C; -fx-background-radius: 0 0 16 16;" BorderPane.alignment="CENTER">
+         <left>
+            <Button alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: transparent" BorderPane.alignment="CENTER">
+               <graphic>
+                  <FontIcon iconLiteral="mdal-arrow_back" iconSize="32" />
+               </graphic>
+               <BorderPane.margin>
+                  <Insets left="48.0" />
+               </BorderPane.margin>
+            </Button>
+         </left>
+         <right>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: transparent" BorderPane.alignment="CENTER">
+               <graphic>
+                  <FontIcon iconLiteral="mdal-log_out" iconSize="32" />
+               </graphic>
+               <BorderPane.margin>
+                  <Insets right="48.0" />
+               </BorderPane.margin>
+            </Button>
+         </right>
+         <center>
+            <Label fx:id="storeNameText" text="Weather forecast" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+         </center>
+      </BorderPane>
+   </top>
+   <center>
+      <HBox fx:id="week" alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets top="60.0" />
+         </BorderPane.margin></HBox>
+   </center>
+</BorderPane>

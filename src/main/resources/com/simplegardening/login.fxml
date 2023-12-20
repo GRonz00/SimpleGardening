@@ -10,10 +10,10 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.simplegardening.graphic_controller.LoginGraphicController">
     <top>
         <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: rgba(20,195,17,0.55); -fx-background-radius: 0 0 16 16;" BorderPane.alignment="CENTER">
-            
+
             <Label text="Login">
                 <font>
                     <Font size="36.0" />
