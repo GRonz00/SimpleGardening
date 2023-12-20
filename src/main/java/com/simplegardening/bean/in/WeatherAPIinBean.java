@@ -9,20 +9,20 @@ import java.util.List;
 public class WeatherAPIinBean {
 
 
-    private List<Weather> weather_week;
+    private List<Weather> weatherWeek;
 
 
 
-    public List<Weather> getWeather_week() {
-        return weather_week;
+    public List<Weather> getWeatherWeek() {
+        return weatherWeek;
     }
 
-    public void setWeather_week(Daily daily) {
+    public void setWeatherWeek(Daily daily) {
         List<Weather> weatherList = new ArrayList<>();
         for (int i = 0; i < 6; i++) {
             Weather weather = new Weather(daily.getTemperature_2m_max()[i],daily.getTemperature_2m_min()[i],daily.getPrecipitation_probability_max()[i],daily.getTime()[i]);
             weatherList.add(weather);
         }
-        this.weather_week = weatherList;
+        this.weatherWeek = weatherList;
     }
 }

@@ -40,10 +40,10 @@ public class WeatherAPIGraphicController {
                 bufferedReader.close();
 
 
-                ForecastJson oggetto = objectMapper.readValue(content.toString(), ForecastJson.class);
-                Daily daily = oggetto.getDaily();
+                ForecastJson son = objectMapper.readValue(content.toString(), ForecastJson.class);
+                Daily daily = son.getDaily();
                 WeatherAPIinBean weatherAPIinBean = new WeatherAPIinBean();
-                weatherAPIinBean.setWeather_week(daily);
+                weatherAPIinBean.setWeatherWeek(daily);
                 return weatherAPIinBean;
 
             } catch (IOException e) {

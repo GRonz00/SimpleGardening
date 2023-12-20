@@ -9,9 +9,9 @@ public class WeatherClientOutBean {
 
 
     private List<String> days = new ArrayList<>();
-    private List<Integer> temp_max = new ArrayList<>();
-    private List<Integer> temp_min = new ArrayList<>();
-    private List<Integer> prec = new ArrayList<>();
+    private List<Integer> tempMax = new ArrayList<>();
+    private List<Integer> tempMin = new ArrayList<>();
+    private List<Integer> fall = new ArrayList<>();
 
     public WeatherClientOutBean(){}
 
@@ -19,41 +19,50 @@ public class WeatherClientOutBean {
     public List<String> getDays() {
         return days;
     }
-
-    public void setDays(List<String> days) {
-        this.days = days;
+    public void setDays(List<String> days){
+        this.days=days;
     }
 
-    public List<Integer> getTemp_max() {
-        return temp_max;
+    public List<Integer> getTempMax() {
+        return tempMax;
     }
 
-    public void setTemp_max(List<Integer> temp_max) {
-        this.temp_max = temp_max;
+    public void setTempMax(List<Integer> tempMax) {
+        this.tempMax = tempMax;
     }
 
-    public List<Integer> getTemp_min() {
-        return temp_min;
+    public List<Integer> getTempMin() {
+        return tempMin;
     }
 
-    public void setTemp_min(List<Integer> temp_min) {
-        this.temp_min = temp_min;
+    public void setTempMin(List<Integer> tempMin) {
+        this.tempMin = tempMin;
     }
 
-    public List<Integer> getPrec() {
-        return prec;
+    public List<Integer> getFall() {
+        return fall;
     }
 
-    public void setPrec(List<Integer> prec) {
-        this.prec = prec;
+    public void setFall(List<Integer> fall) {
+        this.fall = fall;
     }
+
 
     public void setAll(List<Weather> weatherList) {
+        List<String> days = new ArrayList<>();
+        List<Integer> tempMax = new ArrayList<>();
+        List<Integer> tempMin = new ArrayList<>();
+        List<Integer> fall = new ArrayList<>();
+
         for (Weather w : weatherList){
-            this.days.add(w.getDay());
-            this.temp_max.add(w.getTemp_max());
-            this.temp_min.add(w.getTemp_min());
-            this.prec.add(w.getPrecipitation_perc());
+            days.add(w.getDay());
+            tempMax.add(w.getTempMax());
+            tempMin.add(w.getTempMin());
+            fall.add(w.getFall());
         }
+        setDays(days);
+        setTempMax(tempMax);
+        setTempMin(tempMin);
+        setFall(fall);
     }
 }

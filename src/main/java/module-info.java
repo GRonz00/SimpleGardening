@@ -6,6 +6,8 @@ module com.simplegardening {
 
 
     exports com.simplegardening;
+    exports com.simplegardening.model;
+    exports com.simplegardening.exception;
     exports com.simplegardening.graphic_controller;
     exports com.simplegardening.utils;
     opens com.simplegardening.graphic_controller to javafx.fxml;

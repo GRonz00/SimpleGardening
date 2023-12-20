@@ -4,7 +4,7 @@ public class WeatherClientInBean {
     private int idSession;
 
     public WeatherClientInBean(int idSession) {
-        this.idSession = idSession;
+        setIdSession(idSession);
     }
 
 

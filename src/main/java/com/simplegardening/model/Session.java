@@ -4,10 +4,10 @@ public class Session {
     private User user;
     private int id;
 
-    {}public Session(){}
+    public Session(){}
     public Session(int id, User user){
-        this.id=id;
-        this.user = user;
+        setId(id);
+        setUser(user);
     }
 
     public User getUser() {

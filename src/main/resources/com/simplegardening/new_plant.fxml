@@ -30,7 +30,7 @@
       </TextField>
       <ComboBox layoutX="131.0" layoutY="76.0" prefHeight="25.0" prefWidth="113.0" promptText="indoor" visibleRowCount="2" />
       <ComboBox layoutX="131.0" layoutY="105.0" prefHeight="25.0" prefWidth="113.0" promptText="small" />
-      <Button layoutX="187.0" layoutY="254.0" mnemonicParsing="false" onAction="#goToRegister" prefHeight="39.0" prefWidth="113.0" style="-fx-background-color: #6EC6FF; -fx-background-radius: 16; -fx-font-size: 24px" text="Add" AnchorPane.bottomAnchor="16.0" AnchorPane.rightAnchor="16.0">
+      <Button layoutX="187.0" layoutY="254.0" mnemonicParsing="false"  prefHeight="39.0" prefWidth="113.0" style="-fx-background-color: #6EC6FF; -fx-background-radius: 16; -fx-font-size: 24px" text="Add" AnchorPane.bottomAnchor="16.0" AnchorPane.rightAnchor="16.0">
          <effect>
             <DropShadow />
          </effect>

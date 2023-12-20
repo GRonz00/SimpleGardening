@@ -23,7 +23,7 @@ public class WeatherForecastController {
             weatherAPIoutBean.setLongitude(session.getUser().getLongitude());
             weatherAPIoutBean.setLatitude(session.getUser().getLatitude());}
         WeatherAPIinBean weatherAPIinBean = weatherAPIGraphicController.do_weather_forecast(weatherAPIoutBean);
-        List<Weather> weatherList = weatherAPIinBean.getWeather_week();
+        List<Weather> weatherList = weatherAPIinBean.getWeatherWeek();
         WeatherClientOutBean weatherClientOutBean = new WeatherClientOutBean();
         weatherClientOutBean.setAll(weatherList);
         return weatherClientOutBean;

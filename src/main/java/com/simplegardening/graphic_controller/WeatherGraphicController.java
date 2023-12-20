@@ -45,13 +45,13 @@ public class WeatherGraphicController {
                 if(i%2==0){
                     anchorPane.setStyle("-fx-background-color: #FFF5EE");
                 }else anchorPane.setStyle("-fx-background-color: #C0C0C0");
-                if(weatherClientOutBean.getPrec().get(i)<40)
+                if(weatherClientOutBean.getFall().get(i)<40)
                 {(anchorPane.lookup("#rainIcon")).setVisible(false); }
                 else (anchorPane.lookup("#sunIcon")).setVisible(false);
                 ((Label)anchorPane.lookup("#day")).setText(weatherClientOutBean.getDays().get(i));
-                ((Label)anchorPane.lookup("#t_max")).setText(weatherClientOutBean.getTemp_max().get(i).toString());
-                ((Label)anchorPane.lookup("#t_min")).setText(weatherClientOutBean.getTemp_min().get(i).toString());
-                ((Label)anchorPane.lookup("#rain")).setText(weatherClientOutBean.getPrec().get(i).toString());
+                ((Label)anchorPane.lookup("#t_max")).setText(weatherClientOutBean.getTempMax().get(i).toString());
+                ((Label)anchorPane.lookup("#t_min")).setText(weatherClientOutBean.getTempMin().get(i).toString());
+                ((Label)anchorPane.lookup("#rain")).setText(weatherClientOutBean.getFall().get(i).toString());
                 week.getChildren().add(anchorPane);
 
             } catch (IOException e) {
