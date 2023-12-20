@@ -49,20 +49,20 @@ public class WeatherClientOutBean {
 
 
     public void setAll(List<Weather> weatherList) {
-        List<String> days = new ArrayList<>();
-        List<Integer> tempMax = new ArrayList<>();
-        List<Integer> tempMin = new ArrayList<>();
-        List<Integer> fall = new ArrayList<>();
+        List<String> days1 = new ArrayList<>();
+        List<Integer> tempMax1 = new ArrayList<>();
+        List<Integer> tempMin1 = new ArrayList<>();
+        List<Integer> fall1 = new ArrayList<>();
 
         for (Weather w : weatherList){
-            days.add(w.getDay());
-            tempMax.add(w.getTempMax());
-            tempMin.add(w.getTempMin());
-            fall.add(w.getFall());
+            days1.add(w.getDay());
+            tempMax1.add(w.getTempMax());
+            tempMin1.add(w.getTempMin());
+            fall1.add(w.getFall());
         }
-        setDays(days);
-        setTempMax(tempMax);
-        setTempMin(tempMin);
-        setFall(fall);
+        setDays(days1);
+        setTempMax(tempMax1);
+        setTempMin(tempMin1);
+        setFall(fall1);
     }
 }
