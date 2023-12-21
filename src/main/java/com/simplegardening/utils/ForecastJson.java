@@ -1,6 +1,4 @@
-package com.simplegardening.bean.in;
-
-import com.simplegardening.bean.in.Daily;
+package com.simplegardening.utils;
 
 import java.util.Map;
 

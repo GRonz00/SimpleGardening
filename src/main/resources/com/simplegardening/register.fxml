@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.simplegardening.graphic_controller.RegisterGraphicController">
+   <center>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="520.0" prefWidth="800.0">
+         <TextField fx:id="usernameTextField" alignment="CENTER" layoutX="208.0" layoutY="88.0" prefHeight="40.0"
+                    prefWidth="384.0" promptText="Username"
+                    style="-fx-background-color: WHITE; -fx-background-radius: 12px" AnchorPane.leftAnchor="208.0"
+                    AnchorPane.topAnchor="18.0">
+            <effect>
+               <DropShadow/>
+            </effect>
+            <font>
+               <Font size="24.0"/>
+            </font>
+         </TextField>
+         <PasswordField fx:id="passwordTextField" alignment="CENTER" layoutX="208.0" layoutY="227.0" prefHeight="40.0"
+                        prefWidth="384.0" promptText="Password"
+                        style="-fx-background-color: WHITE; -fx-background-radius: 12px" AnchorPane.leftAnchor="208.0"
+                        AnchorPane.topAnchor="88.0">
+            <effect>
+               <DropShadow/>
+            </effect>
+            <font>
+               <Font size="24.0"/>
+            </font>
+         </PasswordField>
+         <Button defaultButton="true" layoutX="612.0" layoutY="480.0" mnemonicParsing="false" onAction="#register"
+                 prefHeight="42.0" prefWidth="132.0"
+                 style="-fx-background-color: #6EC6FF; -fx-font-size: 24px; -fx-background-radius: 16px;" text="Sing in"
+                 AnchorPane.bottomAnchor="28.0" AnchorPane.rightAnchor="56.0">
+            <effect>
+               <DropShadow/>
+            </effect>
+         </Button>
+         <TextField fx:id="city" alignment="CENTER" layoutX="208.0" layoutY="159.0" prefHeight="40.0" prefWidth="384.0"
+                    promptText="City" style="-fx-background-color: WHITE; -fx-background-radius: 12px"
+                    AnchorPane.topAnchor="228.0">
+            <effect>
+               <DropShadow/>
+            </effect>
+            <font>
+               <Font size="24.0"/>
+            </font>
+         </TextField>
+         <ChoiceBox layoutX="208.0" layoutY="297.0" prefHeight="51.0" prefWidth="384.0"
+                    style="-fx-background-radius: 12px;" AnchorPane.topAnchor="158.0">
+            <effect>
+               <DropShadow/>
+            </effect>
+         </ChoiceBox>
+         <TextField fx:id="street" alignment="CENTER" layoutX="208.0" layoutY="371.0" prefHeight="40.0"
+                    prefWidth="384.0" promptText="Street"
+                    style="-fx-background-color: WHITE; -fx-background-radius: 12px" AnchorPane.topAnchor="298.0">
+            <effect>
+               <DropShadow/>
+            </effect>
+            <font>
+               <Font size="24.0"/>
+            </font>
+         </TextField>
+         <TextField fx:id="nation" alignment="CENTER" layoutX="208.0" layoutY="367.0" prefHeight="40.0"
+                    prefWidth="384.0" promptText="Country"
+                    style="-fx-background-color: WHITE; -fx-background-radius: 12px" AnchorPane.topAnchor="368.0">
+            <effect>
+               <DropShadow/>
+            </effect>
+            <font>
+               <Font size="24.0"/>
+            </font>
+         </TextField>
+         <TextField fx:id="pC" alignment="CENTER" layoutX="630.0" layoutY="228.0" prefHeight="51.0" prefWidth="97.0"
+                    promptText="PC" style="-fx-background-color: WHITE; -fx-background-radius: 12px"
+                    AnchorPane.topAnchor="228.0">
+            <effect>
+               <DropShadow/>
+            </effect>
+            <font>
+               <Font size="24.0"/>
+            </font>
+         </TextField>
+         <TextField fx:id="number" alignment="CENTER" layoutX="630.0" layoutY="298.0" prefHeight="51.0" prefWidth="97.0"
+                    promptText="Num" style="-fx-background-color: WHITE; -fx-background-radius: 12px">
+            <effect>
+               <DropShadow/>
+            </effect>
+            <font>
+               <Font size="24.0"/>
+            </font>
+         </TextField>
+      </AnchorPane>
+   </center>
+   <top>
+      <AnchorPane prefHeight="80.0" prefWidth="200.0"
+                  style="-fx-background-color: rgba(20,195,17,0.55); -fx-background-radius: 0 0 16 16;">
+         <BorderPane.margin>
+            <Insets/>
+         </BorderPane.margin>
+         <Label layoutX="335.0" layoutY="13.0" text="Register">
+            <font>
+               <Font size="36.0"/>
+            </font>
+         </Label>
+         <Button alignment="CENTER" layoutX="54.0" layoutY="27.0" mnemonicParsing="false"
+                 style="-fx-background-color: transparent" AnchorPane.rightAnchor="48.0">
+            <graphic>
+               <FontIcon iconLiteral="mdal-arrow_back" iconSize="32"/>
+            </graphic>
+         </Button>
+      </AnchorPane>
+   </top>
+</BorderPane>

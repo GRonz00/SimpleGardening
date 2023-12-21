@@ -1,6 +1,7 @@
 package com.simplegardening.bean.in;
 
 import com.simplegardening.model.Weather;
+import com.simplegardening.utils.Daily;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ public class WeatherAPIinBean {
     public void setWeatherWeek(Daily daily) {
         List<Weather> weatherList = new ArrayList<>();
         for (int i = 0; i < 6; i++) {
-            Weather weather = new Weather(daily.getTemperature2MMax()[i],daily.getTemperature2MMin()[i],daily.getPrecipitationProbabilityMax()[i],daily.getTime()[i]);
+            Weather weather = new Weather(daily.getTemperature_2m_max()[i],daily.getTemperature_2m_min()[i],daily.getPrecipitation_probability_max()[i],daily.getTime()[i]);
             weatherList.add(weather);
         }
         this.weatherWeek = weatherList;

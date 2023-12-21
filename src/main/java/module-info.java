@@ -13,6 +13,7 @@ module com.simplegardening {
     opens com.simplegardening.graphic_controller to javafx.fxml;
     opens com.simplegardening to javafx.fxml;
     exports com.simplegardening.bean.in;
+    opens com.simplegardening.utils to com.fasterxml.jackson.databind;
     exports com.simplegardening.bean.out;
 
 
