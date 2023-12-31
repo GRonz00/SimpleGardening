@@ -12,7 +12,7 @@ public class SessionManager {
 
     protected SessionManager(){}
 
-    public synchronized static SessionManager getInstance(){
+    public static synchronized SessionManager getInstance(){
         if(SessionManager.instance==null)SessionManager.instance= new SessionManager();
         return instance;
     }
@@ -50,8 +50,6 @@ public class SessionManager {
         return s;
     }
 
-    /*public void closeSession(Session session){
-        sessionList.remove(session);
-    }*/
+
 
 }

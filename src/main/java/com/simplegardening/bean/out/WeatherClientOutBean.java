@@ -13,7 +13,7 @@ public class WeatherClientOutBean {
     private List<Integer> tempMin = new ArrayList<>();
     private List<Integer> fall = new ArrayList<>();
 
-    public WeatherClientOutBean(){}
+
 
 
     public List<String> getDays() {

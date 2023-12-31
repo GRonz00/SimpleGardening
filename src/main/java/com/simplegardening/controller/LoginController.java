@@ -27,7 +27,6 @@ public class LoginController {
                 Session session = SessionManager.getInstance().createNewSession(user);
                 loginBeanOut.setIdSession(session);
                 loginBeanOut.setTypeUser(session);
-                // ((Client)user).setStore(StoreDAO.getStoreByStoreOwnerUsername(user.getUsername()));
             }
         }
         catch (SQLException e) {

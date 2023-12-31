@@ -14,6 +14,5 @@ public class RegisterController {
         } catch (SQLException e) {
             throw new ControllerException("Sql",e);
         }
-        System.out.println("far");
     }
 }
