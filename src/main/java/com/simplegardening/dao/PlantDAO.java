@@ -17,7 +17,7 @@ public class PlantDAO {
     public static void savePlant(Plant plant) throws SQLException{
         PreparedStatement statement = null;
         // Create Connection
-        try (Connection connection = DriverManager.getConnection(Database.DB_URL, Database.USER, Database.PASS)) {
+        try (Connection connection = DriverManager.getConnection(Database.DB_URL, Database.USER, System.getenv("DATABASE_P"))) {
             String sql = String.format("INSERT INTO Plant ( name, type, size, Image,client) VALUES ('%s', '%s', '%s', ?, '%s')", plant.getName(),plant.getType().toString().toLowerCase(),plant.getSize().toString().toLowerCase(),plant.getClient().getUsername());
                 // Execute query
             statement = connection.prepareStatement(sql);
@@ -35,7 +35,7 @@ public class PlantDAO {
         }
     public List<Plant> getPlantsFromClient(String usernameClient) throws SQLException {
         List<Plant> plants = new ArrayList<>();
-        try (Connection connection = DriverManager.getConnection(Database.DB_URL, Database.USER, Database.PASS); Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)) {
+        try (Connection connection = DriverManager.getConnection(Database.DB_URL, Database.USER, System.getenv("DATABASE_P")); Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)) {
             String query = String.format("SELECT * FROM Plant WHERE client = '%s'", usernameClient);
             ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {

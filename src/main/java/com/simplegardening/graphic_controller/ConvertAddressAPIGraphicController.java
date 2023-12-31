@@ -14,7 +14,7 @@ import java.net.URLConnection;
 
 public class ConvertAddressAPIGraphicController {
     public ConvertAddressInAPIBean convertAddress(ConvertAddressOutAPIBean convertAddressOutAPIBean) throws APIException {
-        String s = "https://geocode.maps.co/search?q= "+convertAddressOutAPIBean.getStreet()+" + "+convertAddressOutAPIBean.getpC()+" + "+convertAddressOutAPIBean.getCity()+" + "+convertAddressOutAPIBean.getNation()+"&api_key=658c340c9cff3538808164tbce9d741";
+        String s = "https://geocode.maps.co/search?q= "+convertAddressOutAPIBean.getStreet()+" + "+convertAddressOutAPIBean.getpC()+" + "+convertAddressOutAPIBean.getCity()+" + "+convertAddressOutAPIBean.getNation()+"&api_key="+System.getenv("API_KEY");
         try {
             URL url = new URL(s);
             URLConnection urlConnection = url.openConnection();

@@ -12,7 +12,7 @@ public class UserDAO {
     public static User getUserByUsername(String loginUsername) throws DatabaseException, SQLException {
         // Create Connection
         User user;
-        try (Connection connection = DriverManager.getConnection(Database.DB_URL, Database.USER, Database.PASS)) {
+        try (Connection connection = DriverManager.getConnection(Database.DB_URL, Database.USER, System.getenv("DATABASE_P"))) {
             // Create statement
             try (Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)) {
                 // Get user with specified username
@@ -49,7 +49,7 @@ public class UserDAO {
         String lon = String.valueOf(longitude);
         String lat = String.valueOf(latitude);
         // Create Connection
-        try (Connection connection = DriverManager.getConnection(Database.DB_URL, Database.USER, Database.PASS)) {
+        try (Connection connection = DriverManager.getConnection(Database.DB_URL, Database.USER, System.getenv("DATABASE_P"))) {
             // Create statement
             try (Statement statement =  connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)) {
                 String sql = String.format("INSERT INTO User (username, password, type, lon, lat, address) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')", username, password, userType.toString().toLowerCase(),  lon, lat,address);

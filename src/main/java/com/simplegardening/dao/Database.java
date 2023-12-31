@@ -6,6 +6,5 @@ public class Database {
     }
 
     public static final String USER = "simplegardening";
-    public static final String PASS = "password";
     public static final String DB_URL = "jdbc:mysql://localhost:3306/simplegardening";
 }
