@@ -40,35 +40,39 @@
       </BorderPane>
    </top>
    <center>
-      <ScrollPane fitToWidth="true" style="-fx-background: #ffffff;" visible="false" BorderPane.alignment="CENTER">
-         <content>
-            <FlowPane fx:id="productsPane" />
-         </content>
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" mouseTransparent="true" BorderPane.alignment="CENTER"
+                  VBox.vgrow="ALWAYS">
          <BorderPane.margin>
-            <Insets left="56.0" right="56.0" />
+            <Insets left="56.0" right="56.0"/>
          </BorderPane.margin>
+         <opaqueInsets>
+            <Insets right="16.0"/>
+         </opaqueInsets>
+         <FlowPane fx:id="plantsPane"/>
       </ScrollPane>
    </center>
    <bottom>
       <AnchorPane prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="48.0" prefWidth="160.0" style="-fx-background-color: #6EC6FF; -fx-background-radius: 16;" text="Messages" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="56.0">
-               <font>
-                  <Font size="24.0" />
-               </font>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#weather" prefHeight="48.0" prefWidth="160.0" style="-fx-background-color: #6EC6FF; -fx-background-radius: 16;" text="Meteo" AnchorPane.bottomAnchor="28.0" AnchorPane.rightAnchor="56.0">
-               <font>
-                  <Font size="24.0" />
-               </font>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </Button>
-         </children>
+         <Button alignment="CENTER" mnemonicParsing="false" prefHeight="48.0" prefWidth="160.0"
+                 style="-fx-background-color: #6EC6FF; -fx-background-radius: 16;" text="Messages"
+                 AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="56.0">
+            <font>
+               <Font size="24.0"/>
+            </font>
+            <effect>
+               <DropShadow/>
+            </effect>
+         </Button>
+         <Button alignment="CENTER" mnemonicParsing="false" onAction="#weather" prefHeight="48.0" prefWidth="160.0"
+                 style="-fx-background-color: #6EC6FF; -fx-background-radius: 16;" text="Meteo"
+                 AnchorPane.bottomAnchor="28.0" AnchorPane.rightAnchor="56.0">
+            <font>
+               <Font size="24.0"/>
+            </font>
+            <effect>
+               <DropShadow/>
+            </effect>
+         </Button>
       </AnchorPane>
    </bottom>
 </BorderPane>

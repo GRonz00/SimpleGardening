@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <BorderPane style="-fx-background-color: rgba(20,195,17,0.55); -fx-background-radius: 0 0 16 16;">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <center>
+            <AnchorPane prefHeight="80.0" prefWidth="200.0">
+               <Label alignment="CENTER" layoutX="257.0" layoutY="13.0" text="New request form">
+                  <font>
+                     <Font size="36.0"/>
+                  </font>
+               </Label>
+            </AnchorPane>
+         </center>
+         <right>
+            <Button alignment="CENTER" mnemonicParsing="false"  style="-fx-background-color: transparent" BorderPane.alignment="CENTER">
+               <graphic>
+                  <FontIcon iconLiteral="mdal-arrow_back" iconSize="32" />
+               </graphic>
+            </Button>
+         </right>
+      </BorderPane>
+   </top>
+   <left>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="520.0" prefWidth="800.0"
+                  BorderPane.alignment="CENTER">
+         <PasswordField fx:id="basePriceField" accessibleRole="TEXT_FIELD" alignment="CENTER" layoutX="208.0"
+                        layoutY="227.0" prefHeight="40.0" prefWidth="384.0" promptText="Base price for day"
+                        style="-fx-background-color: WHITE; -fx-background-radius: 12px" AnchorPane.leftAnchor="208.0"
+                        AnchorPane.topAnchor="88.0">
+            <effect>
+               <DropShadow/>
+            </effect>
+            <font>
+               <Font size="24.0"/>
+            </font>
+         </PasswordField>
+         <Button defaultButton="true" layoutX="612.0" layoutY="480.0" mnemonicParsing="false" prefHeight="42.0"
+                 prefWidth="132.0"
+                 style="-fx-background-color: #6EC6FF; -fx-font-size: 24px; -fx-background-radius: 16px;" text="Save"
+                 AnchorPane.bottomAnchor="28.0" AnchorPane.rightAnchor="56.0">
+            <effect>
+               <DropShadow/>
+            </effect>
+         </Button>
+         <TextField fx:id="basePricePickUp" alignment="CENTER" layoutX="208.0" layoutY="159.0" prefHeight="51.0"
+                    prefWidth="175.0" promptText="Base price"
+                    style="-fx-background-color: WHITE; -fx-background-radius: 12px" AnchorPane.topAnchor="228.0">
+            <effect>
+               <DropShadow/>
+            </effect>
+            <font>
+               <Font size="24.0"/>
+            </font>
+         </TextField>
+         <ComboBox fx:id="plantTypeCombo" layoutX="208.0" layoutY="297.0" prefHeight="51.0" prefWidth="175.0"
+                   style="-fx-background-radius: 12px;  -fx-text-alignment: center; -fx-font-size: 24px;" value="Client"
+                   visibleRowCount="2" AnchorPane.topAnchor="158.0">
+            <effect>
+               <DropShadow/>
+            </effect>
+            <items>
+               <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="Client"/>
+                  <String fx:value="Pro"/>
+               </FXCollections>
+            </items>
+            <opaqueInsets>
+               <Insets/>
+            </opaqueInsets>
+            <cursor>
+               <Cursor fx:constant="DEFAULT"/>
+            </cursor>
+         </ComboBox>
+         <TextField fx:id="pC" alignment="CENTER" layoutX="621.0" layoutY="228.0" prefHeight="51.0" prefWidth="106.0"
+                    promptText="max km" style="-fx-background-color: WHITE; -fx-background-radius: 12px"
+                    AnchorPane.topAnchor="228.0">
+            <effect>
+               <DropShadow/>
+            </effect>
+            <font>
+               <Font size="24.0"/>
+            </font>
+         </TextField>
+         <DatePicker fx:id="startDate" layoutX="208.0" layoutY="24.0" prefHeight="40.0" promptText="Start"
+                     AnchorPane.topAnchor="24.0"/>
+         <DatePicker fx:id="endDate" layoutX="417.0" layoutY="24.0" prefHeight="40.0" promptText="End"
+                     AnchorPane.topAnchor="24.0"/>
+         <ComboBox fx:id="plantSizeCombo" layoutX="416.0" layoutY="158.0" prefHeight="51.0" prefWidth="175.0"
+                   style="-fx-background-radius: 12px;  -fx-text-alignment: center; -fx-font-size: 24px;" value="Client"
+                   visibleRowCount="2">
+            <effect>
+               <DropShadow/>
+            </effect>
+            <items>
+               <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="Client"/>
+                  <String fx:value="Pro"/>
+               </FXCollections>
+            </items>
+            <opaqueInsets>
+               <Insets/>
+            </opaqueInsets>
+            <cursor>
+               <Cursor fx:constant="DEFAULT"/>
+            </cursor>
+         </ComboBox>
+         <RadioButton layoutX="40.0" layoutY="245.0" mnemonicParsing="false" text="Pickup aviable"/>
+         <TextField fx:id="basePricePickUp1" alignment="CENTER" layoutX="416.0" layoutY="228.0" prefHeight="51.0"
+                    prefWidth="175.0" promptText="cost per km"
+                    style="-fx-background-color: WHITE; -fx-background-radius: 12px">
+            <effect>
+               <DropShadow/>
+            </effect>
+            <font>
+               <Font size="24.0"/>
+            </font>
+         </TextField>
+         <TextField fx:id="basePricePickUp2" alignment="CENTER" layoutX="207.0" layoutY="298.0" prefHeight="40.0"
+                    prefWidth="384.0" promptText="extra holiday %"
+                    style="-fx-background-color: WHITE; -fx-background-radius: 12px">
+            <effect>
+               <DropShadow/>
+            </effect>
+            <font>
+               <Font size="24.0"/>
+            </font>
+         </TextField>
+         <RadioButton layoutX="40.0" layoutY="315.0" mnemonicParsing="false" text="new customer exemption"/>
+      </AnchorPane>
+   </left>
+</BorderPane>

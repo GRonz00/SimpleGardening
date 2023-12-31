@@ -1,5 +1,6 @@
 package com.simplegardening.bean.in;
 
+import com.simplegardening.exception.BeanException;
 import com.simplegardening.utils.UserType;
 
 public class RegisterInBean {
@@ -10,7 +11,7 @@ public class RegisterInBean {
     private double longitude;
     private double latitude;
 
-    public RegisterInBean(String username, String password, String address, String userType, double longitude, double latitude){
+    public RegisterInBean(String username, String password, String address, String userType, double longitude, double latitude) throws BeanException {
         setAddress(address);
         setPassword(password);
         setUsername(username);
@@ -23,7 +24,9 @@ public class RegisterInBean {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(String username) throws BeanException {
+        if (username.length() < 4) throw new BeanException("username", BeanException.TOO_SHORT_REASON);
+        if (username.length() > 16) throw new BeanException("username", BeanException.TOO_LONG_REASON);
         this.username = username;
     }
 
@@ -31,7 +34,9 @@ public class RegisterInBean {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(String password) throws BeanException {
+        if (password.length() < 4) throw new BeanException("password", BeanException.TOO_SHORT_REASON);
+        if (password.length() > 16) throw new BeanException("password", BeanException.TOO_LONG_REASON);
         this.password = password;
     }
 
@@ -39,7 +44,8 @@ public class RegisterInBean {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(String address) throws BeanException {
+        if (address.length() < 4) throw new BeanException("address", BeanException.TOO_SHORT_REASON);
         this.address = address;
     }
 

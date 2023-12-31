@@ -4,6 +4,7 @@ import com.simplegardening.SimpleGardeningApplication;
 import com.simplegardening.bean.in.WeatherClientInBean;
 import com.simplegardening.bean.out.WeatherClientOutBean;
 import com.simplegardening.controller.WeatherForecastController;
+import com.simplegardening.exception.ControllerException;
 import com.simplegardening.utils.ExceptionHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,15 +33,23 @@ public class WeatherGraphicController {
     }
 
     @FXML
+    public void goBack(ActionEvent event)throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("home.fxml"));
+        ((Node) event.getSource()).getScene().setRoot(fxmlLoader.load());
+        HomeGraphicController homeGraphicController = fxmlLoader.getController();
+        homeGraphicController.setIdSession(idSession);
+    }
+
+    @FXML
     public void initialize(){
 
         week.getChildren().clear();
         WeatherForecastController weatherForecastController = new WeatherForecastController();
         WeatherClientInBean weatherClientInBean = new WeatherClientInBean(idSession);
-        WeatherClientOutBean weatherClientOutBean = weatherForecastController.weeklyWeatherForecast(weatherClientInBean);
-        for(int i=0;i<weatherClientOutBean.getDays().size();i++){
-            FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("weather_pane.fxml"));
-            try {
+        try {
+            WeatherClientOutBean weatherClientOutBean = weatherForecastController.weeklyWeatherForecast(weatherClientInBean);
+            for(int i=0;i<weatherClientOutBean.getDays().size();i++){
+                FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("weather_pane.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
                 if(i%2==0){
                     anchorPane.setStyle("-fx-background-color: #FFF5EE");
@@ -54,10 +63,12 @@ public class WeatherGraphicController {
                 ((Label)anchorPane.lookup("#rain")).setText(weatherClientOutBean.getFall().get(i).toString());
                 week.getChildren().add(anchorPane);
 
-            } catch (IOException e) {
-                ExceptionHandler.handleException("Could not go to next scene", e.getMessage());
             }
 
+        } catch (ControllerException e) {
+            ExceptionHandler.handleException("Weather not received", e.getMessage());
+        } catch (IOException e) {
+            ExceptionHandler.handleException("Could not go to next scene", e.getMessage());
         }
     }
 }

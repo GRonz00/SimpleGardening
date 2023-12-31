@@ -1,5 +1,7 @@
 package com.simplegardening.model;
 
+import com.simplegardening.exception.SessionException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,14 +35,11 @@ public class SessionManager {
         return newSession;
     }
 
-    public boolean validSession(Session session){
-        return sessionList.contains(session);
-    }
-    public boolean validSession(int idSession){
+    public void validSession(int idSession) throws SessionException {
         for(Session session: sessionList){
-            if(session.getId()==idSession)return true;
+            if(session.getId()==idSession)return;
         }
-        return false;
+        throw new SessionException("Session expired");
     }
 
     public Session getSession(int idSession){
@@ -51,8 +50,8 @@ public class SessionManager {
         return s;
     }
 
-    public void closeSession(Session session){
+    /*public void closeSession(Session session){
         sessionList.remove(session);
-    }
+    }*/
 
 }

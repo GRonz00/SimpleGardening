@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.simplegardening.bean.in.ConvertAddressInAPIBean;
 import com.simplegardening.bean.out.ConvertAddressOutAPIBean;
+import com.simplegardening.exception.APIException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,10 +13,10 @@ import java.net.URL;
 import java.net.URLConnection;
 
 public class ConvertAddressAPIGraphicController {
-    public ConvertAddressInAPIBean convertAddress(ConvertAddressOutAPIBean convertAddressOutAPIBean){
-        String s = convertAddressOutAPIBean.getStreet()+" + "+convertAddressOutAPIBean.getpC()+" + "+convertAddressOutAPIBean.getCity()+" + "+convertAddressOutAPIBean.getNation();
+    public ConvertAddressInAPIBean convertAddress(ConvertAddressOutAPIBean convertAddressOutAPIBean) throws APIException {
+        String s = "https://geocode.maps.co/search?q= "+convertAddressOutAPIBean.getStreet()+" + "+convertAddressOutAPIBean.getpC()+" + "+convertAddressOutAPIBean.getCity()+" + "+convertAddressOutAPIBean.getNation()+"&api_key=658c340c9cff3538808164tbce9d741";
         try {
-            URL url = new URL("https://geocode.maps.co/search?q= "+s);
+            URL url = new URL(s);
             URLConnection urlConnection = url.openConnection();
 
         // wrapping the urlconnection in a bufferedreader
@@ -40,7 +41,7 @@ public class ConvertAddressAPIGraphicController {
         JsonNode lon = rootNode.path("lon");
         return new ConvertAddressInAPIBean(lat.asDouble(), lon.asDouble());
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new APIException("address conversion failed");
         }
 
 

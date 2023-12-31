@@ -1,19 +1,20 @@
 package com.simplegardening.graphic_controller;
 
-import java.io.BufferedReader;
-import java.io.IOException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.simplegardening.bean.in.WeatherAPIinBean;
 import com.simplegardening.bean.out.WeatherAPIOutBean;
+import com.simplegardening.exception.APIException;
 import com.simplegardening.utils.Daily;
 import com.simplegardening.utils.ForecastJson;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
 public class WeatherAPIGraphicController {
-    public WeatherAPIinBean doWeatherForecast(WeatherAPIOutBean weatherAPIoutBean) {
+    public WeatherAPIinBean doWeatherForecast(WeatherAPIOutBean weatherAPIoutBean) throws APIException {
         URL url; // creating a url object
         StringBuilder content = new StringBuilder();
         double lon = weatherAPIoutBean.getLongitude();
@@ -46,7 +47,7 @@ public class WeatherAPIGraphicController {
                 return weatherAPIinBean;
 
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                throw new APIException("weather not received");
             }
         }
     }

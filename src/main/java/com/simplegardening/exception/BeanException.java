@@ -9,17 +9,14 @@ public class BeanException extends Exception {
 
     public static final String TOO_SHORT_REASON = "too short";
     public static final String TOO_LONG_REASON = "too long";
-    public static final String MORE_THAN_ZERO_REASON = "it has to be more than 0";
+
+    public static final String ONLY_REG = "aren't just regular characters";
+
+    public static final String ONLY_NUMBER_REASON = "can just be numbers";
+
 
     public BeanException(String data, String reason) {
         super("Invalid data: " + data + ". Reason: " + reason);
     }
 
-    public BeanException(Throwable cause) {
-        super(cause);
-    }
-
-    public BeanException(String data, String reason, Throwable cause) {
-        super("Invalid data: " + data + ". Reason: " + reason, cause);
-    }
 }
