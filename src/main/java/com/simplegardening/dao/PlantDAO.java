@@ -18,8 +18,6 @@ public class PlantDAO {
         PreparedStatement statement = null;
         // Create Connection
         try (Connection connection = DriverManager.getConnection(Database.DB_URL, Database.USER, Database.PASS)) {
-
-
             String sql = String.format("INSERT INTO Plant ( name, type, size, Image,client) VALUES ('%s', '%s', '%s', ?, '%s')", plant.getName(),plant.getType().toString().toLowerCase(),plant.getSize().toString().toLowerCase(),plant.getClient().getUsername());
                 // Execute query
             statement = connection.prepareStatement(sql);
