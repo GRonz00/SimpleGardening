@@ -16,10 +16,9 @@ public class PlantDAO {
 
     public static void savePlant(Plant plant) throws SQLException{
         PreparedStatement statement = null;
-        Connection connection = null;
         // Create Connection
-        try {
-             connection = DriverManager.getConnection(Database.DB_URL, Database.USER, Database.PASS);
+        try (Connection connection = DriverManager.getConnection(Database.DB_URL, Database.USER, Database.PASS)) {
+
 
             String sql = String.format("INSERT INTO Plant ( name, type, size, Image,client) VALUES ('%s', '%s', '%s', ?, '%s')", plant.getName(),plant.getType().toString().toLowerCase(),plant.getSize().toString().toLowerCase(),plant.getClient().getUsername());
                 // Execute query
@@ -34,7 +33,6 @@ public class PlantDAO {
         }
         finally {
             if (statement != null) statement.close();
-            if (connection != null) connection.close();
         }
         }
     public List<Plant> getPlantsFromClient(String usernameClient) throws SQLException {
