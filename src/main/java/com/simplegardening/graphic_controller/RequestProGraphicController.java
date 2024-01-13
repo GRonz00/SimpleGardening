@@ -113,16 +113,16 @@ public class RequestProGraphicController {
 
 
     public void goFutureRequest(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("futureRequest.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("requestOverTime.fxml"));
         ((Node) actionEvent.getSource()).getScene().setRoot(fxmlLoader.load());
-        FutureRequestGraphicController futureRequestGraphicController = fxmlLoader.getController();
-        futureRequestGraphicController.initialize(idSession);
+        RequestOverTimeGraphicController requestOverTimeGraphicController = fxmlLoader.getController();
+        requestOverTimeGraphicController.initialize(idSession,1);
     }
 
     public void goPassRequest(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("passRequest.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("requestOverTime.fxml"));
         ((Node) actionEvent.getSource()).getScene().setRoot(fxmlLoader.load());
-        PassRequestGraphicController passRequestGraphicController = fxmlLoader.getController();
-        passRequestGraphicController.initialize(idSession);
+        RequestOverTimeGraphicController requestOverTimeGraphicController = fxmlLoader.getController();
+        requestOverTimeGraphicController.initialize(idSession,0);
     }
 }
