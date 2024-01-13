@@ -44,7 +44,7 @@ public class RequestFormDAO {
         List<RequestForm> requestFormList = new ArrayList<>();
         Connection connection = session.getConnection();
         try ( Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)) {
-            String query = String.format("SELECT * FROM '%s' ","RequestForm");
+            String query = String.format("SELECT * FROM %s ","RequestForm");
             ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
                 requestFormList.add(setRequestForm(rs));
