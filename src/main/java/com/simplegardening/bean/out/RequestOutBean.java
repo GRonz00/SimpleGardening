@@ -23,26 +23,26 @@ public class RequestOutBean {
     private List<String> state;
     private List<Integer> idRequestForm;
     public RequestOutBean(List<Request> requests) {
-        List<String> pro= new ArrayList<>();
+        List<String> pro1= new ArrayList<>();
         List<String> ad= new ArrayList<>();
-        List<String> price= new ArrayList<>();
-        List<String> client = new ArrayList<>();
-        List<Boolean> pickup = new ArrayList<>();
-        List<LocalDate> start = new ArrayList<>();
-        List<LocalDate> end = new ArrayList<>();
-        List<Plant> plant = new ArrayList<>();
+        List<String> price1= new ArrayList<>();
+        List<String> client1 = new ArrayList<>();
+        List<Boolean> pickup1 = new ArrayList<>();
+        List<LocalDate> start1 = new ArrayList<>();
+        List<LocalDate> end1 = new ArrayList<>();
+        List<Plant> plant1 = new ArrayList<>();
         List<String> adc = new ArrayList<>();
         List<String> sta = new ArrayList<>();
         List<Integer> rf = new ArrayList<>();
         for (Request request : requests){
-            pro.add(request.getPro().getUsername());
+            pro1.add(request.getPro().getUsername());
             ad.add(request.getPro().getAddress());
-            price.add(String.valueOf(request.getPrice()));
-            client.add(request.getClient().getUsername());
-            pickup.add(request.isPickup());
-            start.add(request.getStart());
-            end.add(request.getEnd());
-            plant.add(request.getPlant());
+            price1.add(String.valueOf(request.getPrice()));
+            client1.add(request.getClient().getUsername());
+            pickup1.add(request.isPickup());
+            start1.add(request.getStart());
+            end1.add(request.getEnd());
+            plant1.add(request.getPlant());
             adc.add(request.getClient().getAddress());
             sta.add(request.getState().toString());
             rf.add(request.getRequestForm().getIdRequestForm());
@@ -50,14 +50,14 @@ public class RequestOutBean {
 
         }
         setAddressPro(ad);
-        setPrice(price);
-        setPro(pro);
-        setStart(start);
-        setEnd(end);
-        setPickup(pickup);
-        setPlant(plant);
+        setPrice(price1);
+        setPro(pro1);
+        setStart(start1);
+        setEnd(end1);
+        setPickup(pickup1);
+        setPlant(plant1);
         setAddressClient(adc);
-        setClient(client);
+        setClient(client1);
         setState(sta);
         setIdRequestForm(rf);
     }

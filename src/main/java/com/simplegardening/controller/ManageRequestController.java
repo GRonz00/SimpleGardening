@@ -12,8 +12,8 @@ import com.simplegardening.exception.ControllerException;
 import com.simplegardening.exception.DatabaseException;
 import com.simplegardening.exception.SessionException;
 import com.simplegardening.model.*;
-import com.simplegardening.model.Decoration.ExtraHolidaysPrice;
-import com.simplegardening.model.Decoration.PickupPrice;
+import com.simplegardening.model.decoration.ExtraHolidaysPrice;
+import com.simplegardening.model.decoration.PickupPrice;
 import com.simplegardening.utils.RequestState;
 
 import java.sql.SQLException;
@@ -28,7 +28,8 @@ public class ManageRequestController {
 
     public void addRequestForm(RequestFormInBean beanIn) throws ControllerException {
         try {
-            RequestForm requestForm = new RequestForm(beanIn.getStart(), beanIn.getEnd(), beanIn.getBasePrice(), beanIn.isPickupAvailable(), beanIn.getMaxKm(), beanIn.getPickupBasePrice(), beanIn.getKmPrice(), beanIn.getPlantSize(), beanIn.getPlantType(), beanIn.isNewCustomer(), beanIn.getExtraHoliday(), beanIn.getAmount());
+            RequestForm requestForm = new RequestForm(beanIn.getStart(), beanIn.getEnd(), beanIn.getBasePrice(), beanIn.isPickupAvailable(), beanIn.getMaxKm(), beanIn.getPickupBasePrice(), beanIn.getKmPrice() );
+            requestForm.requestForm2(beanIn.getPlantSize(), beanIn.getPlantType(), beanIn.isNewCustomer(), beanIn.getExtraHoliday(), beanIn.getAmount());
             Session session = SessionManager.getInstance().getSession(beanIn.getIdSession());
             Pro pro = (Pro) session.getUser();
             RequestFormDAO requestFormDAO = new RequestFormDAO();
@@ -56,7 +57,9 @@ public class ManageRequestController {
             for (RequestForm rf : requestFormList) {
                 User pro = new UserDAO().getUserByUsername(rf.getPro());
                 float price1 = calculatePrice(rf, bean.isPickUp(), bean.getStart(), bean.getEnd(), pro, client, session);
-                Request r = new Request(rf, plant, price1, bean.isPickUp(), (Pro) pro, client, bean.getStart(), bean.getEnd(), RequestState.SENT.toString());
+                Request r = new Request( plant, price1, bean.isPickUp(), (Pro) pro, client, bean.getStart(), bean.getEnd());
+                r.setRequestForm(rf);
+                r.setState(RequestState.SENT.toString());
                 requests.add(r);
             }
             return new RequestOutBean(requests);
@@ -66,7 +69,7 @@ public class ManageRequestController {
         } catch (SQLException e) {
             throw new ControllerException("SQL", e);
         } catch (DatabaseException e) {
-            throw new ControllerException("Database", e);
+            throw new ControllerException(e);
         }
 
 
@@ -84,7 +87,7 @@ public class ManageRequestController {
         } catch (SQLException e) {
             throw new ControllerException("SQL", e);
         } catch (DatabaseException e) {
-            throw new ControllerException("Database", e);
+            throw new ControllerException(e);
         }
     }
     public void sendRequest(RequestInBean bean) throws ControllerException {
@@ -148,8 +151,9 @@ public class ManageRequestController {
             PlantDAO plantDAO = new PlantDAO();
             Plant plant = plantDAO.getPlantFromName(bean.getPlant(), client, SessionManager.getInstance().getSession(bean.getIdSession()));
             RequestForm requestForm = new RequestFormDAO().getRequestFormFromId(bean.getIdRequestForm(), SessionManager.getInstance().getSession(bean.getIdSession()));
-            return new Request(requestForm, plant, bean.getPrice(), bean.isPickup(), pro, client, bean.getStart(), bean.getEnd());
-
+            Request request = new Request( plant, bean.getPrice(), bean.isPickup(), pro, client, bean.getStart(), bean.getEnd());
+            request.setRequestForm(requestForm);
+            return request;
 
         } catch (SessionException e) {
             throw new ControllerException(e.getMessage());
@@ -217,15 +221,15 @@ public class ManageRequestController {
         lat2 = lat2 * Math.PI / 180;
         longit2 = longit2 * Math.PI / 180;
 
-        double dist_long = longit2 - longit1;
+        double distLong = longit2 - longit1;
 
-        double pezzo1 = Math.cos(lat2) * Math.sin(dist_long);
+        double pezzo1 = Math.cos(lat2) * Math.sin(distLong);
         double pezzo11 = pezzo1 * pezzo1;
 
-        double pezzo2 = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(dist_long);
+        double pezzo2 = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(distLong);
         double pezzo22 = pezzo2 * pezzo2;
 
-        double pezzo3 = Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(dist_long);
+        double pezzo3 = Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(distLong);
 
         double pezzo4 = Math.atan((Math.sqrt(pezzo11 + pezzo22)) / pezzo3);
 

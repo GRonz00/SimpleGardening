@@ -1,4 +1,4 @@
-package com.simplegardening.model.Decoration;
+package com.simplegardening.model.decoration;
 
 import com.simplegardening.model.Price;
 

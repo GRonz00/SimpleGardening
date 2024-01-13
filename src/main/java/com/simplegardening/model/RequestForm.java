@@ -21,36 +21,23 @@ public class RequestForm {
     private String pro;
     private int idRequestForm;
 
-    public RequestForm(Date start, Date end, float basePrice, boolean pickupAvailable, int maxKm, float pickupBasePrice, float kmPrice, PlantSize plantSize, PlantType plantType, boolean newCustomer, int extraHoliday, int amount) {
-        this.amount = amount;
+
+    public RequestForm( Date start, Date end, float basePrice, boolean pickupAvailable, int maxKm, float pickupBasePrice, float kmPrice) {
         setEnd(end);
         setBasePrice(basePrice);
-        setExtraHoliday(extraHoliday);
         setKmPrice(kmPrice);
         setStart(start);
         setPickupAvailable(pickupAvailable);
         setMaxKm(maxKm);
         setPickupBasePrice(pickupBasePrice);
-        setNewCustomer(newCustomer);
-        setAmount(amount);
-        setPlantSize(plantSize);
-        setPlantType(plantType);
     }
-    public RequestForm(int idRequestForm, Date start, Date end, float basePrice, boolean pickupAvailable, int maxKm, float pickupBasePrice, float kmPrice, PlantSize plantSize, PlantType plantType, boolean newCustomer, int extraHoliday, int amount) {
-        this.amount = amount;
-        setEnd(end);
-        setBasePrice(basePrice);
-        setExtraHoliday(extraHoliday);
-        setKmPrice(kmPrice);
-        setStart(start);
-        setPickupAvailable(pickupAvailable);
-        setMaxKm(maxKm);
-        setPickupBasePrice(pickupBasePrice);
+    public void requestForm2(PlantSize plantSize, PlantType plantType, boolean newCustomer, int extraHoliday, int amount){
         setNewCustomer(newCustomer);
         setAmount(amount);
         setPlantSize(plantSize);
         setPlantType(plantType);
-        setIdRequestForm(idRequestForm);
+        setExtraHoliday(extraHoliday);
+        setAmount(amount);
     }
 
     public Date getStart() {

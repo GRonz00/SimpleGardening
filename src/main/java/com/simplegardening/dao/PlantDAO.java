@@ -1,6 +1,5 @@
 package com.simplegardening.dao;
 
-import com.simplegardening.exception.DatabaseException;
 import com.simplegardening.model.Client;
 import com.simplegardening.model.Plant;
 import com.simplegardening.model.Session;
@@ -46,14 +45,14 @@ public class PlantDAO {
                 plants.add(getPlant(rs,client));
             }
             rs.close();
-        } catch (SQLException | DatabaseException e) {
+        } catch (SQLException e) {
             throw new SQLException(e.getMessage());
         }
         return plants;
 
     }
 
-    private Plant getPlant(ResultSet rs,User client) throws SQLException, DatabaseException {
+    private Plant getPlant(ResultSet rs,User client) throws SQLException {
         String name = rs.getString("name");
         PlantType type = PlantType.valueOf(rs.getString("type").toUpperCase());
         PlantSize size = PlantSize.valueOf(rs.getString("size").toUpperCase());
@@ -74,7 +73,7 @@ public class PlantDAO {
             rs.next();
             plant=getPlant(rs,client);
             rs.close();
-        } catch (SQLException | DatabaseException e) {
+        } catch (SQLException e) {
             throw new SQLException(e.getMessage());
         }
         return plant;

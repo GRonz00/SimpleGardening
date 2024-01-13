@@ -59,7 +59,8 @@ public class NewRequestFormGraphicController {
     @FXML
     public void newRequestForm(ActionEvent actionEvent){
         try {
-            RequestFormInBean requestFormInBean = new RequestFormInBean(startDate.getValue(),endDate.getValue(),basePriceField.getText(),pickUpAviButton.isSelected(),maxKm.getText(),basePricePickUp.getText(),priceKm.getText(),newCostButton.isSelected(),extraPrice.getText(),plantSizeCombo.getValue(),plantTypeCombo.getValue(),amount.getText(),idSession);
+            RequestFormInBean requestFormInBean = new RequestFormInBean(startDate.getValue(),endDate.getValue(),basePriceField.getText(),pickUpAviButton.isSelected(),maxKm.getText(),basePricePickUp.getText(),priceKm.getText());
+            requestFormInBean.requestFormInBean2(newCostButton.isSelected(),extraPrice.getText(),plantSizeCombo.getValue(),plantTypeCombo.getValue(),amount.getText(),idSession);
             ManageRequestController manageRequestController = new ManageRequestController();
             manageRequestController.addRequestForm(requestFormInBean);
             FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("home_pro.fxml"));

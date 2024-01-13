@@ -17,7 +17,7 @@ public class RequestInBean {
 
     private int idSession;
 
-    public RequestInBean(String pro, String price, String plant, boolean pickup, String client, LocalDate start, LocalDate end, int idRequestForm, int idSession) throws BeanException {
+    public RequestInBean(String pro, String price, String plant, boolean pickup, String client, LocalDate start, LocalDate end) throws BeanException {
         setClient(client);
         setEnd(end,start);
         setPlant(plant);
@@ -25,6 +25,9 @@ public class RequestInBean {
         setPrice(price);
         setPro(pro);
         setStart(start);
+
+    }
+    public void requestInBean2(int idRequestForm, int idSession) throws BeanException{
         setIdRequestForm(idRequestForm);
         setIdSession(idSession);
     }

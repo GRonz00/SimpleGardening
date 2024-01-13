@@ -58,11 +58,15 @@ public class RequestDAO {
         Client client = (Client) userDAO.getUserByUsername(clientName);
         Pro pro = (Pro) userDAO.getUserByUsername(proName);
         Plant plant = new PlantDAO().getPlantFromName(plantName,client,session);
-        return new Request(requestForm,plant,price,pickup,pro,client, Instant.ofEpochMilli(start.getTime())
+        Request request = new Request(plant,price,pickup,pro,client, Instant.ofEpochMilli(start.getTime())
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate(),Instant.ofEpochMilli(end.getTime())
                 .atZone(ZoneId.systemDefault())
-                .toLocalDate(),state);
+                .toLocalDate());
+        request.setRequestForm(requestForm);
+        request.setState(state);
+        return request;
+
 
 
 

@@ -24,20 +24,22 @@ public class RequestFormInBean {
     private PlantType plantType;
     private int idSession;
 
-    public RequestFormInBean(LocalDate start, LocalDate end, String basePrice, boolean pickupAvailable, String maxKm, String pickupBasePrice, String kmPrice, boolean newCustomer, String extraHoliday, String plantSize, String plantType,String amount, int idSession) throws BeanException {
+    public RequestFormInBean(LocalDate start, LocalDate end, String basePrice, boolean pickupAvailable, String maxKm, String pickupBasePrice, String kmPrice) throws BeanException {
         setEnd(end,start);
         setBasePrice(basePrice);
-        setExtraHoliday(extraHoliday);
         setKmPrice(kmPrice,pickupAvailable);
         setStart(start);
         setPickupAvailable(pickupAvailable);
         setMaxKm(maxKm,pickupAvailable);
         setPickupBasePrice(pickupBasePrice,pickupAvailable);
-        setNewCustomer(newCustomer);
+    }
+    public void requestFormInBean2( boolean newCustomer, String extraHoliday, String plantSize, String plantType,String amount, int idSession) throws BeanException {
         setAmount(amount);
-        setIdSession(idSession);
         setPlantSize(plantSize);
         setPlantType(plantType);
+        setExtraHoliday(extraHoliday);
+        setNewCustomer(newCustomer);
+        setIdSession(idSession);
     }
 
     public Date getStart() {

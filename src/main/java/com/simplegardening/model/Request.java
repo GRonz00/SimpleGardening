@@ -17,29 +17,8 @@ public class Request {
     private RequestForm requestForm;
 
 
-    public Request(RequestForm requestForm, Plant plant, float price, boolean pickup, Pro pro, Client client, LocalDate start, LocalDate end,String state){
-        setClient(client);
-        setPickup(pickup);
-        setPlant(plant);
-        setPrice(price);
-        setPro(pro);
-        setStart(start);
-        setEnd(end);
-        setRequestForm(requestForm);
-        setState(state);
 
-    }
-    public Request(RequestForm requestForm, Plant plant, float price, boolean pickup, Pro pro, Client client, LocalDate start, LocalDate end){
-        setClient(client);
-        setPickup(pickup);
-        setPlant(plant);
-        setPrice(price);
-        setPro(pro);
-        setStart(start);
-        setEnd(end);
-        setRequestForm(requestForm);
 
-    }
     public Request(Plant plant, float price, boolean pickup, Pro pro, Client client, LocalDate start, LocalDate end){
         setClient(client);
         setPickup(pickup);
@@ -49,16 +28,7 @@ public class Request {
         setStart(start);
         setEnd(end);
     }
-    public Request(Plant plant, float price, boolean pickup, Pro pro, Client client, LocalDate start, LocalDate end, String state){
-        setClient(client);
-        setPickup(pickup);
-        setPlant(plant);
-        setPrice(price);
-        setPro(pro);
-        setStart(start);
-        setEnd(end);
-        setState(state);
-    }
+
 
     public Plant getPlant() {
         return plant;

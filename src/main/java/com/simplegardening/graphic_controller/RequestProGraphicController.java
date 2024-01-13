@@ -51,7 +51,8 @@ public class RequestProGraphicController {
                 ((Label) pane.lookup("#priceLabel")).setText(requests.getPrice().get(i));
                 ((Label) pane.lookup("#startLabel")).setText(requests.getStart().get(i).toString());
                 ((Label) pane.lookup("#pickupLabel")).setText(requests.getPickup().get(i).toString());
-                RequestInBean requestInBean = new RequestInBean(requests.getPro().get(i),requests.getPrice().get(i),requests.getPlant().get(i).getName(),requests.getPickup().get(i),requests.getClient().get(i),requests.getStart().get(i),requests.getEnd().get(i),requests.getIdRequestForm().get(i),idSession);
+                RequestInBean requestInBean = new RequestInBean(requests.getPro().get(i),requests.getPrice().get(i),requests.getPlant().get(i).getName(),requests.getPickup().get(i),requests.getClient().get(i),requests.getStart().get(i),requests.getEnd().get(i));
+                requestInBean.requestInBean2(requests.getIdRequestForm().get(i),idSession);
                 if (requests.getPlant().get(i).getImage() != null)
                     ((ImageView) pane.lookup("#imageView")).setImage(new Image(requests.getPlant().get(i).getImage()));
                 ((Button) pane.lookup("#acceptButton")).setOnAction((ActionEvent event) -> {

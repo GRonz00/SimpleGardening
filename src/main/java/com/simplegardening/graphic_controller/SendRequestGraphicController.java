@@ -41,7 +41,8 @@ public class SendRequestGraphicController {
                 ((Label) pane.lookup("#nameLabel")).setText(requests.getPro().get(i));
                 ((Label) pane.lookup("#addressLabel")).setText(requests.getAddressPro().get(i));
                 ((Label) pane.lookup("#priceLabel")).setText(requests.getPrice().get(i));
-                RequestInBean requestInBean = new RequestInBean(requests.getPro().get(i),requests.getPrice().get(i),requests.getPlant().get(i).getName(),requests.getPickup().get(i),requests.getClient().get(i),requests.getStart().get(i),requests.getEnd().get(i),requests.getIdRequestForm().get(i),idSession);
+                RequestInBean requestInBean = new RequestInBean(requests.getPro().get(i),requests.getPrice().get(i),requests.getPlant().get(i).getName(),requests.getPickup().get(i),requests.getClient().get(i),requests.getStart().get(i),requests.getEnd().get(i));
+                requestInBean.requestInBean2(requests.getIdRequestForm().get(i),idSession);
                 ((Button) pane.lookup("#sendButton")).setOnAction((ActionEvent event) -> {
                     try {
                         ManageRequestController manageRequestController = new ManageRequestController();

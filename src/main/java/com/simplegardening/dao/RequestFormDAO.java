@@ -71,8 +71,9 @@ public class RequestFormDAO {
         int amount = rs.getInt("availability");
         String pro = rs.getString("pro");
         int id = rs.getInt("idrequestForm");
-        RequestForm requestForm = new RequestForm(id,start,end,basePrice,pickupAvailable,maxKm,pickupBasePrice,
-                kmPrice,plantSize,plantType,newCustomer,extraHoliday,amount);
+        RequestForm requestForm = new RequestForm(start,end,basePrice,pickupAvailable,maxKm,pickupBasePrice, kmPrice);
+        requestForm.setIdRequestForm(id);
+        requestForm.requestForm2(plantSize,plantType,newCustomer,extraHoliday,amount);
         requestForm.setPro(pro);
         return requestForm;
     }
