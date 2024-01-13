@@ -27,7 +27,7 @@ public class RequestInBean {
         setStart(start);
 
     }
-    public void requestInBean2(int idRequestForm, int idSession) throws BeanException{
+    public void requestInBean2(int idRequestForm, int idSession){
         setIdRequestForm(idRequestForm);
         setIdSession(idSession);
     }
