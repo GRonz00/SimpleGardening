@@ -2,7 +2,7 @@ package com.simplegardening.bean.in;
 
 import java.io.File;
 
-public class UploadImageInBean {
+public class ImageInBean {
     private File image;
 
     public File getImage() {

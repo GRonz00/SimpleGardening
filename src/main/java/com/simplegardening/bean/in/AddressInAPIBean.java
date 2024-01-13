@@ -1,10 +1,10 @@
-package com.simplegardening.bean.out;
+package com.simplegardening.bean.in;
 
-public class ConvertAddressOutBean {
+public class AddressInAPIBean {
     private double longitude;
     private double latitude;
 
-    public ConvertAddressOutBean(double longitude,double latitude){
+    public AddressInAPIBean(double latitude, double longitude){
         setLatitude(latitude);
         setLongitude(longitude);
     }

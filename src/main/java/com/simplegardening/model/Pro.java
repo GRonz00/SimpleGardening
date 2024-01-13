@@ -8,4 +8,6 @@ public class Pro extends User{
         setUsername(loginUsername);
         setAddress(address);
     }
+
+
 }

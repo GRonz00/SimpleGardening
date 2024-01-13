@@ -38,16 +38,25 @@ public class AddPlantInBean {
         return type;
     }
 
-    public void setType(String type) {
-        this.type = PlantType.valueOf(type.toUpperCase());
+    public void setType(String type) throws BeanException {
+
+        try {
+            this.type = PlantType.valueOf(type.toUpperCase());
+        }catch (IllegalArgumentException e){
+            throw  new BeanException("Type", e.getMessage());
+        }
     }
 
     public PlantSize getSize() {
         return size;
     }
 
-    public void setSize(String size) {
-        this.size = PlantSize.valueOf(size.toUpperCase());
+    public void setSize(String size) throws BeanException {
+        try{
+            this.size = PlantSize.valueOf(size.toUpperCase());
+        }catch (IllegalArgumentException e){
+            throw new BeanException("Size", e.getMessage());
+        }
     }
 
     public InputStream getImage() {

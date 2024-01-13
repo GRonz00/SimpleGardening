@@ -1,7 +1,7 @@
 package com.simplegardening.graphic_controller;
 
 import com.simplegardening.bean.in.AddPlantInBean;
-import com.simplegardening.bean.in.UploadImageInBean;
+import com.simplegardening.bean.in.ImageInBean;
 import com.simplegardening.controller.AddPlantController;
 import com.simplegardening.controller.UploadImageController;
 import com.simplegardening.exception.BeanException;
@@ -16,6 +16,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 
 public class AddPlantGraphicController {
@@ -31,10 +32,11 @@ public class AddPlantGraphicController {
     private ImageView imageView;
 
     private InputStream image;
+    private HomeGraphicController homeGraphicController;
 
 
     private int idSession;
-    public void setIdSession(int idSession){
+    private void setIdSession(int idSession){
         this.idSession = idSession;
     }
     @FXML
@@ -43,10 +45,13 @@ public class AddPlantGraphicController {
             AddPlantInBean addPlantInBean = new AddPlantInBean(idSession,name.getText(),type.getValue(),size.getValue(),image);
             AddPlantController addPlantController = new AddPlantController();
             addPlantController.savePlant(addPlantInBean);
+            homeGraphicController.initialize(idSession);
         } catch (BeanException e) {
             ExceptionHandler.handleException(ExceptionHandler.BEAN_HEADER_TEXT,e.getMessage());
         } catch (ControllerException e) {
             ExceptionHandler.handleException(ExceptionHandler.CONTROLLER_HEADER_TEXT,e.getMessage());
+        }catch (IOException e) {
+            ExceptionHandler.handleException("Could not go to next scene", e.getMessage());
         }
 
     }
@@ -56,15 +61,21 @@ public class AddPlantGraphicController {
         try {
             UploadImageController controller = new UploadImageController();
             File img = controller.chooseImage();
-            UploadImageInBean uploadImageInBean = new UploadImageInBean();
-            uploadImageInBean.setImage(img);
-            image = controller.validateImage(uploadImageInBean);
+            ImageInBean imageInBean = new ImageInBean();
+            imageInBean.setImage(img);
+            image = controller.validateImage(imageInBean);
             imageButton.setVisible(false);
             if (image!= null)
-                imageView.setImage(new Image(image));
-            imageView.setVisible(true);
+            {imageView.setImage(new Image(image));
+            imageView.setVisible(true);}
         } catch (ImageException e) {
             ExceptionHandler.handleException("Image", e.getMessage());
         }
+    }
+
+    public void initialize(HomeGraphicController homeGraphicController,int idSession) {
+        this.homeGraphicController= homeGraphicController;
+        setIdSession(idSession);
+
     }
 }

@@ -9,9 +9,10 @@ import com.simplegardening.utils.UserType;
 import java.sql.*;
 
 public class UserDAO {
-    public static User getUserByUsername(String loginUsername) throws DatabaseException, SQLException {
+    public  User getUserByUsername(String loginUsername) throws DatabaseException, SQLException {
         // Create Connection
         User user;
+
         try (Connection connection = DriverManager.getConnection(Database.DB_URL, Database.USER, System.getenv("DATABASE_P"))) {
             // Create statement
             try (Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)) {

@@ -29,28 +29,36 @@ public class LoginGraphicController {
     }
     @FXML
     protected void login(ActionEvent actionEvent) throws IOException {
-        try {
             String username = usernameTextField.getText();
             String password = passwordTextField.getText();
-            LoginBeanIn bean = new LoginBeanIn(username, password);
-            LoginController controller = new LoginController();
-            LoginBeanOut beanOut = controller.login(bean);
-            if (beanOut.getTypeUser() == 1) {
-                FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("home.fxml"));
-                ((Node) actionEvent.getSource()).getScene().setRoot(fxmlLoader.load());
-                HomeGraphicController homeGraphicController = fxmlLoader.getController();
-                homeGraphicController.setIdSession(beanOut.getIdSession());
-            }
-            if (beanOut.getTypeUser() == 2) {
-                FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("home_pro.fxml"));
-                ((Node) actionEvent.getSource()).getScene().setRoot(fxmlLoader.load());
-            }
+            log(username,password,actionEvent);
 
-        } catch (BeanException e) {
-            ExceptionHandler.handleException(ExceptionHandler.BEAN_HEADER_TEXT, e.getMessage());
-        }
-        catch (ControllerException e) {
-            ExceptionHandler.handleException(ExceptionHandler.CONTROLLER_HEADER_TEXT, e.getMessage());
+    }
+
+    @FXML
+    public void log(String username, String password, ActionEvent actionEvent) throws IOException {
+            try {
+                LoginBeanIn bean = new LoginBeanIn(username, password);
+                LoginController controller = new LoginController();
+                LoginBeanOut beanOut = controller.login(bean);
+                if (beanOut.getTypeUser() == 1) {
+                    FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("home.fxml"));
+                    ((Node) actionEvent.getSource()).getScene().setRoot(fxmlLoader.load());
+                    HomeGraphicController homeGraphicController = fxmlLoader.getController();
+                    homeGraphicController.initialize(beanOut.getIdSession());
+                }
+                if (beanOut.getTypeUser() == 2) {
+                    FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("home_pro.fxml"));
+                    ((Node) actionEvent.getSource()).getScene().setRoot(fxmlLoader.load());
+                    HomeProGraphicController homeProGraphicController = fxmlLoader.getController();
+                    homeProGraphicController.initialize(beanOut.getIdSession());
+                }
+
+            } catch (BeanException e) {
+                ExceptionHandler.handleException(ExceptionHandler.BEAN_HEADER_TEXT, e.getMessage());
+            } catch (ControllerException e) {
+                ExceptionHandler.handleException(ExceptionHandler.CONTROLLER_HEADER_TEXT, e.getMessage());
+            }
         }
     }
-}
+

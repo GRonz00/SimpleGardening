@@ -1,23 +1,23 @@
 package com.simplegardening.controller;
 
-import com.simplegardening.bean.in.ConvertAddressInAPIBean;
-import com.simplegardening.bean.in.ConvertAddressInBean;
-import com.simplegardening.bean.out.ConvertAddressOutAPIBean;
-import com.simplegardening.bean.out.ConvertAddressOutBean;
+import com.simplegardening.bean.in.AddressInAPIBean;
+import com.simplegardening.bean.in.AddressInBean;
+import com.simplegardening.bean.out.AddressOutAPIBean;
+import com.simplegardening.bean.out.AddressOutBean;
 import com.simplegardening.exception.APIException;
 import com.simplegardening.exception.ControllerException;
 import com.simplegardening.graphic_controller.ConvertAddressAPIGraphicController;
 
 public class ConvertAddressController {
-    public ConvertAddressOutBean convert(ConvertAddressInBean convertAddressInBean) throws ControllerException {
-        ConvertAddressOutAPIBean convertAddressOutAPIBean = new ConvertAddressOutAPIBean(convertAddressInBean.getNation(), convertAddressInBean.getCity(), convertAddressInBean.getStreet(), convertAddressInBean.getpC());
+    public AddressOutBean convert(AddressInBean addressInBean) throws ControllerException {
+        AddressOutAPIBean addressOutAPIBean = new AddressOutAPIBean(addressInBean.getNation(), addressInBean.getCity(), addressInBean.getStreet(), addressInBean.getpC());
         ConvertAddressAPIGraphicController convertAddressAPIGraphicController = new ConvertAddressAPIGraphicController();
-        ConvertAddressInAPIBean convertAddressInAPIBean;
+        AddressInAPIBean addressInAPIBean;
         try {
-            convertAddressInAPIBean = convertAddressAPIGraphicController.convertAddress(convertAddressOutAPIBean);
+            addressInAPIBean = convertAddressAPIGraphicController.convertAddress(addressOutAPIBean);
         } catch (APIException e) {
-            throw new ControllerException(e.getMessage());
+            throw new ControllerException("Address cannot be converted");
         }
-        return new ConvertAddressOutBean(convertAddressInAPIBean.getLongitude(),convertAddressInAPIBean.getLatitude());
+        return new AddressOutBean(addressInAPIBean.getLongitude(), addressInAPIBean.getLatitude());
     }
 }

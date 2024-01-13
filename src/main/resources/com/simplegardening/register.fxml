@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.collections.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import org.kordamp.ikonli.javafx.*?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.simplegardening.graphic_controller.RegisterGraphicController">
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.simplegardening.graphic_controller.RegisterGraphicController">
    <center>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="520.0" prefWidth="800.0">
          <TextField fx:id="usernameTextField" alignment="CENTER" layoutX="208.0" layoutY="88.0" prefHeight="40.0" prefWidth="384.0" promptText="Username" style="-fx-background-color: WHITE; -fx-background-radius: 12px" AnchorPane.leftAnchor="208.0" AnchorPane.topAnchor="18.0">
@@ -97,20 +102,24 @@
       </AnchorPane>
    </center>
    <top>
-      <AnchorPane prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: rgba(20,195,17,0.55); -fx-background-radius: 0 0 16 16;">
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
-         <Label alignment="CENTER" layoutX="335.0" layoutY="13.0" text="Register">
-            <font>
-               <Font size="36.0" />
-            </font>
-         </Label>
-         <Button alignment="CENTER" layoutX="54.0" layoutY="27.0" mnemonicParsing="false" onAction="#goBack" style="-fx-background-color: transparent" AnchorPane.rightAnchor="48.0" >
-         <graphic>
-            <FontIcon iconLiteral="mdal-arrow_back" iconSize="32"/>
-         </graphic>
-         </Button>
-      </AnchorPane>
+      <BorderPane minHeight="80.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #14C3118C; -fx-background-radius: 0 0 16 16;">
+         <left>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#goBack" style="-fx-background-color: transparent" BorderPane.alignment="CENTER">
+               <graphic>
+                  <FontIcon iconLiteral="mdal-arrow_back" iconSize="32" />
+               </graphic>
+               <BorderPane.margin>
+                  <Insets left="48.0" />
+               </BorderPane.margin>
+            </Button>
+         </left>
+         <center>
+            <Label text="Register" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+         </center>
+      </BorderPane>
    </top>
 </BorderPane>

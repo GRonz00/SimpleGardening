@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0"
+            prefWidth="320.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.2"
+            xmlns:fx="http://javafx.com/fxml/1">
+   <Label layoutX="96.0" layoutY="80.0" text="Address:" AnchorPane.leftAnchor="96.0" AnchorPane.topAnchor="80.0"/>
+   <Label layoutX="98.0" layoutY="100.0" prefHeight="17.0" prefWidth="32.0" text="Price:" AnchorPane.leftAnchor="96.0"
+          AnchorPane.rightAnchor="192.0" AnchorPane.topAnchor="100.0"/>
+   <Button fx:id="sendButton" layoutX="187.0" layoutY="254.0" mnemonicParsing="false" prefHeight="39.0"
+           prefWidth="113.0" style="-fx-background-color: #6EC6FF; -fx-background-radius: 16; -fx-font-size: 24px"
+           text="Send" AnchorPane.bottomAnchor="16.0" AnchorPane.rightAnchor="16.0">
+      <effect>
+         <DropShadow/>
+      </effect>
+   </Button>
+   <Label fx:id="nameLabel" layoutX="96.0" layoutY="30.0" text="Name" AnchorPane.topAnchor="30.0">
+      <font>
+         <Font size="24.0"/>
+      </font>
+   </Label>
+   <Label fx:id="addressLabel" layoutX="152.0" layoutY="80.0" text="Via" AnchorPane.leftAnchor="152.0"
+          AnchorPane.topAnchor="80.0"/>
+   <Label fx:id="priceLabel" layoutX="149.0" layoutY="100.0" text="\$" AnchorPane.leftAnchor="149.0"
+          AnchorPane.topAnchor="100.0"/>
+</AnchorPane>

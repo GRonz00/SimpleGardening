@@ -1,6 +1,6 @@
 package com.simplegardening.controller;
 
-import com.simplegardening.bean.in.UploadImageInBean;
+import com.simplegardening.bean.in.ImageInBean;
 import com.simplegardening.exception.ImageException;
 import javafx.stage.FileChooser;
 
@@ -26,7 +26,7 @@ public class UploadImageController {
         return chooser.showOpenDialog(null);
     }
 
-    public InputStream validateImage(UploadImageInBean imageBean) throws ImageException {
+    public InputStream validateImage(ImageInBean imageBean) throws ImageException {
         File image = imageBean.getImage();
         if (image == null)
             throw new ImageException("No image selected");

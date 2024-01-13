@@ -18,9 +18,9 @@ public class AddPlantController {
             SessionManager.getInstance().validSession(addPlantInBean.getIdSession());
             Session session = SessionManager.getInstance().getSession(addPlantInBean.getIdSession());
             Plant plant = new Plant(session.getUser(), addPlantInBean.getName(), addPlantInBean.getSize(),addPlantInBean.getType(),addPlantInBean.getImage());
-            PlantDAO.savePlant(plant);
+            PlantDAO.savePlant(plant,session);
         }catch (SQLException e){
-            throw new ControllerException("SQL",e);
+            throw new ControllerException("There is a plant whit the same name");
         } catch (SessionException e) {
             throw new ControllerException(e);
         }
@@ -32,7 +32,7 @@ public class AddPlantController {
             SessionManager.getInstance().validSession(idSession);
             Session session = SessionManager.getInstance().getSession(idSession);
             PlantDAO plantDAO = new PlantDAO();
-            List<Plant> plants = plantDAO.getPlantsFromClient(session.getUser().getUsername());
+            List<Plant> plants = plantDAO.getPlantsFromClient(session.getUser(),session);
             ListPlantOutBean listPlantOutBean = new ListPlantOutBean();
             listPlantOutBean.setPlant(plants);
             return listPlantOutBean;

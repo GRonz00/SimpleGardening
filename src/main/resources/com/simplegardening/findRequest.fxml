@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import org.kordamp.ikonli.javafx.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.simplegardening.graphic_controller.FindRequestGraphicController">
+   <bottom>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="520.0" prefWidth="800.0"
+                  BorderPane.alignment="CENTER">
+         <Button defaultButton="true" layoutX="612.0" layoutY="480.0" mnemonicParsing="false" onAction="#findRequest"
+                 prefHeight="42.0" prefWidth="132.0"
+                 style="-fx-background-color: #6EC6FF; -fx-font-size: 24px; -fx-background-radius: 16px;" text="Send"
+                 AnchorPane.bottomAnchor="28.0" AnchorPane.rightAnchor="56.0">
+            <effect>
+               <DropShadow/>
+            </effect>
+         </Button>
+         <TextField fx:id="maxKmField" alignment="CENTER" layoutX="208.0" layoutY="159.0" prefHeight="51.0"
+                    prefWidth="384.0" promptText="maximum km"
+                    style="-fx-background-color: WHITE; -fx-background-radius: 12px" AnchorPane.topAnchor="228.0">
+            <effect>
+               <DropShadow/>
+            </effect>
+            <font>
+               <Font size="24.0"/>
+            </font>
+         </TextField>
+         <DatePicker fx:id="startDate" editable="false" layoutX="208.0" layoutY="129.0" prefHeight="40.0"
+                     promptText="Start" AnchorPane.topAnchor="129.0"/>
+         <DatePicker fx:id="endDate" editable="false" layoutX="417.0" layoutY="129.0" prefHeight="40.0" promptText="End"
+                     AnchorPane.topAnchor="129.0"/>
+         <RadioButton fx:id="pickUp" layoutX="40.0" layoutY="245.0" mnemonicParsing="false" text="Pickup"/>
+      </AnchorPane>
+   </bottom>
+   <top>
+      <BorderPane minHeight="80.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #14C3118C; -fx-background-radius: 0 0 16 16;" BorderPane.alignment="CENTER">
+         <left>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#goBack" style="-fx-background-color: transparent" BorderPane.alignment="CENTER">
+               <graphic>
+                  <FontIcon iconLiteral="mdal-arrow_back" iconSize="32" />
+               </graphic>
+               <BorderPane.margin>
+                  <Insets left="48.0" />
+               </BorderPane.margin>
+            </Button>
+         </left>
+         <right>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: transparent" BorderPane.alignment="CENTER">
+               <graphic>
+                  <FontIcon iconLiteral="mdal-log_out" iconSize="32" />
+               </graphic>
+               <BorderPane.margin>
+                  <Insets right="48.0" />
+               </BorderPane.margin>
+            </Button>
+         </right>
+         <center>
+            <Label text="Find Request" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+         </center>
+      </BorderPane>
+   </top>
+</BorderPane>

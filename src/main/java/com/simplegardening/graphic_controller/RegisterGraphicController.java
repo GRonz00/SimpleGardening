@@ -1,9 +1,9 @@
 package com.simplegardening.graphic_controller;
 
 import com.simplegardening.SimpleGardeningApplication;
-import com.simplegardening.bean.in.ConvertAddressInBean;
+import com.simplegardening.bean.in.AddressInBean;
 import com.simplegardening.bean.in.RegisterInBean;
-import com.simplegardening.bean.out.ConvertAddressOutBean;
+import com.simplegardening.bean.out.AddressOutBean;
 import com.simplegardening.controller.ConvertAddressController;
 import com.simplegardening.controller.RegisterController;
 import com.simplegardening.exception.BeanException;
@@ -39,16 +39,18 @@ public class RegisterGraphicController {
     private ComboBox<String> userType;
 
     @FXML
-    protected void register(){
+    protected void register(ActionEvent actionEvent) throws IOException {
 
         try {
         ConvertAddressController convertAddressController = new ConvertAddressController();
-        ConvertAddressInBean convertAddressInBean = new ConvertAddressInBean(nation.getText(),city.getText(),street.getText(),pC.getText());
-        ConvertAddressOutBean convertAddressOutBean = convertAddressController.convert(convertAddressInBean);
-        String address = street.getText()+number.getText()+city.getText()+pC.getText();
-        RegisterInBean registerInBean = new RegisterInBean(usernameTextField.getText(),passwordTextField.getText(),address, userType.getValue(), convertAddressOutBean.getLongitude(),convertAddressOutBean.getLatitude());
+        AddressInBean addressInBean = new AddressInBean(nation.getText(),city.getText(),street.getText(),pC.getText());
+        AddressOutBean addressOutBean = convertAddressController.convert(addressInBean);
+        String address = street.getText()+" "+number.getText()+" "+city.getText()+" "+pC.getText();
+        RegisterInBean registerInBean = new RegisterInBean(usernameTextField.getText(),passwordTextField.getText(),address, userType.getValue(), addressOutBean.getLongitude(), addressOutBean.getLatitude());
         RegisterController registerController = new RegisterController();
         registerController.register(registerInBean);
+        LoginGraphicController loginGraphicController = new LoginGraphicController();
+        loginGraphicController.log(usernameTextField.getText(),passwordTextField.getText(),actionEvent);
         } catch (ControllerException e) {
             ExceptionHandler.handleException(ExceptionHandler.CONTROLLER_HEADER_TEXT, e.getMessage());
         } catch (BeanException e) {

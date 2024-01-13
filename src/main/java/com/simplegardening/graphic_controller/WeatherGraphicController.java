@@ -3,6 +3,7 @@ package com.simplegardening.graphic_controller;
 import com.simplegardening.SimpleGardeningApplication;
 import com.simplegardening.bean.in.WeatherClientInBean;
 import com.simplegardening.bean.out.WeatherClientOutBean;
+import com.simplegardening.controller.LoginController;
 import com.simplegardening.controller.WeatherForecastController;
 import com.simplegardening.exception.ControllerException;
 import com.simplegardening.utils.ExceptionHandler;
@@ -20,13 +21,18 @@ public class WeatherGraphicController {
 
     private int idSession;
 
-    public void setIdSession(int idSession){
+    private void setIdSession(int idSession){
         this.idSession = idSession;
     }
     @FXML
     private HBox week;
     @FXML
     public void logout(ActionEvent event) throws IOException {
+        try {
+            new LoginController().closeSession(idSession);
+        } catch (ControllerException e) {
+            ExceptionHandler.handleException(ExceptionHandler.CONTROLLER_HEADER_TEXT,e.getMessage());
+        }
         FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("login.fxml"));
         ((Node) event.getSource()).getScene().setRoot(fxmlLoader.load());
 
@@ -37,18 +43,20 @@ public class WeatherGraphicController {
         FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("home.fxml"));
         ((Node) event.getSource()).getScene().setRoot(fxmlLoader.load());
         HomeGraphicController homeGraphicController = fxmlLoader.getController();
-        homeGraphicController.setIdSession(idSession);
+        homeGraphicController.initialize(idSession);
     }
 
     @FXML
-    public void initialize(){
+    public void initialize(int idSession){
 
+        setIdSession(idSession);
         week.getChildren().clear();
         WeatherForecastController weatherForecastController = new WeatherForecastController();
         WeatherClientInBean weatherClientInBean = new WeatherClientInBean(idSession);
         try {
             WeatherClientOutBean weatherClientOutBean = weatherForecastController.weeklyWeatherForecast(weatherClientInBean);
             for(int i=0;i<weatherClientOutBean.getDays().size();i++){
+                System.out.println(idSession);
                 FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("weather_pane.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
                 if(i%2==0){

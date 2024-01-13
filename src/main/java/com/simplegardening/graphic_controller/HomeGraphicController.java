@@ -4,12 +4,15 @@ import com.simplegardening.SimpleGardeningApplication;
 import com.simplegardening.bean.out.ListPlantOutBean;
 import com.simplegardening.bean.out.PlantOutBean;
 import com.simplegardening.controller.AddPlantController;
+import com.simplegardening.controller.LoginController;
 import com.simplegardening.exception.ControllerException;
 import com.simplegardening.utils.ExceptionHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -20,16 +23,18 @@ import java.io.IOException;
 
 public class HomeGraphicController {
 
-    private int idSession;
+
     @FXML
     private FlowPane plantsPane;
+    private int idSession;
 
-    public void setIdSession(int idSession){
+    private void setIdSession(int idSession){
         this.idSession = idSession;
     }
     @FXML
-    protected void initialize() throws IOException {
+    public void initialize(int idSession) throws IOException {
 
+        setIdSession(idSession);
         plantsPane.getChildren().clear();
         AddPlantController plantController = new AddPlantController();
         try {
@@ -40,6 +45,17 @@ public class HomeGraphicController {
                 ((Label) pane.lookup("#nameLabel")).setText(plant.getName());
                 ((Label) pane.lookup("#typeLabel")).setText(plant.getType());
                 ((Label) pane.lookup("#sizeLabel")).setText(plant.getSize());
+                ((Button) pane.lookup("#sendButton")).setOnAction((ActionEvent event) -> {
+                            try {
+                                FXMLLoader fxmlLoader1 = new FXMLLoader(SimpleGardeningApplication.class.getResource("findRequest.fxml"));
+                                Parent node = fxmlLoader1.load();
+                                ((Node) event.getSource()).getScene().setRoot(node);
+                                FindRequestGraphicController findRequestGraphicController = fxmlLoader1.getController();
+                                findRequestGraphicController.initialize(idSession, plant.getName());
+                            } catch (IOException e) {
+                                ExceptionHandler.handleException("Could not go to next scene", e.getMessage());
+                            }
+                });
                 if (plant.getImage() != null)
                     ((ImageView) pane.lookup("#imageView")).setImage(new Image(plant.getImage()));
                 plantsPane.getChildren().add(pane);
@@ -47,7 +63,7 @@ public class HomeGraphicController {
         FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("new_plant.fxml"));
         AnchorPane pane = fxmlLoader.load();
         AddPlantGraphicController addPlantGraphicController = fxmlLoader.getController();
-        addPlantGraphicController.setIdSession(idSession);
+        addPlantGraphicController.initialize(this,idSession);
         plantsPane.getChildren().add(pane);}
         catch (ControllerException e) {
             ExceptionHandler.handleException(ExceptionHandler.CONTROLLER_HEADER_TEXT,e.getMessage());
@@ -57,6 +73,11 @@ public class HomeGraphicController {
     }
     @FXML
     public void logout(ActionEvent event) throws IOException {
+        try {
+            new LoginController().closeSession(idSession);
+        } catch (ControllerException e) {
+            ExceptionHandler.handleException(ExceptionHandler.CONTROLLER_HEADER_TEXT,e.getMessage());
+        }
         FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("login.fxml"));
         ((Node) event.getSource()).getScene().setRoot(fxmlLoader.load());
     }
@@ -66,6 +87,6 @@ public class HomeGraphicController {
         FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("weather.fxml"));
         ((Node) event.getSource()).getScene().setRoot(fxmlLoader.load());
         WeatherGraphicController weatherGraphicController = fxmlLoader.getController();
-        weatherGraphicController.setIdSession(idSession);
+        weatherGraphicController.initialize(idSession);
     }
 }

@@ -1,12 +1,12 @@
 package com.simplegardening.bean.out;
 
-public class ConvertAddressOutAPIBean {
+public class AddressOutAPIBean {
     private String nation;
     private String city;
     private String street;
     private String pC;
 
-    public ConvertAddressOutAPIBean(String nation, String city, String street, String pC){
+    public AddressOutAPIBean(String nation, String city, String street, String pC){
         setNation(nation);
         setCity(city);
         setStreet(street);

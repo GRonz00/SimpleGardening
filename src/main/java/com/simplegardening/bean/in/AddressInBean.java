@@ -2,13 +2,15 @@ package com.simplegardening.bean.in;
 
 import com.simplegardening.exception.BeanException;
 
-public class ConvertAddressInBean {
+import java.util.regex.Pattern;
+
+public class AddressInBean {
     private String nation;
     private String city;
     private String street;
     private String pC;
 
-    public ConvertAddressInBean(String nation, String city,String street, String pC) throws BeanException {
+    public AddressInBean(String nation, String city, String street, String pC) throws BeanException {
         setNation(nation);
         setCity(city);
         setStreet(street);
@@ -22,6 +24,7 @@ public class ConvertAddressInBean {
 
     public void setNation(String nation) throws BeanException {
         if (nation.length() < 4) throw new BeanException("nation", BeanException.TOO_SHORT_REASON);
+        if(Pattern.matches("[a-zA-Z0-9]",nation))throw new BeanException("nation",BeanException.ONLY_REG);
         this.nation = nation;
     }
 
@@ -31,6 +34,7 @@ public class ConvertAddressInBean {
 
     public void setCity(String city) throws BeanException {
         if (city.length() < 4) throw new BeanException("city", BeanException.TOO_SHORT_REASON);
+        if(Pattern.matches("[a-zA-Z0-9]",city))throw new BeanException("city",BeanException.ONLY_REG);
         this.city = city;
     }
 
@@ -40,6 +44,7 @@ public class ConvertAddressInBean {
 
     public void setStreet(String street) throws BeanException {
         if (street.length() < 4) throw new BeanException("username", BeanException.TOO_SHORT_REASON);
+        if(Pattern.matches("[a-zA-Z0-9 ]",street))throw new BeanException("street",BeanException.ONLY_REG);
         this.street = street;
     }
 

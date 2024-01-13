@@ -1,5 +1,6 @@
 package com.simplegardening.bean.out;
 
+import com.simplegardening.model.Plant;
 import com.simplegardening.utils.PlantSize;
 import com.simplegardening.utils.PlantType;
 
@@ -17,6 +18,12 @@ public class PlantOutBean {
         setType(type.toString());
         setSize(size.toString());
         setImage(image);
+    }
+    public PlantOutBean(Plant plant){
+        setImage(plant.getImage());
+        setType(plant.getType().toString());
+        setSize(plant.getSize().toString());
+        setName(plant.getName());
     }
 
     public String getName() {

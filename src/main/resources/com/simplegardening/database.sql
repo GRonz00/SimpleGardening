@@ -41,7 +41,8 @@ CREATE TABLE IF NOT EXISTS `simplegardening`.`Plant` (
     `size` ENUM('small', 'medium', 'large') NOT NULL,
     `Image` MEDIUMBLOB NULL,
     `client` VARCHAR(45) NOT NULL,
-    PRIMARY KEY (`client`, `name`),
+    `state` VARCHAR(45) NULL,
+    PRIMARY KEY (`name`, `client`),
     INDEX `fk_Plant_User1_idx` (`client` ASC) VISIBLE,
     CONSTRAINT `fk_Plant_User1`
     FOREIGN KEY (`client`)
@@ -72,35 +73,6 @@ CREATE TABLE IF NOT EXISTS `simplegardening`.`Reminder` (
 
 
 -- -----------------------------------------------------
--- Table `simplegardening`.`Request`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `simplegardening`.`Request` ;
-
-CREATE TABLE IF NOT EXISTS `simplegardening`.`Request` (
-                                                           `idRequest` INT NOT NULL,
-                                                           `plant_Id` INT NOT NULL,
-                                                           `price` FLOAT NOT NULL,
-                                                           `start` DATE NOT NULL,
-                                                           `end` DATE NOT NULL,
-                                                           `pro` VARCHAR(45) NOT NULL,
-    `client` VARCHAR(45) NOT NULL,
-    PRIMARY KEY (`idRequest`),
-    INDEX `fk_Request_User1_idx` (`pro` ASC) VISIBLE,
-    INDEX `fk_Request_User2_idx` (`client` ASC) VISIBLE,
-    CONSTRAINT `fk_Request_User1`
-    FOREIGN KEY (`pro`)
-    REFERENCES `simplegardening`.`User` (`username`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-    CONSTRAINT `fk_Request_User2`
-    FOREIGN KEY (`client`)
-    REFERENCES `simplegardening`.`User` (`username`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-    ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `simplegardening`.`RequestForm`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `simplegardening`.`RequestForm` ;
@@ -110,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `simplegardening`.`RequestForm` (
                                                                `start` DATE NOT NULL,
                                                                `end` DATE NOT NULL,
                                                                `basePrice` FLOAT NOT NULL,
-                                                               `extraPrice` INT NOT NULL,
+                                                               `extraPrice` INT NULL,
                                                                `pickUpAvi` TINYINT NOT NULL,
                                                                `pickUpBasePrice` FLOAT NULL,
                                                                `pickUpKMPrice` FLOAT NULL,
@@ -118,11 +90,51 @@ CREATE TABLE IF NOT EXISTS `simplegardening`.`RequestForm` (
                                                                `pro` VARCHAR(45) NOT NULL,
     `availability` INT NOT NULL,
     `kmMax` INT NULL,
+    `typePlant` VARCHAR(45) NOT NULL,
+    `sizePlant` VARCHAR(45) NOT NULL,
     PRIMARY KEY (`idrequestForm`),
     INDEX `fk_requestForm_User1_idx` (`pro` ASC) VISIBLE,
     CONSTRAINT `fk_requestForm_User1`
     FOREIGN KEY (`pro`)
     REFERENCES `simplegardening`.`User` (`username`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+    ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `simplegardening`.`Request`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `simplegardening`.`Request` ;
+
+CREATE TABLE IF NOT EXISTS `simplegardening`.`Request` (
+                                                           `idRequest` INT NOT NULL AUTO_INCREMENT,
+                                                           `price` FLOAT NOT NULL,
+                                                           `start` DATE NOT NULL,
+                                                           `end` DATE NOT NULL,
+                                                           `pro` VARCHAR(45) NOT NULL,
+    `Plant_client` VARCHAR(45) NOT NULL,
+    `Plant_name` VARCHAR(45) NOT NULL,
+    `state` ENUM('sent', 'accepted', 'rejected') NULL,
+    `pickup` TINYINT NULL,
+    `RequestForm_idrequestForm` INT NOT NULL,
+    PRIMARY KEY (`idRequest`, `RequestForm_idrequestForm`),
+    INDEX `fk_Request_User1_idx` (`pro` ASC) VISIBLE,
+    INDEX `fk_Request_Plant1_idx` (`Plant_client` ASC, `Plant_name` ASC) VISIBLE,
+    INDEX `fk_Request_RequestForm1_idx` (`RequestForm_idrequestForm` ASC) VISIBLE,
+    CONSTRAINT `fk_Request_User1`
+    FOREIGN KEY (`pro`)
+    REFERENCES `simplegardening`.`User` (`username`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+    CONSTRAINT `fk_Request_Plant1`
+    FOREIGN KEY (`Plant_client` , `Plant_name`)
+    REFERENCES `simplegardening`.`Plant` (`client` , `name`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+    CONSTRAINT `fk_Request_RequestForm1`
+    FOREIGN KEY (`RequestForm_idrequestForm`)
+    REFERENCES `simplegardening`.`RequestForm` (`idrequestForm`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
     ENGINE = InnoDB;
