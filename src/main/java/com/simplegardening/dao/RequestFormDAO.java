@@ -93,7 +93,7 @@ public class RequestFormDAO {
     }
 
     public void decreaseAviability(int idRequestForm,Session session) throws SQLException {
-        PreparedStatement statement;
+        PreparedStatement statement= null;
         Connection connection = session.getConnection();
         try  {
             String sql = String.format("UPDATE RequestForm set availability = availability-1 WHERE idrequestForm = '%d' ",idRequestForm);
@@ -101,6 +101,9 @@ public class RequestFormDAO {
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new SQLException(e.getMessage());
+        }finally {
+            assert statement != null;
+            statement.close();
         }
     }
 }

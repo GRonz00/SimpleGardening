@@ -68,7 +68,7 @@ public class RequestDAO {
 
     }
     public void saveRequest(Request request,Session session) throws SQLException {
-        PreparedStatement statement;
+        PreparedStatement statement= null;
         Connection connection = session.getConnection();
         try  {
                 String sql = String.format("INSERT INTO `Request` (`price`, `start`, `end`, `pro`, `Plant_client`, `Plant_name`,`state`,`pickup`,`RequestForm_idrequestForm`) VALUES (?, ?, ?, '%s', '%s', '%s','sent',?,%d)", request.getPro().getUsername(),request.getClient().getUsername(),request.getPlant().getName(),request.getRequestForm().getIdRequestForm());
@@ -83,11 +83,14 @@ public class RequestDAO {
                 statement.close();
             }catch (SQLException e){
             throw new SQLException(e.getMessage());
+        }finally {
+            assert statement != null;
+            statement.close();
         }
         }
 
     public void acceptRequest(Request request, Session session) throws SQLException {
-        PreparedStatement statement;
+        PreparedStatement statement = null;
         Connection connection = session.getConnection();
         try  {
             String sql = String.format("UPDATE Request set state = 'accepted' WHERE Plant_client = '%s' and Plant_name='%s' and pro='%s' and start = ? and end = ?", request.getClient().getUsername(),request.getPlant().getName(),request.getPro().getUsername());
@@ -97,11 +100,14 @@ public class RequestDAO {
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new SQLException(e.getMessage());
+        }finally {
+            assert statement != null;
+            statement.close();
         }
     }
 
     public void refuseRequest(Request request, Session session) throws SQLException {
-        PreparedStatement statement;
+        PreparedStatement statement = null;
         Connection connection = session.getConnection();
         try  {
             String sql = String.format("UPDATE Request set state = 'rejected' WHERE Plant_client = '%s' and Plant_name='%s' and pro='%s' and start = ? and end = ?", request.getClient().getUsername(),request.getPlant().getName(),request.getPro().getUsername());
@@ -111,6 +117,9 @@ public class RequestDAO {
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new SQLException(e.getMessage());
+        }finally {
+            assert statement != null;
+            statement.close();
         }
     }
 
@@ -132,7 +141,7 @@ public class RequestDAO {
     }
 
     public void updateStateRequestPlantDay(Request request, Session session) throws SQLException {
-        PreparedStatement statement;
+        PreparedStatement statement= null;
         Connection connection = session.getConnection();
         try  {
             String sql = String.format("UPDATE Request set state = 'rejected' WHERE Plant_client = '%s' and Plant_name='%s' and pro='%s' and start > ? and end < ?", request.getClient().getUsername(),request.getPlant().getName(),request.getPro().getUsername());
@@ -142,6 +151,9 @@ public class RequestDAO {
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new SQLException(e.getMessage());
+        }finally {
+            assert statement != null;
+            statement.close();
         }
     }
 }
