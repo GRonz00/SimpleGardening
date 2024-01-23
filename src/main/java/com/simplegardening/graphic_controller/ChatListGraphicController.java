@@ -29,10 +29,19 @@ public class ChatListGraphicController {
     }
     public void initialize(int idSession){
         setIdSession(idSession);
-        SendMessageController sendMessageController = new SendMessageController();
+        FlowPane c = chatPane;
+        setP(c,"messages.fxml",idSession);
+
+
+    }
+
+
+    @FXML
+    public void setP(FlowPane c,String goPage, int id){
         try {
-            chatPane.getChildren().clear();
-            ChatBeanOut chatBean = sendMessageController.getChat(new SessionBeanIn(idSession));
+            SendMessageController sendMessageController = new SendMessageController();
+            c.getChildren().clear();
+            ChatBeanOut chatBean = sendMessageController.getChat(new SessionBeanIn(id));
             List<String> chatList = chatBean.getUsername();
             for (String user : chatList){
                 FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("chatList_pane.fxml"));
@@ -40,17 +49,22 @@ public class ChatListGraphicController {
                 ((Label) pane.lookup("#userLabel")).setText(user);
                 ((Button) pane.lookup("#goButton")).setOnAction((ActionEvent event) -> {
                     try {
-                        FXMLLoader fxmlLoader1 = new FXMLLoader(SimpleGardeningApplication.class.getResource("messages.fxml"));
+                        FXMLLoader fxmlLoader1 = new FXMLLoader(SimpleGardeningApplication.class.getResource(goPage));
                         Parent node = fxmlLoader1.load();
                         ((Node) event.getSource()).getScene().setRoot(node);
-                        MessagesGraphicController messagesGraphicController = fxmlLoader1.getController();
-                        messagesGraphicController.initialize(idSession,user);
+                        if(goPage.equals("messagesPro.fxml")){
+                            MessagesProGraphicController graphicController = fxmlLoader1.getController();
+                            graphicController.initialize(id,user);
+                        }
+                        else {MessagesGraphicController graphicController = fxmlLoader1.getController();
+                        graphicController.initialize(id,user);}
+
 
                     } catch (IOException e) {
                         ExceptionHandler.handleException("Could not go to next scene", e.getMessage());
                     }
                 });
-                chatPane.getChildren().add(pane);
+                c.getChildren().add(pane);
 
             }
 
@@ -59,7 +73,6 @@ public class ChatListGraphicController {
         } catch (IOException e) {
             ExceptionHandler.handleException("Could not go to next scene", e.getMessage());
         }
-
     }
 
     public void goBack(ActionEvent actionEvent) throws IOException {
