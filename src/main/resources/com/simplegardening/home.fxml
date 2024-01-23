@@ -42,7 +42,7 @@
    </center>
    <bottom>
       <AnchorPane prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <Button alignment="CENTER" mnemonicParsing="false" prefHeight="48.0" prefWidth="160.0" style="-fx-background-color: #6EC6FF; -fx-background-radius: 16;" text="Messages" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="56.0">
+         <Button alignment="CENTER" mnemonicParsing="false" onAction="#goChat" prefHeight="48.0" prefWidth="160.0" style="-fx-background-color: #6EC6FF; -fx-background-radius: 16;" text="Messages" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="56.0">
             <font>
                <Font size="24.0" />
             </font>

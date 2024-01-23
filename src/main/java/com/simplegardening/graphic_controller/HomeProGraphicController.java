@@ -78,4 +78,10 @@ public class HomeProGraphicController {
         ((Node) event.getSource()).getScene().setRoot(fxmlLoader.load());
     }
 
+    public void goChatList(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("chatPro.fxml"));
+        ((Node) event.getSource()).getScene().setRoot(fxmlLoader.load());
+        ChatProGraphicController graphicController = fxmlLoader.getController();
+        graphicController.initialize(idSession);
+    }
 }

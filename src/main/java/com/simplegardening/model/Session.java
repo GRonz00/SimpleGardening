@@ -1,6 +1,6 @@
 package com.simplegardening.model;
 
-import com.simplegardening.dao.Database;
+import com.simplegardening.utils.TypesOfPersistenceLayer;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,12 +10,14 @@ public class Session {
     private User user;
     private int id;
     private Connection connection;
+    private TypesOfPersistenceLayer type;
 
     public Session(){}
-    public Session(int id, User user) throws SQLException {
+    public Session(int id, User user, TypesOfPersistenceLayer type) throws SQLException {
         setId(id);
         setUser(user);
         setConnection();
+        setType(type);
 
     }
     public void closeConnection() throws SQLException {
@@ -43,6 +45,14 @@ public class Session {
     }
 
     public void setConnection() throws SQLException {
-        this.connection = DriverManager.getConnection(Database.DB_URL, Database.USER, System.getenv("DATABASE_P"));
+        this.connection = DriverManager.getConnection(System.getenv("DB_URL"), System.getenv("USER"),System.getenv("DATABASE_P") );
+    }
+
+    public TypesOfPersistenceLayer getType() {
+        return type;
+    }
+
+    public void setType(TypesOfPersistenceLayer type) {
+        this.type = type;
     }
 }

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import org.kordamp.ikonli.javafx.*?>
+
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.simplegardening.graphic_controller.MessagesProGraphicController">
+   <center>
+      <ScrollPane fitToWidth="true" prefHeight="500.0" prefWidth="688.0" style="-fx-background: #ffffff;">
+         <opaqueInsets>
+            <Insets right="16.0"/>
+         </opaqueInsets>
+         <FlowPane fx:id="messagePane"/>
+      </ScrollPane>
+   </center>
+   <top>
+      <BorderPane minHeight="80.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #14C3118C; -fx-background-radius: 0 0 16 16;" BorderPane.alignment="CENTER">
+         <left>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#goBack" style="-fx-background-color: transparent" BorderPane.alignment="CENTER">
+               <graphic>
+                  <FontIcon iconLiteral="mdal-arrow_back" iconSize="32" />
+               </graphic>
+               <BorderPane.margin>
+                  <Insets left="48.0" />
+               </BorderPane.margin>
+            </Button>
+         </left>
+         <right>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: transparent" BorderPane.alignment="CENTER">
+               <graphic>
+                  <FontIcon iconLiteral="mdal-log_out" iconSize="32" />
+               </graphic>
+               <BorderPane.margin>
+                  <Insets right="48.0" />
+               </BorderPane.margin>
+            </Button>
+         </right>
+         <center>
+            <Label text="Messages" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+         </center>
+      </BorderPane>
+   </top>
+   <bottom>
+      <AnchorPane prefHeight="100.0" prefWidth="200.0">
+         <Button alignment="CENTER" mnemonicParsing="false" onAction="#sendMessage" prefHeight="48.0" prefWidth="160.0"
+                 style="-fx-background-color: #6EC6FF; -fx-background-radius: 16;" text="Send"
+                 AnchorPane.bottomAnchor="28.0" AnchorPane.rightAnchor="56.0">
+            <font>
+               <Font size="24.0"/>
+            </font>
+            <effect>
+               <DropShadow/>
+            </effect>
+         </Button>
+         <TextArea fx:id="textField" accessibleRole="TEXT_FIELD" layoutX="41.0" layoutY="31.0" prefHeight="48.0"
+                   prefWidth="505.0" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="56.0">
+            <effect>
+               <DropShadow/>
+            </effect>
+         </TextArea>
+      </AnchorPane>
+   </bottom>
+</BorderPane>

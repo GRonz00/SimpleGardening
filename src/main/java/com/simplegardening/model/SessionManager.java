@@ -1,6 +1,7 @@
 package com.simplegardening.model;
 
 import com.simplegardening.exception.SessionException;
+import com.simplegardening.utils.TypesOfPersistenceLayer;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class SessionManager {
         return instance;
     }
 
-    public Session createNewSession(User user) throws SQLException {
+    public Session createNewSession(User user, TypesOfPersistenceLayer type) throws SQLException {
         int id = 0;
         boolean b = false;
         for (int i=0;i<sessionList.size();i++){
@@ -31,7 +32,7 @@ public class SessionManager {
             }
             if(!b)break;
          }
-        Session newSession = new Session(id, user);
+        Session newSession = new Session(id, user,type);
         sessionList.add(newSession);
         return newSession;
     }

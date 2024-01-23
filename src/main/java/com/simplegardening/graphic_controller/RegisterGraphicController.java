@@ -9,6 +9,7 @@ import com.simplegardening.controller.RegisterController;
 import com.simplegardening.exception.BeanException;
 import com.simplegardening.exception.ControllerException;
 import com.simplegardening.utils.ExceptionHandler;
+import com.simplegardening.utils.TypesOfPersistenceLayer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -50,7 +51,7 @@ public class RegisterGraphicController {
         RegisterController registerController = new RegisterController();
         registerController.register(registerInBean);
         LoginGraphicController loginGraphicController = new LoginGraphicController();
-        loginGraphicController.log(usernameTextField.getText(),passwordTextField.getText(),actionEvent);
+        loginGraphicController.log(usernameTextField.getText(),passwordTextField.getText(), TypesOfPersistenceLayer.JDBC.toString(),actionEvent);
         } catch (ControllerException e) {
             ExceptionHandler.handleException(ExceptionHandler.CONTROLLER_HEADER_TEXT, e.getMessage());
         } catch (BeanException e) {

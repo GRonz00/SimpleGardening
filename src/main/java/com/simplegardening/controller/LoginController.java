@@ -23,12 +23,12 @@ public class LoginController {
                 throw new ControllerException("Invalid input: password");
             }
             if (user instanceof Client) {
-                Session session = SessionManager.getInstance().createNewSession(user);
+                Session session = SessionManager.getInstance().createNewSession(user,bean.getType());
                 loginBeanOut.setIdSession(session);
                 loginBeanOut.setTypeUser(session);
             }
             if (user instanceof Pro) {
-                Session session = SessionManager.getInstance().createNewSession(user);
+                Session session = SessionManager.getInstance().createNewSession(user,bean.getType());
                 loginBeanOut.setIdSession(session);
                 loginBeanOut.setTypeUser(session);
             }

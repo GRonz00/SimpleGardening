@@ -89,4 +89,14 @@ public class HomeGraphicController {
         WeatherGraphicController weatherGraphicController = fxmlLoader.getController();
         weatherGraphicController.initialize(idSession);
     }
+
+    @FXML
+    public void goChat(ActionEvent event) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("chatList.fxml"));
+        ((Node) event.getSource()).getScene().setRoot(fxmlLoader.load());
+        ChatListGraphicController graphicController = fxmlLoader.getController();
+        graphicController.initialize(idSession);
+
+
+    }
 }
