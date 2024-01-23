@@ -42,9 +42,10 @@ public class RequestOverTimeGraphicController {
         try {
             RequestOutBean requests = manageRequestController.getRequests(idSession);
             for (int i = 0; i < requests.getPro().size(); i++) {
-                if (!Objects.equals(requests.getState().get(i), "ACCEPTED")) continue;
-                if (time == 0 && !requests.getEnd().get(i).isBefore(LocalDate.now())) continue;
-                if (time == 1 && !requests.getStart().get(i).isAfter(LocalDate.now())) continue;
+                if ((!Objects.equals(requests.getState().get(i), "ACCEPTED"))||
+                        (time == 0 && !requests.getEnd().get(i).isBefore(LocalDate.now()))||
+                        (time == 1 && !requests.getStart().get(i).isAfter(LocalDate.now())))
+                    continue;
                 showRequest(requests, i);
             }
         } catch (ControllerException e) {

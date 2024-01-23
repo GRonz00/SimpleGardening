@@ -1,8 +1,8 @@
 package com.simplegardening;
 
-import com.simplegardening.dao.chatDAO.ChatDAO;
-import com.simplegardening.dao.chatDAO.ChatDAOCSV;
-import com.simplegardening.dao.chatDAO.ChatDAOJDBC;
+import com.simplegardening.dao.chat_dao.ChatDAO;
+import com.simplegardening.dao.chat_dao.ChatDAOCSV;
+import com.simplegardening.dao.chat_dao.ChatDAOJDBC;
 import com.simplegardening.utils.TypesOfPersistenceLayer;
 
 public class FactoryChatDAO {

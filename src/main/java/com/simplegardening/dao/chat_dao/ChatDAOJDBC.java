@@ -1,4 +1,4 @@
-package com.simplegardening.dao.chatDAO;
+package com.simplegardening.dao.chat_dao;
 
 import com.simplegardening.model.Session;
 import com.simplegardening.model.User;

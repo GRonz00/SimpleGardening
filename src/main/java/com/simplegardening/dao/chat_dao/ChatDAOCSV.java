@@ -1,4 +1,4 @@
-package com.simplegardening.dao.chatDAO;
+package com.simplegardening.dao.chat_dao;
 
 
 import com.simplegardening.model.Session;
@@ -12,7 +12,7 @@ public class ChatDAOCSV implements ChatDAO{
 
 
     @Override
-    public void saveMessage(String message, Session session, User receiver) {
+    public void saveMessage(String message, Session session, User receiver) throws IOException {
 
         try {
             File file = new File(System.getenv("PATH_FILE"));
@@ -23,15 +23,15 @@ public class ChatDAOCSV implements ChatDAO{
             pw.close ();
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new IOException(e);
         }
 
     }
 
     @Override
-    public List<String> getMessages(Session session, User receiver) throws Exception {
+    public List<String> getMessages(Session session, User receiver) throws IOException {
         List<String> messages = new ArrayList<>();
-        BufferedReader in;
+        BufferedReader in = null;
         try {
             File file = new File(System.getenv("PATH_FILE"));
             in = new BufferedReader( new FileReader(file));
@@ -45,7 +45,11 @@ public class ChatDAOCSV implements ChatDAO{
         }
         in.close();
         } catch (IOException e) {
-            throw new Exception("File not found");
+            throw new IOException("File not found");
+        }
+        finally {
+            assert in != null;
+            in.close();
         }
         return messages;
     }

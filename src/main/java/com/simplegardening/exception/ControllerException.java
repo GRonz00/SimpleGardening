@@ -6,6 +6,7 @@ public class ControllerException extends Exception {
     //    Necessario perché Exception estende Throwable che implementa Serializable
     @Serial
     private static final long serialVersionUID = 1L;
+    public static final String Database_reason = "Database";
 
     public ControllerException(String reason) {
         super(reason);
