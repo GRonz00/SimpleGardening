@@ -38,7 +38,7 @@ public class SendMessageController {
         } catch (SQLException | IOException e) {
             throw new ControllerException(e.getMessage());
         } catch (DatabaseException e) {
-            throw new ControllerException(ControllerException.Database_reason, e);
+            throw new ControllerException(ControllerException.DATABASE, e);
         }
 
     }
@@ -52,7 +52,7 @@ public class SendMessageController {
         } catch (SessionException e) {
             throw new ControllerException(e);
         } catch (DatabaseException e) {
-            throw new ControllerException(ControllerException.Database_reason, e);
+            throw new ControllerException(ControllerException.DATABASE, e);
         } catch (Exception e) {
             throw new ControllerException(e.getMessage());
         }
@@ -74,7 +74,7 @@ public class SendMessageController {
         } catch (SQLException e) {
             throw new ControllerException(e.getMessage());
         } catch (DatabaseException e) {
-            throw new ControllerException(ControllerException.Database_reason, e);
+            throw new ControllerException(ControllerException.DATABASE, e);
         }
     }
 

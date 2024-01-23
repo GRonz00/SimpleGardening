@@ -9,7 +9,7 @@ public class FactoryChatDAO {
     public ChatDAO createChatDAO(TypesOfPersistenceLayer type) {
         return switch (type) {
             case JDBC -> new ChatDAOJDBC();
-            case FileSystem -> new ChatDAOCSV();
+            case FILE_SYSTEM -> new ChatDAOCSV();
         };
     }
 
