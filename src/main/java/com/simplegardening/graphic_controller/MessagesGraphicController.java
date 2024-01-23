@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 
 import java.io.IOException;
@@ -37,23 +38,28 @@ public class MessagesGraphicController {
         updateMessagesView();
     }
 
-    private void updateMessagesView(){
+    public void updateMessagesView(){
         try {
             SendMessageController sendMessageController = new SendMessageController();
             messagePane.getChildren().clear();
             MessagesOutBean messagesOutBean = sendMessageController.getMessages(new ChatInBean(idSession,receiver));
             List<String> messages = messagesOutBean.getMessages();
             for (String message : messages){
-                TextArea mes = new TextArea();
                 messagePane.setAlignment(Pos.CENTER);
-                mes.setPrefHeight(48);
-                mes.setPrefWidth(600);
-                mes.setText(message);
-                messagePane.getChildren().add(mes);
+                messagePane.getChildren().add(setMessage(message));
             }
         } catch (ControllerException e) {
             ExceptionHandler.handleException(ExceptionHandler.CONTROLLER_HEADER_TEXT,e.getMessage());
         }
+    }
+
+    public TextField setMessage (String message){
+        TextField mes = new TextField();
+        mes.setAlignment(Pos.CENTER_LEFT);
+        mes.setPrefHeight(48);
+        mes.setPrefWidth(600);
+        mes.setText(message);
+        return mes;
     }
 
 

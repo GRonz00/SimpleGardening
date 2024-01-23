@@ -4,7 +4,6 @@ import com.simplegardening.SimpleGardeningApplication;
 import com.simplegardening.bean.in.ChatInBean;
 import com.simplegardening.bean.in.MessageInBean;
 import com.simplegardening.bean.out.MessagesOutBean;
-import com.simplegardening.controller.LoginController;
 import com.simplegardening.controller.SendMessageController;
 import com.simplegardening.exception.ControllerException;
 import com.simplegardening.utils.ExceptionHandler;
@@ -24,7 +23,7 @@ public class MessagesProGraphicController {
     private int idSession;
     private String receiver;
     @FXML
-    private FlowPane messagePane;
+    private FlowPane flowPane;
     @FXML
     private TextArea textField;
 
@@ -41,17 +40,13 @@ public class MessagesProGraphicController {
     private void updateMessagesView(){
         try {
             SendMessageController sendMessageController = new SendMessageController();
-            messagePane.getChildren().clear();
+            flowPane.getChildren().clear();
+            flowPane.setAlignment(Pos.CENTER);
             MessagesOutBean messagesOutBean = sendMessageController.getMessages(new ChatInBean(idSession,receiver));
             List<String> messages = messagesOutBean.getMessages();
             for (String message : messages){
-                TextField  mes = new TextField();
-                messagePane.setAlignment(Pos.CENTER);
-                mes.setAlignment(Pos.CENTER_LEFT);
-                mes.setPrefHeight(48);
-                mes.setPrefWidth(600);
-                mes.setText(message);
-                messagePane.getChildren().add(mes);
+                TextField mes = new MessagesGraphicController().setMessage(message);
+                flowPane.getChildren().add(mes);
             }
         } catch (ControllerException e) {
             ExceptionHandler.handleException(ExceptionHandler.CONTROLLER_HEADER_TEXT,e.getMessage());
@@ -61,13 +56,7 @@ public class MessagesProGraphicController {
 
 
     public void logout(ActionEvent event) throws IOException {
-        try {
-            new LoginController().closeSession(idSession);
-        } catch (ControllerException e) {
-            ExceptionHandler.handleException(ExceptionHandler.CONTROLLER_HEADER_TEXT,e.getMessage());
-        }
-        FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("login.fxml"));
-        ((Node) event.getSource()).getScene().setRoot(fxmlLoader.load());
+        new MessagesGraphicController().logout(event);
     }
 
     public void goBack(ActionEvent event) throws IOException {
@@ -79,9 +68,9 @@ public class MessagesProGraphicController {
 
     public void sendMessage() {
         try{
-            MessageInBean message = new MessageInBean(idSession,textField.getText(),receiver);
-            SendMessageController sendMessageController = new SendMessageController();
-            sendMessageController.sendMessage(message);
+            String t = textField.getText();
+            MessageInBean message = new MessageInBean(idSession,t,receiver);
+            new SendMessageController().sendMessage(message);
             textField.clear();
             updateMessagesView();
         } catch (ControllerException e) {
