@@ -3,7 +3,6 @@ package com.simplegardening.graphic_controller;
 import com.simplegardening.SimpleGardeningApplication;
 import com.simplegardening.bean.in.SessionBeanIn;
 import com.simplegardening.bean.out.ChatBeanOut;
-import com.simplegardening.controller.LoginController;
 import com.simplegardening.controller.SendMessageController;
 import com.simplegardening.exception.ControllerException;
 import com.simplegardening.utils.ExceptionHandler;
@@ -68,12 +67,6 @@ public class ChatProGraphicController {
     }
 
     public void logout(ActionEvent event) throws IOException {
-        try {
-            new LoginController().closeSession(idSession);
-        } catch (ControllerException e) {
-            ExceptionHandler.handleException(ExceptionHandler.CONTROLLER_HEADER_TEXT,e.getMessage());
-        }
-        FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("login.fxml"));
-        ((Node) event.getSource()).getScene().setRoot(fxmlLoader.load());
+        new ChatListGraphicController().logout(event);
     }
 }
