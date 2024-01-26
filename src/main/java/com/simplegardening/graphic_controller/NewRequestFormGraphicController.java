@@ -89,9 +89,9 @@ public class NewRequestFormGraphicController {
     }
 
     public void goBack(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("newRequestForm.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("requestPro.fxml"));
         ((Node) actionEvent.getSource()).getScene().setRoot(fxmlLoader.load());
-        NewRequestFormGraphicController graphicController = fxmlLoader.getController();
+        RequestProGraphicController graphicController = fxmlLoader.getController();
         graphicController.initialize(idSession);
     }
 }

@@ -17,8 +17,6 @@ USE `simplegardening` ;
 -- -----------------------------------------------------
 -- Table `simplegardening`.`User`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `simplegardening`.`User` ;
-
 CREATE TABLE IF NOT EXISTS `simplegardening`.`User` (
     `username` VARCHAR(45) NOT NULL,
     `password` VARCHAR(45) NOT NULL,
@@ -33,8 +31,6 @@ CREATE TABLE IF NOT EXISTS `simplegardening`.`User` (
 -- -----------------------------------------------------
 -- Table `simplegardening`.`Plant`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `simplegardening`.`Plant` ;
-
 CREATE TABLE IF NOT EXISTS `simplegardening`.`Plant` (
     `name` VARCHAR(45) NOT NULL,
     `type` ENUM('indoor', 'outdoor') NOT NULL,
@@ -55,14 +51,11 @@ CREATE TABLE IF NOT EXISTS `simplegardening`.`Plant` (
 -- -----------------------------------------------------
 -- Table `simplegardening`.`Reminder`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `simplegardening`.`Reminder` ;
-
 CREATE TABLE IF NOT EXISTS `simplegardening`.`Reminder` (
                                                             `type` ENUM('water', 'nebulize', 'fertilize') NOT NULL,
-    `when` DATETIME NOT NULL,
+    `when` VARCHAR(45) NOT NULL,
     `client` VARCHAR(45) NOT NULL,
     `plant` VARCHAR(45) NOT NULL,
-    PRIMARY KEY (`type`, `client`, `plant`),
     INDEX `fk_Reminder_Plant1_idx` (`client` ASC, `plant` ASC) VISIBLE,
     CONSTRAINT `fk_Reminder_Plant1`
     FOREIGN KEY (`client` , `plant`)
@@ -75,8 +68,6 @@ CREATE TABLE IF NOT EXISTS `simplegardening`.`Reminder` (
 -- -----------------------------------------------------
 -- Table `simplegardening`.`RequestForm`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `simplegardening`.`RequestForm` ;
-
 CREATE TABLE IF NOT EXISTS `simplegardening`.`RequestForm` (
                                                                `idrequestForm` INT NOT NULL AUTO_INCREMENT,
                                                                `start` DATE NOT NULL,
@@ -105,8 +96,6 @@ CREATE TABLE IF NOT EXISTS `simplegardening`.`RequestForm` (
 -- -----------------------------------------------------
 -- Table `simplegardening`.`Request`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `simplegardening`.`Request` ;
-
 CREATE TABLE IF NOT EXISTS `simplegardening`.`Request` (
                                                            `idRequest` INT NOT NULL AUTO_INCREMENT,
                                                            `price` FLOAT NOT NULL,
@@ -143,8 +132,6 @@ CREATE TABLE IF NOT EXISTS `simplegardening`.`Request` (
 -- -----------------------------------------------------
 -- Table `simplegardening`.`Chat`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `simplegardening`.`Chat` ;
-
 CREATE TABLE IF NOT EXISTS `simplegardening`.`Chat` (
                                                         `nMessage` INT NOT NULL AUTO_INCREMENT,
                                                         `User_username` VARCHAR(45) NOT NULL,

@@ -12,9 +12,9 @@
    <Label layoutX="96.0" layoutY="80.0" text="Type:" AnchorPane.leftAnchor="96.0" AnchorPane.topAnchor="80.0" />
    <Label layoutX="98.0" layoutY="100.0" text="Size:" AnchorPane.leftAnchor="96.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="100.0" />
    <Label layoutX="95.0" layoutY="142.0" prefHeight="17.0" prefWidth="35.0" text="Water:" AnchorPane.leftAnchor="96.0" AnchorPane.rightAnchor="189.0" AnchorPane.topAnchor="130.0" />
-   <Label layoutX="97.0" layoutY="187.0" text="Nebulizes:" AnchorPane.leftAnchor="96.0" AnchorPane.rightAnchor="169.33333333333334" AnchorPane.topAnchor="150.0" />
-   <Label layoutX="98.0" layoutY="204.0" text="Fertilize:" AnchorPane.leftAnchor="96.0" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="170.0" />
-   <Button fx:id="sendButton" layoutX="187.0" layoutY="254.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="113.0" style="-fx-background-color: #6EC6FF; -fx-background-radius: 16; -fx-font-size: 24px" text="Send" AnchorPane.bottomAnchor="16.0" AnchorPane.rightAnchor="16.0">
+   <Label layoutX="97.0" layoutY="187.0" text="Nebulizes:" AnchorPane.leftAnchor="96.0" AnchorPane.rightAnchor="169.33333333333334" AnchorPane.topAnchor="160.0" />
+   <Label layoutX="98.0" layoutY="204.0" text="Fertilize:" AnchorPane.leftAnchor="96.0" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="190.0" />
+   <Button fx:id="sendButton" layoutX="187.0" layoutY="254.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="113.0" style="-fx-background-color: #6EC6FF; -fx-background-radius: 16; -fx-font-size: 24px" text="Send" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="16.0">
       <effect>
          <DropShadow />
       </effect>
@@ -26,61 +26,44 @@
    </Label>
    <Label fx:id="typeLabel" layoutX="138.0" layoutY="80.0" text="Indoor" AnchorPane.leftAnchor="135.0" AnchorPane.topAnchor="80.0" />
    <Label fx:id="sizeLabel" layoutX="128.0" layoutY="109.0" text="small" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="100.0" />
-   <HBox layoutX="141.0" layoutY="130.0" spacing="10.0" visible="false" AnchorPane.leftAnchor="141.0" AnchorPane.topAnchor="130.0">
-      <Label text="TimeW" />
-      <Button mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: transparent">
+   <HBox fx:id="HWat" layoutX="141.0" layoutY="130.0" spacing="10.0" AnchorPane.leftAnchor="141.0" AnchorPane.topAnchor="130.0">
+      <Button fx:id="waterButton" layoutX="141.0" layoutY="130.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: transparent" AnchorPane.leftAnchor="141.0">
          <font>
             <Font size="9.0" />
          </font>
          <graphic>
-            <FontIcon iconLiteral="fltfal-dismiss-circle-24" iconSize="16" />
+            <FontIcon iconLiteral="fltfal-add-circle-24" iconSize="16" />
          </graphic>
       </Button>
+      <TextField fx:id="waterHour" prefHeight="25.0" prefWidth="30.0" />
+      <TextField fx:id="waterMin" prefHeight="25.0" prefWidth="30.0" />
    </HBox>
-   <HBox layoutX="161.0" layoutY="151.0" spacing="10.0" visible="false" AnchorPane.leftAnchor="161.0">
-      <Label text="TimeN" />
-      <Button mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: transparent">
+   <HBox fx:id="HNEb" layoutX="161.0" layoutY="151.0" spacing="10.0" AnchorPane.leftAnchor="161.0" AnchorPane.topAnchor="160.0">
+      <Button fx:id="nebButton" layoutX="161.0" layoutY="150.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: transparent" AnchorPane.leftAnchor="161.0">
          <font>
             <Font size="9.0" />
          </font>
          <graphic>
-            <FontIcon iconLiteral="fltfal-dismiss-circle-24" iconSize="16" />
+            <FontIcon iconLiteral="fltfal-add-circle-24" iconSize="16" />
          </graphic>
       </Button>
+      <TextField fx:id="nebHour" prefHeight="25.0" prefWidth="30.0" />
+      <TextField fx:id="nebMin" maxHeight="15.0" prefHeight="15.0" prefWidth="30.0" />
    </HBox>
-   <HBox layoutX="150.0" layoutY="170.0" spacing="10.0" visible="false" AnchorPane.leftAnchor="150.0">
-      <Label text="TimeF" />
-      <Button mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: transparent">
+   <HBox fx:id="HFer" layoutX="150.0" layoutY="170.0" spacing="10.0" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="190.0">
+      <Button fx:id="ferButton" layoutX="151.0" layoutY="170.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: transparent" AnchorPane.leftAnchor="150.0">
          <font>
             <Font size="9.0" />
          </font>
          <graphic>
-            <FontIcon iconLiteral="fltfal-dismiss-circle-24" iconSize="16" />
+            <FontIcon iconLiteral="fltfal-add-circle-24" iconSize="16" />
          </graphic>
       </Button>
+      <TextField fx:id="ferHour" prefHeight="25.0" prefWidth="30.0" />
+      <TextField fx:id="ferMin" prefHeight="25.0" prefWidth="30.0" />
    </HBox>
-   <Button layoutX="141.0" layoutY="130.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: transparent" AnchorPane.leftAnchor="141.0">
-      <font>
-         <Font size="9.0" />
-      </font>
-      <graphic>
-         <FontIcon iconLiteral="fltfal-add-circle-24" iconSize="16" />
-      </graphic>
-   </Button>
-   <Button layoutX="161.0" layoutY="150.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: transparent" AnchorPane.leftAnchor="161.0">
-      <font>
-         <Font size="9.0" />
-      </font>
-      <graphic>
-         <FontIcon iconLiteral="fltfal-add-circle-24" iconSize="16" />
-      </graphic>
-   </Button>
-   <Button layoutX="151.0" layoutY="170.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: transparent" AnchorPane.leftAnchor="150.0">
-      <font>
-         <Font size="9.0" />
-      </font>
-      <graphic>
-         <FontIcon iconLiteral="fltfal-add-circle-24" iconSize="16" />
-      </graphic>
-   </Button>
+   <Label fx:id="TimeN" text="TimeN" visible="false" AnchorPane.leftAnchor="161.0" AnchorPane.topAnchor="160.0" />
+   <Label fx:id="TimeW" text="TimeW" visible="false" AnchorPane.leftAnchor="141.0" AnchorPane.topAnchor="130.0" />
+   <Label fx:id="TimeF" text="TimeF" visible="false" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="190.0" />
+
 </AnchorPane>

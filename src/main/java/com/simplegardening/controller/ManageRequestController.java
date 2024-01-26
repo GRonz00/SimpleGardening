@@ -24,7 +24,7 @@ import java.util.Date;
 import java.util.List;
 
 public class ManageRequestController {
-    private Price price;
+    
 
     public void addRequestForm(RequestFormInBean beanIn) throws ControllerException {
         try {
@@ -165,25 +165,27 @@ public class ManageRequestController {
     }
 
     private float calculatePrice(RequestForm requestForm, boolean pickup, LocalDate start, LocalDate end, User pro, User client, Session session) throws SQLException {
-
+        Price price;
         BasePrice bp = new BasePrice(start, end, requestForm.getBasePrice());
+        price= bp;
         if (!(requestForm.isNewCustomer() && new RequestDAO().newClient(pro, client, session))) {
             ExtraHolidaysPrice ehpBp = new ExtraHolidaysPrice(bp);
             ehpBp.defineThePrize(start, end, requestForm.getBasePrice(), requestForm.getExtraHoliday());
-            this.price = ehpBp;
+            price = ehpBp;
             if (pickup) {
                 PickupPrice ppEhpBp = new PickupPrice(ehpBp);
                 double distance = calculateDistance(pro.getLatitude(), pro.getLongitude(), client.getLatitude(), client.getLongitude());
                 ppEhpBp.defineThePrize(requestForm.getPickupBasePrice(), requestForm.getKmPrice(), distance);
-                this.price = ppEhpBp;
+                price = ppEhpBp;
             }
         } else if (pickup) {
             double distance = calculateDistance(pro.getLatitude(), pro.getLongitude(), client.getLatitude(), client.getLongitude());
             PickupPrice ppBp = new PickupPrice(bp);
             ppBp.defineThePrize(requestForm.getPickupBasePrice(), requestForm.getKmPrice(), distance);
+            price = ppBp;
         }
 
-        return this.price.calculatePrice();
+        return price.calculatePrice();
     }
 
     private void checkAcceptablePlant(List<RequestForm> requestFormList, Plant plant) {

@@ -19,4 +19,5 @@ public class BeanException extends Exception {
         super("Invalid data: " + data + ". Reason: " + reason);
     }
 
+
 }

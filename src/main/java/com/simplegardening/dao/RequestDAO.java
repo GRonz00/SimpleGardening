@@ -16,12 +16,12 @@ public class RequestDAO {
         try ( Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)) {
             String query = String.format("SELECT * FROM Request WHERE Plant_client = '%s' and pro='%s' and state= 'accepted'", client.getUsername(),pro.getUsername());
             ResultSet rs = statement.executeQuery(query);
-            if(rs.next())return true;
+            if(rs.next())return false;
             rs.close();
         } catch (SQLException e) {
             throw new SQLException(e.getMessage());
         }
-        return false;
+        return true;
     }
 
     public List<Request> getRequestFromUser(User user,Session session) throws SQLException, DatabaseException {

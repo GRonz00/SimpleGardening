@@ -45,7 +45,7 @@
          <String fx:value="Small" />
       </value>
    </ComboBox>
-   <Button layoutX="187.0" layoutY="254.0" mnemonicParsing="false" onAction="#add" prefHeight="39.0" prefWidth="113.0" style="-fx-background-color: #6EC6FF; -fx-background-radius: 16; -fx-font-size: 24px" text="Add" AnchorPane.bottomAnchor="16.0" AnchorPane.rightAnchor="16.0">
+   <Button layoutX="187.0" layoutY="254.0" mnemonicParsing="false" onAction="#add" prefHeight="39.0" prefWidth="113.0" style="-fx-background-color: #6EC6FF; -fx-background-radius: 16; -fx-font-size: 24px" text="Add" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="16.0">
 
       <effect>
          <DropShadow />

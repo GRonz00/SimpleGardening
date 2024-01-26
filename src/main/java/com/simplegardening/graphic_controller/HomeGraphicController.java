@@ -1,10 +1,13 @@
 package com.simplegardening.graphic_controller;
 
 import com.simplegardening.SimpleGardeningApplication;
+import com.simplegardening.bean.in.RemainderInBean;
 import com.simplegardening.bean.out.ListPlantOutBean;
 import com.simplegardening.bean.out.PlantOutBean;
 import com.simplegardening.controller.AddPlantController;
 import com.simplegardening.controller.LoginController;
+import com.simplegardening.controller.ManegeReminderController;
+import com.simplegardening.exception.BeanException;
 import com.simplegardening.exception.ControllerException;
 import com.simplegardening.utils.ExceptionHandler;
 import javafx.event.ActionEvent;
@@ -14,6 +17,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -56,8 +60,52 @@ public class HomeGraphicController {
                                 ExceptionHandler.handleException("Could not go to next scene", e.getMessage());
                             }
                 });
+                ((Button) pane.lookup("#waterButton")).setOnAction((ActionEvent event) -> {
+                    try {
+                        RemainderInBean bean = new RemainderInBean(idSession,plant.getName(),1,((TextField) pane.lookup("#waterHour")).getText(),((TextField) pane.lookup("#waterMin")).getText());
+                        new ManegeReminderController().setReminder(bean);
+                        (pane.lookup("#HWat")).setVisible(false);
+                        ((Label)pane.lookup("#TimeW")).setText(bean.getTime());
+                        (pane.lookup("#TimeW")).setVisible(true);
+                        }
+                     catch (BeanException e) {
+                        ExceptionHandler.handleException(ExceptionHandler.BEAN_HEADER_TEXT,e.getMessage());
+                    }catch (ControllerException e) {
+                    ExceptionHandler.handleException(ExceptionHandler.CONTROLLER_HEADER_TEXT,e.getMessage());
+                }
+                });
+                ((Button) pane.lookup("#nebButton")).setOnAction((ActionEvent event) -> {
+                    try {
+                        RemainderInBean bean = new RemainderInBean(idSession,plant.getName(), 2,((TextField) pane.lookup("#nebHour")).getText(),((TextField) pane.lookup("#nebMin")).getText());
+                        new ManegeReminderController().setReminder(bean);
+                        (pane.lookup("#HNeb")).setVisible(false);
+                        ((Label)pane.lookup("#TimeN")).setText(bean.getTime());
+                        (pane.lookup("#TimeN")).setVisible(true);
+
+                    } catch (BeanException e) {
+                        ExceptionHandler.handleException(ExceptionHandler.BEAN_HEADER_TEXT,e.getMessage());
+                    }catch (ControllerException e){
+                        ExceptionHandler.handleException(ExceptionHandler.CONTROLLER_HEADER_TEXT,e.getMessage());
+                    }
+                });
+                ((Button) pane.lookup("#ferButton")).setOnAction((ActionEvent event) -> {
+                    try {
+                        RemainderInBean bean = new RemainderInBean(idSession,plant.getName(), 3,((TextField) pane.lookup("#ferHour")).getText(),((TextField) pane.lookup("#ferMin")).getText());
+                        new ManegeReminderController().setReminder(bean);
+                        (pane.lookup("#HFer")).setVisible(false);
+                        ((Label)pane.lookup("#TimeF")).setText(bean.getTime());
+                        (pane.lookup("#TimeF")).setVisible(true);
+                    } catch (BeanException e) {
+                        ExceptionHandler.handleException(ExceptionHandler.BEAN_HEADER_TEXT,e.getMessage());
+                    }catch (ControllerException e){
+                        ExceptionHandler.handleException(ExceptionHandler.CONTROLLER_HEADER_TEXT,e.getMessage());
+                    }
+                });
                 if (plant.getImage() != null)
+                {
                     ((ImageView) pane.lookup("#imageView")).setImage(new Image(plant.getImage()));
+                    (pane.lookup("#imageView")).setVisible(true);
+                }
                 plantsPane.getChildren().add(pane);
             }
         FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("new_plant.fxml"));
@@ -71,6 +119,7 @@ public class HomeGraphicController {
 
 
     }
+
     @FXML
     public void logout(ActionEvent event) throws IOException {
         try {
