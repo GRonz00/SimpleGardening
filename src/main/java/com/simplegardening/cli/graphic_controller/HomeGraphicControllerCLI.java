@@ -49,6 +49,7 @@ public class HomeGraphicControllerCLI {
                     SessionManager.getInstance().closeSession(idSession);
                     CLIApplication.main(new String[1]);
                 }
+                default -> System.out.println("action choice error");
             }
 
 

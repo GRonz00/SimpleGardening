@@ -56,6 +56,7 @@ public class HomeProGraphicControllerCLI {
                     SessionManager.getInstance().closeSession(idSession);
                     CLIApplication.main(new String[1]);
                 }
+                default -> System.out.println("action choice error");
             }
         } catch (ControllerException | IOException | BeanException | SQLException | SessionException e) {
             System.out.println("[ERR] " + e.getMessage());
