@@ -3,6 +3,7 @@ package com.simplegardening.controller;
 import com.simplegardening.bean.in.RequestFormInBean;
 import com.simplegardening.bean.in.FindRequestInBean;
 import com.simplegardening.bean.in.RequestInBean;
+import com.simplegardening.bean.in.SendRequestInBean;
 import com.simplegardening.bean.out.RequestOutBean;
 import com.simplegardening.dao.PlantDAO;
 import com.simplegardening.dao.RequestDAO;
@@ -90,16 +91,27 @@ public class ManageRequestController {
             throw new ControllerException(e);
         }
     }
-    public void sendRequest(RequestInBean bean) throws ControllerException {
+    public void sendRequest(SendRequestInBean bean) throws ControllerException {
         try {
-            Request request = createRequest(bean);
-            if(request.getRequestForm().getAmount()==0)throw new ControllerException("The pro has run out of availability");
+            Session session = SessionManager.getInstance().getSession(bean.getIdSession());
+            RequestForm requestForm = new RequestFormDAO().getRequestFormFromId(bean.getIdRequestForm(),session );
+            if(requestForm.getAmount()==0)throw new ControllerException("The pro has run out of availability");
+            Plant plant = new PlantDAO().getPlantFromName(bean.getPlant(), (Client)session.getUser(),session);
+            if((!requestForm.isPickupAvailable()&&bean.isPickup()))throw new ControllerException("Pickup not available");
+            User pro = new UserDAO().getUserByUsername(requestForm.getPro());
+            if(bean.isPickup()&&calculateDistance(session.getUser().getLatitude(),session.getUser().getLongitude(),pro.getLatitude(), pro.getLongitude())>requestForm.getMaxKm())throw new ControllerException("Pickup not available too distant");
+            if(!requestForm.getPlantSize().equals(plant.getSize()) || !requestForm.getPlantType().equals(plant.getType()))throw new ControllerException("Unacceptable plant");
+            if((requestForm.getStart()).after(Date.from(bean.getStart().atStartOfDay(ZoneId.systemDefault()).toInstant())) ||
+                    requestForm.getEnd().before(Date.from(bean.getEnd().atStartOfDay(ZoneId.systemDefault()).toInstant())))throw new ControllerException("Period not acceptable");
+            float price = calculatePrice(requestForm, bean.isPickup(), bean.getStart(),bean.getEnd(),pro, session.getUser(), session);
+            Request request = new Request(plant,price, bean.isPickup(),(Pro) pro,(Client)session.getUser(),bean.getStart(),bean.getEnd());
+            request.setRequestForm(requestForm);
             new RequestDAO().saveRequest(request, SessionManager.getInstance().getSession(bean.getIdSession()));
-            new PlantDAO().changeState(request.getPlant(), SessionManager.getInstance().getSession(bean.getIdSession()));
+            new PlantDAO().changeState(plant, SessionManager.getInstance().getSession(bean.getIdSession()));
 
         } catch (SessionException e) {
             throw new ControllerException(e.getMessage());
-        } catch (SQLException e) {
+        } catch (SQLException | DatabaseException e) {
             throw new ControllerException("SQL", e);
         }
 
@@ -146,14 +158,13 @@ public class ManageRequestController {
     private Request createRequest(RequestInBean bean) throws ControllerException {
         try {
             UserDAO userDAO = new UserDAO();
-            Pro pro = (Pro) userDAO.getUserByUsername(bean.getPro());
             Client client = (Client) userDAO.getUserByUsername(bean.getClient());
             PlantDAO plantDAO = new PlantDAO();
-            Plant plant = plantDAO.getPlantFromName(bean.getPlant(), client, SessionManager.getInstance().getSession(bean.getIdSession()));
-            RequestForm requestForm = new RequestFormDAO().getRequestFormFromId(bean.getIdRequestForm(), SessionManager.getInstance().getSession(bean.getIdSession()));
-            Request request = new Request( plant, bean.getPrice(), bean.isPickup(), pro, client, bean.getStart(), bean.getEnd());
-            request.setRequestForm(requestForm);
-            return request;
+            Session session = SessionManager.getInstance().getSession(bean.getIdSession());
+            Plant plant = plantDAO.getPlantFromName(bean.getPlant(), client, session);
+            RequestDAO requestDAO = new RequestDAO();
+            return requestDAO.getRequestFromPlant( plant, bean.getIdRequestForm(), client, bean.getStart(), bean.getEnd(),session);
+
 
         } catch (SessionException e) {
             throw new ControllerException(e.getMessage());

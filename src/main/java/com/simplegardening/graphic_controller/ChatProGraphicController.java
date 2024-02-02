@@ -26,7 +26,7 @@ public class ChatProGraphicController {
     public void goBack(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("home_pro.fxml"));
         ((Node) actionEvent.getSource()).getScene().setRoot(fxmlLoader.load());
-        HomeProGraphicController graphicController = fxmlLoader.getController();
+        ManageRequestProGraphicController graphicController = fxmlLoader.getController();
         graphicController.initialize(idSession);
 
     }

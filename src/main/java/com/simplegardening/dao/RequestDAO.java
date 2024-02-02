@@ -88,10 +88,29 @@ public class RequestDAO {
             }catch (SQLException e){
             throw new SQLException(e.getMessage());
         }finally {
-            assert statement != null;
-            statement.close();
+            if (statement!=null)statement.close();
         }
         }
+        public Request getRequestFromPlant(Plant plant,int idRequestForm, Client client, LocalDate start, LocalDate end, Session session) throws SQLException {
+            PreparedStatement statement = null;
+            Connection connection = session.getConnection();
+            try  {
+                String sql = String.format("Select * from Request  WHERE Plant_client = '%s' and Plant_name='%s' and RequestForm_idrequestForm='%d' and start = ? and end = ?", client.getUsername(),plant.getName(),idRequestForm);
+                statement= connection.prepareStatement(sql);
+                statement.setDate(1,Date.valueOf(start));
+                statement.setDate(2,Date.valueOf(end));
+                ResultSet rs = statement.executeQuery();
+                if(!rs.next())throw new DatabaseException("Request don't exist");
+                return getRequest(rs,session);
+            } catch (SQLException | DatabaseException e) {
+                throw new SQLException(e.getMessage());
+            } finally {
+                assert statement != null;
+                statement.close();
+            }
+
+        }
+
 
     public void acceptRequest(Request request, Session session) throws SQLException {
         PreparedStatement statement = null;

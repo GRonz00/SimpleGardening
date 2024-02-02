@@ -1,12 +1,12 @@
 package com.simplegardening.graphic_controller;
 
 import com.simplegardening.SimpleGardeningApplication;
-import com.simplegardening.bean.in.RemainderInBean;
+import com.simplegardening.bean.in.ReminderInBean;
 import com.simplegardening.bean.out.ListPlantOutBean;
 import com.simplegardening.bean.out.PlantOutBean;
 import com.simplegardening.controller.AddPlantController;
 import com.simplegardening.controller.LoginController;
-import com.simplegardening.controller.ManegeReminderController;
+import com.simplegardening.controller.ManageReminderController;
 import com.simplegardening.exception.BeanException;
 import com.simplegardening.exception.ControllerException;
 import com.simplegardening.utils.ExceptionHandler;
@@ -62,8 +62,8 @@ public class HomeGraphicController {
                 });
                 ((Button) pane.lookup("#waterButton")).setOnAction((ActionEvent event) -> {
                     try {
-                        RemainderInBean bean = new RemainderInBean(idSession,plant.getName(),1,((TextField) pane.lookup("#waterHour")).getText(),((TextField) pane.lookup("#waterMin")).getText());
-                        new ManegeReminderController().setReminder(bean);
+                        ReminderInBean bean = new ReminderInBean(idSession,plant.getName(),1,((TextField) pane.lookup("#waterHour")).getText(),((TextField) pane.lookup("#waterMin")).getText());
+                        new ManageReminderController().setReminder(bean);
                         (pane.lookup("#HWat")).setVisible(false);
                         ((Label)pane.lookup("#TimeW")).setText(bean.getTime());
                         (pane.lookup("#TimeW")).setVisible(true);
@@ -76,8 +76,8 @@ public class HomeGraphicController {
                 });
                 ((Button) pane.lookup("#nebButton")).setOnAction((ActionEvent event) -> {
                     try {
-                        RemainderInBean bean = new RemainderInBean(idSession,plant.getName(), 2,((TextField) pane.lookup("#nebHour")).getText(),((TextField) pane.lookup("#nebMin")).getText());
-                        new ManegeReminderController().setReminder(bean);
+                        ReminderInBean bean = new ReminderInBean(idSession,plant.getName(), 2,((TextField) pane.lookup("#nebHour")).getText(),((TextField) pane.lookup("#nebMin")).getText());
+                        new ManageReminderController().setReminder(bean);
                         (pane.lookup("#HNeb")).setVisible(false);
                         ((Label)pane.lookup("#TimeN")).setText(bean.getTime());
                         (pane.lookup("#TimeN")).setVisible(true);
@@ -90,8 +90,8 @@ public class HomeGraphicController {
                 });
                 ((Button) pane.lookup("#ferButton")).setOnAction((ActionEvent event) -> {
                     try {
-                        RemainderInBean bean = new RemainderInBean(idSession,plant.getName(), 3,((TextField) pane.lookup("#ferHour")).getText(),((TextField) pane.lookup("#ferMin")).getText());
-                        new ManegeReminderController().setReminder(bean);
+                        ReminderInBean bean = new ReminderInBean(idSession,plant.getName(), 3,((TextField) pane.lookup("#ferHour")).getText(),((TextField) pane.lookup("#ferMin")).getText());
+                        new ManageReminderController().setReminder(bean);
                         (pane.lookup("#HFer")).setVisible(false);
                         ((Label)pane.lookup("#TimeF")).setText(bean.getTime());
                         (pane.lookup("#TimeF")).setVisible(true);

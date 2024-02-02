@@ -1,8 +1,8 @@
 package com.simplegardening.controller;
 
+import com.simplegardening.bean.in.SessionBeanIn;
 import com.simplegardening.bean.in.WeatherAPIinBean;
 import com.simplegardening.bean.out.WeatherAPIOutBean;
-import com.simplegardening.bean.in.WeatherClientInBean;
 import com.simplegardening.bean.out.WeatherClientOutBean;
 import com.simplegardening.exception.APIException;
 import com.simplegardening.exception.ControllerException;
@@ -16,8 +16,8 @@ import java.util.List;
 
 public class WeatherForecastController {
 
-    public WeatherClientOutBean weeklyWeatherForecast(WeatherClientInBean weatherClientInBean) throws ControllerException {
-        int idSession = weatherClientInBean.getIdSession();
+    public WeatherClientOutBean weeklyWeatherForecast(SessionBeanIn sessionBeanIn) throws ControllerException {
+        int idSession = sessionBeanIn.getIdSession();
         WeatherAPIGraphicController weatherAPIGraphicController = new WeatherAPIGraphicController();
         try{
             WeatherAPIOutBean weatherAPIoutBean = new WeatherAPIOutBean();

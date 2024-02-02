@@ -65,7 +65,7 @@ public class NewRequestFormGraphicController {
             manageRequestController.addRequestForm(requestFormInBean);
             FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("home_pro.fxml"));
             ((Node) actionEvent.getSource()).getScene().setRoot(fxmlLoader.load());
-            HomeProGraphicController homeGraphicController = fxmlLoader.getController();
+            ManageRequestProGraphicController homeGraphicController = fxmlLoader.getController();
             homeGraphicController.initialize(idSession);
 
         } catch (BeanException e) {
@@ -91,7 +91,7 @@ public class NewRequestFormGraphicController {
     public void goBack(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("requestPro.fxml"));
         ((Node) actionEvent.getSource()).getScene().setRoot(fxmlLoader.load());
-        RequestProGraphicController graphicController = fxmlLoader.getController();
+        HomeProGraphicController graphicController = fxmlLoader.getController();
         graphicController.initialize(idSession);
     }
 }

@@ -53,11 +53,11 @@ public class RegisterInBean {
         return userType;
     }
 
-    public void setUserType(String type) {
+    public void setUserType(String type) throws BeanException {
         switch (type) {
             case "Client" -> this.userType = UserType.CLIENT;
             case "Pro" -> this.userType = UserType.PRO;
-            default -> throw new IllegalStateException("Unexpected value: " + type);
+            default -> throw new BeanException("Unexpected value: ", type);
         }
     }
 

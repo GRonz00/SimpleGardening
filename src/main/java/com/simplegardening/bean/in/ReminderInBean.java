@@ -3,13 +3,19 @@ package com.simplegardening.bean.in;
 import com.simplegardening.exception.BeanException;
 import com.simplegardening.utils.ReminderType;
 
-public class RemainderInBean {
+public class ReminderInBean {
     private ReminderType type;
     private String time;
     private String plant;
     private int idSession;
-    public RemainderInBean(int idSession,String plant,int type,String hour, String min) throws BeanException {
+    public ReminderInBean(int idSession, String plant, int type, String hour, String min) throws BeanException {
         setType(type);
+        setTime(hour,min);
+        setPlant(plant);
+        setIdSession(idSession);
+    }
+    public ReminderInBean(int idSession, String plant, String type, String hour, String min) throws BeanException {
+        this.type=ReminderType.valueOf(type);
         setTime(hour,min);
         setPlant(plant);
         setIdSession(idSession);

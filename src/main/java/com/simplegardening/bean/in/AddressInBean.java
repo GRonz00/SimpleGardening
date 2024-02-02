@@ -43,7 +43,7 @@ public class AddressInBean {
     }
 
     public void setStreet(String street) throws BeanException {
-        if (street.length() < 4) throw new BeanException("username", BeanException.TOO_SHORT_REASON);
+        if (street.length() < 4) throw new BeanException("street", BeanException.TOO_SHORT_REASON);
         if(Pattern.matches("[a-zA-Z0-9 ]",street))throw new BeanException("street",BeanException.ONLY_REG);
         this.street = street;
     }

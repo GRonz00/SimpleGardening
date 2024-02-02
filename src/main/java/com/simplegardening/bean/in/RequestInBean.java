@@ -5,11 +5,8 @@ import com.simplegardening.exception.BeanException;
 import java.time.LocalDate;
 
 public class RequestInBean {
-    private String pro;
-    private float price;
     private String plant;
 
-    private boolean pickup;
     private String client;
     private LocalDate start;
     private LocalDate end;
@@ -17,14 +14,12 @@ public class RequestInBean {
 
     private int idSession;
 
-    public RequestInBean(String pro, String price, String plant, boolean pickup, String client, LocalDate start, LocalDate end) throws BeanException {
+    public RequestInBean( String plant,  String client, LocalDate start, LocalDate end, int idRequestForm) throws BeanException {
         setClient(client);
         setEnd(end,start);
         setPlant(plant);
-        setPickup(pickup);
-        setPrice(price);
-        setPro(pro);
         setStart(start);
+        setIdRequestForm(idRequestForm);
 
     }
     public void requestInBean2(int idRequestForm, int idSession){
@@ -60,13 +55,7 @@ public class RequestInBean {
         this.client = client;
     }
 
-    public boolean isPickup() {
-        return pickup;
-    }
 
-    public void setPickup(boolean pickup) {
-        this.pickup = pickup;
-    }
 
     public String getPlant() {
         return plant;
@@ -76,21 +65,7 @@ public class RequestInBean {
         this.plant = plant;
     }
 
-    public float getPrice() {
-        return price;
-    }
 
-    public void setPrice(String price) {
-        this.price = Float.parseFloat(price);
-    }
-
-    public String getPro() {
-        return pro;
-    }
-
-    public void setPro(String pro) {
-        this.pro = pro;
-    }
 
     public int getIdRequestForm() {
         return idRequestForm;

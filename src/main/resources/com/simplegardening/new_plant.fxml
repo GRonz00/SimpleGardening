@@ -9,7 +9,7 @@
 <?import javafx.scene.text.*?>
 <?import org.kordamp.ikonli.javafx.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="320.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.simplegardening.graphic_controller.AddPlantGraphicController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="320.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.simplegardening.graphic_controller.AddPlantGraphicController">
    <Button fx:id="imageButton" layoutX="22.0" layoutY="35.0" mnemonicParsing="false" onAction="#uploadImage" style="-fx-background-color: transparent">
       <graphic>
          <FontIcon iconLiteral="fltfal-image-add-24" iconSize="32" />

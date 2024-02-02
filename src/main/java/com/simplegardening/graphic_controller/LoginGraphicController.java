@@ -54,8 +54,8 @@ public class LoginGraphicController {
                 if (beanOut.getTypeUser() == 2) {
                     FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("home_pro.fxml"));
                     ((Node) actionEvent.getSource()).getScene().setRoot(fxmlLoader.load());
-                    HomeProGraphicController homeProGraphicController = fxmlLoader.getController();
-                    homeProGraphicController.initialize(beanOut.getIdSession());
+                    ManageRequestProGraphicController manageRequestProGraphicController = fxmlLoader.getController();
+                    manageRequestProGraphicController.initialize(beanOut.getIdSession());
                 }
 
             } catch (BeanException e) {

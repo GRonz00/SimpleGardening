@@ -59,7 +59,7 @@ public class RequestOverTimeGraphicController {
     public void goBack(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("requestPro.fxml"));
         ((Node) actionEvent.getSource()).getScene().setRoot(fxmlLoader.load());
-        RequestProGraphicController graphicController = fxmlLoader.getController();
+        HomeProGraphicController graphicController = fxmlLoader.getController();
         graphicController.initialize(idSession);
     }
 

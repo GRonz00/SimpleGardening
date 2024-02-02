@@ -1,7 +1,7 @@
 package com.simplegardening.graphic_controller;
 
 import com.simplegardening.SimpleGardeningApplication;
-import com.simplegardening.bean.in.WeatherClientInBean;
+import com.simplegardening.bean.in.SessionBeanIn;
 import com.simplegardening.bean.out.WeatherClientOutBean;
 import com.simplegardening.controller.LoginController;
 import com.simplegardening.controller.WeatherForecastController;
@@ -52,9 +52,9 @@ public class WeatherGraphicController {
         setIdSession(idSession);
         week.getChildren().clear();
         WeatherForecastController weatherForecastController = new WeatherForecastController();
-        WeatherClientInBean weatherClientInBean = new WeatherClientInBean(idSession);
+        SessionBeanIn sessionBeanIn = new SessionBeanIn(idSession);
         try {
-            WeatherClientOutBean weatherClientOutBean = weatherForecastController.weeklyWeatherForecast(weatherClientInBean);
+            WeatherClientOutBean weatherClientOutBean = weatherForecastController.weeklyWeatherForecast(sessionBeanIn);
             for(int i=0;i<weatherClientOutBean.getDays().size();i++){
                 FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("weather_pane.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
