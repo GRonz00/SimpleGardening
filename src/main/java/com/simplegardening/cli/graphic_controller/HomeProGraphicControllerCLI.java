@@ -27,7 +27,7 @@ public class HomeProGraphicControllerCLI {
             homeProViewCLI.init();
             RequestOutBean requests = manageRequestController.getRequests(idSession);
             for (int i = 0; i < requests.getPro().size(); i++) {
-                homeProViewCLI.viewRequest(requests.getClient().get(i),requests.getPlant().get(i).getName(),requests.getPlant().get(i).getSize(),requests.getPlant().get(i).getType(), requests.getPrice().get(i),requests.getStart().get(i).toString(),requests.getEnd().get(i).toString(),requests.getState().get(i),requests.getIdRequestForm().get(i).toString());
+                homeProViewCLI.viewRequest(List.of(requests.getClient().get(i),requests.getPlant().get(i).getName(),requests.getPlant().get(i).getSize(),requests.getPlant().get(i).getType(), requests.getPrice().get(i),requests.getStart().get(i).toString(),requests.getEnd().get(i).toString(),requests.getState().get(i),requests.getIdRequestForm().get(i).toString()));
             }
             int choice = homeProViewCLI.getAction();
             switch (choice){

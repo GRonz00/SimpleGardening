@@ -60,47 +60,9 @@ public class HomeGraphicController {
                                 ExceptionHandler.handleException("Could not go to next scene", e.getMessage());
                             }
                 });
-                ((Button) pane.lookup("#waterButton")).setOnAction((ActionEvent event) -> {
-                    try {
-                        ReminderInBean bean = new ReminderInBean(idSession,plant.getName(),1,((TextField) pane.lookup("#waterHour")).getText(),((TextField) pane.lookup("#waterMin")).getText());
-                        new ManageReminderController().setReminder(bean);
-                        (pane.lookup("#HWat")).setVisible(false);
-                        ((Label)pane.lookup("#TimeW")).setText(bean.getTime());
-                        (pane.lookup("#TimeW")).setVisible(true);
-                        }
-                     catch (BeanException e) {
-                        ExceptionHandler.handleException(ExceptionHandler.BEAN_HEADER_TEXT,e.getMessage());
-                    }catch (ControllerException e) {
-                    ExceptionHandler.handleException(ExceptionHandler.CONTROLLER_HEADER_TEXT,e.getMessage());
-                }
-                });
-                ((Button) pane.lookup("#nebButton")).setOnAction((ActionEvent event) -> {
-                    try {
-                        ReminderInBean bean = new ReminderInBean(idSession,plant.getName(), 2,((TextField) pane.lookup("#nebHour")).getText(),((TextField) pane.lookup("#nebMin")).getText());
-                        new ManageReminderController().setReminder(bean);
-                        (pane.lookup("#HNeb")).setVisible(false);
-                        ((Label)pane.lookup("#TimeN")).setText(bean.getTime());
-                        (pane.lookup("#TimeN")).setVisible(true);
-
-                    } catch (BeanException e) {
-                        ExceptionHandler.handleException(ExceptionHandler.BEAN_HEADER_TEXT,e.getMessage());
-                    }catch (ControllerException e){
-                        ExceptionHandler.handleException(ExceptionHandler.CONTROLLER_HEADER_TEXT,e.getMessage());
-                    }
-                });
-                ((Button) pane.lookup("#ferButton")).setOnAction((ActionEvent event) -> {
-                    try {
-                        ReminderInBean bean = new ReminderInBean(idSession,plant.getName(), 3,((TextField) pane.lookup("#ferHour")).getText(),((TextField) pane.lookup("#ferMin")).getText());
-                        new ManageReminderController().setReminder(bean);
-                        (pane.lookup("#HFer")).setVisible(false);
-                        ((Label)pane.lookup("#TimeF")).setText(bean.getTime());
-                        (pane.lookup("#TimeF")).setVisible(true);
-                    } catch (BeanException e) {
-                        ExceptionHandler.handleException(ExceptionHandler.BEAN_HEADER_TEXT,e.getMessage());
-                    }catch (ControllerException e){
-                        ExceptionHandler.handleException(ExceptionHandler.CONTROLLER_HEADER_TEXT,e.getMessage());
-                    }
-                });
+                ((Button) pane.lookup("#waterButton")).setOnAction((ActionEvent event) -> setReminder(pane,plant,"#waterHour","#waterMin","#HWat","#TimeW"));
+                ((Button) pane.lookup("#nebButton")).setOnAction((ActionEvent event) -> setReminder(pane,plant,"#nebHour","#nebMin","#HNeb","#TimeN"));
+                ((Button) pane.lookup("#ferButton")).setOnAction((ActionEvent event) -> setReminder(pane,plant,"#ferHour","#ferMin","#HFer","#TimeF"));
                 if (plant.getImage() != null)
                 {
                     ((ImageView) pane.lookup("#imageView")).setImage(new Image(plant.getImage()));
@@ -118,6 +80,21 @@ public class HomeGraphicController {
         }
 
 
+    }
+
+
+    private void setReminder(AnchorPane pane,PlantOutBean plant, String s1, String s2, String s3, String s4 ){
+        try {
+            ReminderInBean bean = new ReminderInBean(idSession,plant.getName(), 3,((TextField) pane.lookup(s1)).getText(),((TextField) pane.lookup(s2)).getText());
+            new ManageReminderController().setReminder(bean);
+            (pane.lookup(s3)).setVisible(false);
+            ((Label)pane.lookup(s4)).setText(bean.getTime());
+            (pane.lookup(s4)).setVisible(true);
+        } catch (BeanException e) {
+            ExceptionHandler.handleException(ExceptionHandler.BEAN_HEADER_TEXT,e.getMessage());
+        }catch (ControllerException e){
+            ExceptionHandler.handleException(ExceptionHandler.CONTROLLER_HEADER_TEXT,e.getMessage());
+        }
     }
 
     @FXML

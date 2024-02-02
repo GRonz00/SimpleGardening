@@ -14,8 +14,8 @@ public class HomeProViewCLI {
         return CLIReader.multiChoice(List.of("add request form","accept request","refuse request","send message","logout"));
     }
 
-    public void viewRequest(String client, String plant, String size, String type, String price, String start, String end, String state, String idRequestForm){
-            System.out.println(client+" plant "+plant+" "+size+" "+type+" price: "+price+" start: "+start+" end: "+end+" state: "+state+" id request form: "+ idRequestForm);
+    public void viewRequest(List<String> request){
+            System.out.println(request.get(0)+" plant "+request.get(1)+" "+request.get(2)+" "+request.get(3)+" price: "+request.get(4)+" start: "+request.get(5)+" end: "+request.get(6)+" state: "+request.get(7)+" id request form: "+ request.get(8));
     }
     public List<String> addRequestForm() throws IOException {
         List<String> s = new ArrayList<>();
