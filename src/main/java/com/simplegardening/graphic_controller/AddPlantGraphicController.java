@@ -76,10 +76,8 @@ public class AddPlantGraphicController {
             imageButton.setVisible(false);
             imageView.setImage(new Image(imgClone));
             imageView.setVisible(true);
-        } catch (ImageException e) {
+        } catch (ImageException | IOException e) {
             ExceptionHandler.handleException("Image", e.getMessage());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
     }
 

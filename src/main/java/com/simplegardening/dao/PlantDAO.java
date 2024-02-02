@@ -22,7 +22,6 @@ public class PlantDAO {
             String sql = String.format("INSERT INTO Plant ( name, type, size, Image,client,state) VALUES ('%s', '%s', '%s', ?, '%s','home')", plant.getName(),plant.getType().toString().toLowerCase(),plant.getSize().toString().toLowerCase(),plant.getClient().getUsername());
                 // Execute query
             statement = connection.prepareStatement(sql);
-            // statement.setBlob(1,plant.getImage());
             statement.setBinaryStream(1, plant.getImage());
             statement.executeUpdate();
             statement.close();
