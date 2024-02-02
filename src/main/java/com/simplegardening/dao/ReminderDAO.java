@@ -18,7 +18,6 @@ public class ReminderDAO {
             statement.executeUpdate();
             statement.close();
         }catch (SQLException e) {
-            System.out.println(e.getMessage());
             throw new SQLException(e);
         }
         finally {
