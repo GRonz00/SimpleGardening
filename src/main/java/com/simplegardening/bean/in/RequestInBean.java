@@ -5,25 +5,29 @@ import com.simplegardening.exception.BeanException;
 import java.time.LocalDate;
 
 public class RequestInBean {
-    private String plant;
-
     private String client;
+    private String plant;
     private LocalDate start;
     private LocalDate end;
     private int idRequestForm;
-
     private int idSession;
+    private boolean pickup;
 
-    public RequestInBean( String plant,  String client, LocalDate start, LocalDate end, int idRequestForm) throws BeanException {
+    public RequestInBean( String plant,  String client, LocalDate start, LocalDate end, int idRequestForm, int idSession) throws BeanException {
         setClient(client);
         setEnd(end,start);
         setPlant(plant);
         setStart(start);
         setIdRequestForm(idRequestForm);
-
+        setIdSession(idSession);
     }
-    public void requestInBean2(int idRequestForm, int idSession){
+
+    public RequestInBean( String plant, LocalDate start, LocalDate end, int idRequestForm,boolean pickup, int idSession) throws BeanException {
+        setEnd(end,start);
+        setPlant(plant);
+        setStart(start);
         setIdRequestForm(idRequestForm);
+        setPickup(pickup);
         setIdSession(idSession);
     }
 
@@ -81,5 +85,13 @@ public class RequestInBean {
 
     public void setIdSession(int idSession) {
         this.idSession = idSession;
+    }
+
+    public boolean isPickup() {
+        return pickup;
+    }
+
+    public void setPickup(boolean pickup) {
+        this.pickup = pickup;
     }
 }

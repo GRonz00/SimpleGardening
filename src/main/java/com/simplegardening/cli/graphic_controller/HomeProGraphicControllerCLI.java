@@ -39,12 +39,12 @@ public class HomeProGraphicControllerCLI {
                 }
                 case 2->{
                     List<String> req = homeProViewCLI.choiceRequest();
-                    RequestInBean request = new RequestInBean(req.get(2), req.get(1),LocalDate.parse(req.get(3)),LocalDate.parse(req.get(4)),Integer.parseInt(req.get(0)) );
+                    RequestInBean request = new RequestInBean(req.get(2), req.get(1),LocalDate.parse(req.get(3)),LocalDate.parse(req.get(4)),Integer.parseInt(req.get(0)),idSession );
                     manageRequestController.acceptRequest(request);
                 }
                 case 3->{
                     List<String> req = homeProViewCLI.choiceRequest();
-                    RequestInBean request = new RequestInBean(req.get(2), req.get(1),LocalDate.parse(req.get(3)),LocalDate.parse(req.get(4)),Integer.parseInt(req.get(0)) );
+                    RequestInBean request = new RequestInBean(req.get(2), req.get(1),LocalDate.parse(req.get(3)),LocalDate.parse(req.get(4)),Integer.parseInt(req.get(0)),idSession );
                     manageRequestController.refuseRequest(request);
                 }
                 case 4->{

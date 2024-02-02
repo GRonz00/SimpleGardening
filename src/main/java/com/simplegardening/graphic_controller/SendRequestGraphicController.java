@@ -1,7 +1,7 @@
 package com.simplegardening.graphic_controller;
 
 import com.simplegardening.SimpleGardeningApplication;
-import com.simplegardening.bean.in.SendRequestInBean;
+import com.simplegardening.bean.in.RequestInBean;
 import com.simplegardening.bean.out.RequestOutBean;
 import com.simplegardening.controller.LoginController;
 import com.simplegardening.controller.ManageRequestController;
@@ -41,7 +41,7 @@ public class SendRequestGraphicController {
                 ((Label) pane.lookup("#nameLabel")).setText(requests.getPro().get(i));
                 ((Label) pane.lookup("#addressLabel")).setText(requests.getAddressPro().get(i));
                 ((Label) pane.lookup("#priceLabel")).setText(requests.getPrice().get(i));
-                SendRequestInBean sendRequestInBean = new SendRequestInBean(requests.getPlant().get(i).getName(),idSession,requests.getIdRequestForm().get(i),requests.getPickup().get(i),requests.getStart().get(i),requests.getEnd().get(i));
+                RequestInBean sendRequestInBean = new RequestInBean(requests.getPlant().get(i).getName(),requests.getStart().get(i),requests.getEnd().get(i),requests.getIdRequestForm().get(i),requests.getPickup().get(i),idSession);
                 ((Button) pane.lookup("#sendButton")).setOnAction((ActionEvent event) -> {
                     try {
                         ManageRequestController manageRequestController = new ManageRequestController();

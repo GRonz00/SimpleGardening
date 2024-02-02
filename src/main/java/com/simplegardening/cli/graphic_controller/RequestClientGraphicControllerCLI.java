@@ -1,7 +1,7 @@
 package com.simplegardening.cli.graphic_controller;
 
 import com.simplegardening.bean.in.FindRequestInBean;
-import com.simplegardening.bean.in.SendRequestInBean;
+import com.simplegardening.bean.in.RequestInBean;
 import com.simplegardening.bean.out.RequestOutBean;
 import com.simplegardening.cli.view.RequestClientViewCLI;
 import com.simplegardening.controller.ManageRequestController;
@@ -35,9 +35,10 @@ public class RequestClientGraphicControllerCLI {
         List<String> r = requestClientViewCLI.request();
         try {
             int idRequestForm = Integer.parseInt(requestClientViewCLI.getIdRequestForm());
-            SendRequestInBean sendRequestInBean = new SendRequestInBean(r.get(0),idSession,idRequestForm,r.get(3).equals("true"),LocalDate.parse(r.get(1)),LocalDate.parse(r.get(2)));
+
+            RequestInBean inBean = new RequestInBean(r.get(0),LocalDate.parse(r.get(1)),LocalDate.parse(r.get(2)),idRequestForm,r.get(3).equals("true"),idSession);
             ManageRequestController manageRequestController = new ManageRequestController();
-            manageRequestController.sendRequest(sendRequestInBean);
+            manageRequestController.sendRequest(inBean);
         }catch (NumberFormatException e){
             throw new BeanException("Id request form",BeanException.ONLY_NUMBER_REASON);
         }
