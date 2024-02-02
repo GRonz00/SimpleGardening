@@ -34,7 +34,7 @@ public class CLIReader {
         }
     }
 
-    
+
 
     public static String multiChoiceString(List<String> choices) throws IOException {
         for (String choice : choices) {
