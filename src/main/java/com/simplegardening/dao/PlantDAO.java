@@ -19,19 +19,18 @@ public class PlantDAO {
         PreparedStatement statement = null;
         Connection connection = session.getConnection();
         try {
-
             String sql = String.format("INSERT INTO Plant ( name, type, size, Image,client,state) VALUES ('%s', '%s', '%s', ?, '%s','home')", plant.getName(),plant.getType().toString().toLowerCase(),plant.getSize().toString().toLowerCase(),plant.getClient().getUsername());
                 // Execute query
             statement = connection.prepareStatement(sql);
-            statement.setBlob(1,plant.getImage());
+            // statement.setBlob(1,plant.getImage());
+            statement.setBinaryStream(1, plant.getImage());
             statement.executeUpdate();
             statement.close();
 
 
             }catch (SQLException e) {
             throw new SQLException(e);
-        }
-        finally {
+        } finally {
             if (statement != null) statement.close();
         }
         }

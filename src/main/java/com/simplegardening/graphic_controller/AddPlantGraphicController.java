@@ -15,9 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 
 public class AddPlantGraphicController {
     @FXML
@@ -63,13 +61,25 @@ public class AddPlantGraphicController {
             File img = controller.chooseImage();
             ImageInBean imageInBean = new ImageInBean();
             imageInBean.setImage(img);
+
             image = controller.validateImage(imageInBean);
+            ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+            byte[] data = new byte[1024];
+            int bytesRead;
+
+            while ((bytesRead = image.read(data)) != -1) {
+                buffer.write(data, 0, bytesRead);
+            }
+            InputStream imgClone = new ByteArrayInputStream(buffer.toByteArray());
+            image = new ByteArrayInputStream(buffer.toByteArray());
+            buffer.flush();
             imageButton.setVisible(false);
-            if (image!= null)
-            {imageView.setImage(new Image(image));
-            imageView.setVisible(true);}
+            imageView.setImage(new Image(imgClone));
+            imageView.setVisible(true);
         } catch (ImageException e) {
             ExceptionHandler.handleException("Image", e.getMessage());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 

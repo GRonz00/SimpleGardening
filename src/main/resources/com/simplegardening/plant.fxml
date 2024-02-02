@@ -8,7 +8,7 @@
 <?import org.kordamp.ikonli.javafx.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="320.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
-   <ImageView fx:id="imageView" fitHeight="60.0" fitWidth="60.0" layoutX="15.0" layoutY="15.0" style="-fx-background-color: WHITE;" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />
+   <ImageView fx:id="imageView" fitHeight="60.0" fitWidth="60.0" layoutX="15.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: BLACK;" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />
    <Label layoutX="96.0" layoutY="80.0" text="Type:" AnchorPane.leftAnchor="96.0" AnchorPane.topAnchor="80.0" />
    <Label layoutX="98.0" layoutY="100.0" text="Size:" AnchorPane.leftAnchor="96.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="100.0" />
    <Label layoutX="95.0" layoutY="142.0" prefHeight="17.0" prefWidth="35.0" text="Water:" AnchorPane.leftAnchor="96.0" AnchorPane.rightAnchor="189.0" AnchorPane.topAnchor="130.0" />

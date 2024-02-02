@@ -65,8 +65,9 @@ public class HomeGraphicController {
                 ((Button) pane.lookup("#ferButton")).setOnAction((ActionEvent event) -> setReminder(pane,plant,"#ferHour","#ferMin","#HFer","#TimeF"));
                 if (plant.getImage() != null)
                 {
-                    ((ImageView) pane.lookup("#imageView")).setImage(new Image(plant.getImage()));
-                    (pane.lookup("#imageView")).setVisible(true);
+                    ImageView imageView = ((ImageView) pane.lookup("#imageView"));
+                    imageView.setImage(new Image(plant.getImage()));
+                    imageView.setVisible(true);
                 }
                 plantsPane.getChildren().add(pane);
             }
