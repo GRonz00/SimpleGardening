@@ -13,7 +13,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 
@@ -26,7 +25,7 @@ public class MessagesGraphicController {
     @FXML
     private FlowPane messagePane;
     @FXML
-    private TextArea textField;
+    private TextField textField;
 
 
     private void setIdSession(int idSession){

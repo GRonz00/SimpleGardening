@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import org.kordamp.ikonli.javafx.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="320.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="320.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <ImageView fx:id="imageView" fitHeight="60.0" fitWidth="60.0" layoutX="15.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: BLACK;" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />
    <Label layoutX="96.0" layoutY="80.0" text="Type:" AnchorPane.leftAnchor="96.0" AnchorPane.topAnchor="80.0" />
    <Label layoutX="98.0" layoutY="100.0" text="Size:" AnchorPane.leftAnchor="96.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="100.0" />
@@ -26,7 +29,7 @@
    </Label>
    <Label fx:id="typeLabel" layoutX="138.0" layoutY="80.0" text="Indoor" AnchorPane.leftAnchor="135.0" AnchorPane.topAnchor="80.0" />
    <Label fx:id="sizeLabel" layoutX="128.0" layoutY="109.0" text="small" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="100.0" />
-   <HBox fx:id="HWat" layoutX="141.0" layoutY="130.0" spacing="10.0" AnchorPane.leftAnchor="141.0" AnchorPane.topAnchor="130.0">
+   <HBox fx:id="HWat" layoutX="141.0" layoutY="130.0" spacing="10.0" visible="false" AnchorPane.leftAnchor="141.0" AnchorPane.topAnchor="130.0">
       <Button fx:id="waterButton" layoutX="141.0" layoutY="130.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: transparent" AnchorPane.leftAnchor="141.0">
          <font>
             <Font size="9.0" />
@@ -38,7 +41,7 @@
       <TextField fx:id="waterHour" prefHeight="25.0" prefWidth="30.0" />
       <TextField fx:id="waterMin" prefHeight="25.0" prefWidth="30.0" />
    </HBox>
-   <HBox fx:id="HNeb" layoutX="161.0" layoutY="151.0" spacing="10.0" AnchorPane.leftAnchor="161.0" AnchorPane.topAnchor="160.0">
+   <HBox fx:id="HNeb" layoutX="161.0" layoutY="151.0" spacing="10.0" visible="false" AnchorPane.leftAnchor="161.0" AnchorPane.topAnchor="160.0">
       <Button fx:id="nebButton" layoutX="161.0" layoutY="150.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: transparent" AnchorPane.leftAnchor="161.0">
          <font>
             <Font size="9.0" />
@@ -50,7 +53,7 @@
       <TextField fx:id="nebHour" prefHeight="25.0" prefWidth="30.0" />
       <TextField fx:id="nebMin" maxHeight="15.0" prefHeight="15.0" prefWidth="30.0" />
    </HBox>
-   <HBox fx:id="HFer" layoutX="150.0" layoutY="170.0" spacing="10.0" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="190.0">
+   <HBox fx:id="HFer" layoutX="150.0" layoutY="170.0" spacing="10.0" visible="false" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="190.0">
       <Button fx:id="ferButton" layoutX="151.0" layoutY="170.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: transparent" AnchorPane.leftAnchor="150.0">
          <font>
             <Font size="9.0" />
@@ -65,5 +68,29 @@
    <Label fx:id="TimeN" text="TimeN" visible="false" AnchorPane.leftAnchor="161.0" AnchorPane.topAnchor="160.0" />
    <Label fx:id="TimeW" text="TimeW" visible="false" AnchorPane.leftAnchor="141.0" AnchorPane.topAnchor="130.0" />
    <Label fx:id="TimeF" text="TimeF" visible="false" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="190.0" />
+   <Button fx:id="waterButton1" layoutX="66.0" layoutY="130.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: transparent" AnchorPane.leftAnchor="141.0" AnchorPane.topAnchor="130.0">
+      <font>
+         <Font size="9.0" />
+      </font>
+      <graphic>
+         <FontIcon iconLiteral="fltfal-add-circle-24" iconSize="16" />
+      </graphic>
+   </Button>
+   <Button fx:id="nebButton1" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: transparent" AnchorPane.leftAnchor="161.0" AnchorPane.topAnchor="160.0">
+      <font>
+         <Font size="9.0" />
+      </font>
+      <graphic>
+         <FontIcon iconLiteral="fltfal-add-circle-24" iconSize="16" />
+      </graphic>
+   </Button>
+   <Button fx:id="ferButton1" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: transparent" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="190.0">
+      <font>
+         <Font size="9.0" />
+      </font>
+      <graphic>
+         <FontIcon iconLiteral="fltfal-add-circle-24" iconSize="16" />
+      </graphic>
+   </Button>
 
 </AnchorPane>

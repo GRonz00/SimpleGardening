@@ -1,18 +1,17 @@
-pro1 client1:                
-pro1 client1: sss
+marioR client2: Salve avevo preso in carico la sua richiesta per il 05/02/2024
+marioR client2: Le volevo chiedere per che ora pottessi passare a ritirare la pianta
 
-pro1 client1: ssssssss
+client2 marioR: Sarebbe perfetto se passase dopo le 11:00
 
-pro1 client1: 1
+marioR client2: Perfetto sarò davanti il suo edificio alle 11:15
 
-pro1 client1: 2
+client2 marioR: La mia pianta ha delle macchie sulle foglie cosa posso fare?
 
-pro1 client1: 3
+marioR client2: Le consiglio di usare un pesticida per le coccinelle
 
-pro1 client1: 2
 
-pro1 client1: 11
+marioR client2: ccccccccccccccc
 
-pro1 client1: 12
-pro1 client1: 123
-pro1 client1: 1323
+
+
+

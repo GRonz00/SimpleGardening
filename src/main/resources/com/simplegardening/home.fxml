@@ -37,7 +37,10 @@
          <opaqueInsets>
             <Insets right="16.0" />
          </opaqueInsets>
-         <FlowPane fx:id="plantsPane" />
+         <FlowPane fx:id="plantsPane" alignment="CENTER" columnHalignment="CENTER" hgap="10.0" vgap="10.0" />
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
       </ScrollPane>
    </center>
    <bottom>

@@ -8,7 +8,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChatDAOCSV implements ChatDAO{
+public class ChatDAOFile implements ChatDAO{
 
 
     @Override

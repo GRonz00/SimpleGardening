@@ -55,7 +55,7 @@
             <items>
                 <FXCollections fx:factory="observableArrayList">
                     <String fx:value="JDBC" />
-                    <String fx:value="FileSystem" />
+                    <String fx:value="FILE_SYSTEM" />
                 </FXCollections>
             </items>
             <value>

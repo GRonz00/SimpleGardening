@@ -60,6 +60,9 @@ public class HomeGraphicController {
                                 ExceptionHandler.handleException("Could not go to next scene", e.getMessage());
                             }
                 });
+                ((Button) pane.lookup("#waterButton1")).setOnAction((ActionEvent event) -> changeVisibility(pane,"#HWat","#waterButton1"));
+                ((Button) pane.lookup("#nebButton1")).setOnAction((ActionEvent event) -> changeVisibility(pane,"#HNeb","#nebButton1"));
+                ((Button) pane.lookup("#ferButton1")).setOnAction((ActionEvent event) -> changeVisibility(pane,"#HFer","#ferButton1"));
                 ((Button) pane.lookup("#waterButton")).setOnAction((ActionEvent event) -> setReminder(pane,plant,"#waterHour","#waterMin","#HWat","#TimeW"));
                 ((Button) pane.lookup("#nebButton")).setOnAction((ActionEvent event) -> setReminder(pane,plant,"#nebHour","#nebMin","#HNeb","#TimeN"));
                 ((Button) pane.lookup("#ferButton")).setOnAction((ActionEvent event) -> setReminder(pane,plant,"#ferHour","#ferMin","#HFer","#TimeF"));
@@ -80,6 +83,12 @@ public class HomeGraphicController {
             ExceptionHandler.handleException(ExceptionHandler.CONTROLLER_HEADER_TEXT,e.getMessage());
         }
 
+
+    }
+
+    private void changeVisibility(AnchorPane pane, String s, String s1) {
+        pane.lookup(s1).setVisible(false);
+        pane.lookup(s).setVisible(true);
 
     }
 

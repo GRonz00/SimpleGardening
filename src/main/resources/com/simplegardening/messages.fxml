@@ -13,7 +13,7 @@
          <opaqueInsets>
             <Insets right="16.0" />
          </opaqueInsets>
-         <FlowPane fx:id="messagePane" />
+         <FlowPane fx:id="messagePane" alignment="CENTER" />
       </ScrollPane>
    </center>
    <top>
@@ -57,11 +57,11 @@
                <DropShadow />
             </effect>
          </Button>
-         <TextArea fx:id="textField" accessibleRole="TEXT_FIELD" layoutX="41.0" layoutY="31.0" prefHeight="48.0" prefWidth="505.0" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="56.0">
+         <TextField fx:id="textField" layoutX="41.0" layoutY="31.0" prefHeight="48.0" prefWidth="505.0" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="56.0">
          <effect>
             <DropShadow />
          </effect>
-         </TextArea>
+         </TextField>
       </AnchorPane>
    </bottom>
 </BorderPane>

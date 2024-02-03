@@ -12,7 +12,7 @@
          <opaqueInsets>
             <Insets right="16.0" />
          </opaqueInsets>
-         <FlowPane fx:id="requestsPane" />
+         <FlowPane fx:id="requestsPane" hgap="10.0" vgap="10.0" />
       </ScrollPane>
    </center>
    <top>
