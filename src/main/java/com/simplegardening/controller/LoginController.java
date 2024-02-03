@@ -2,6 +2,7 @@ package com.simplegardening.controller;
 
 
 import com.simplegardening.bean.in.LoginBeanIn;
+import com.simplegardening.bean.in.SessionBeanIn;
 import com.simplegardening.bean.out.LoginBeanOut;
 import com.simplegardening.dao.UserDAO;
 import com.simplegardening.exception.ControllerException;
@@ -42,9 +43,9 @@ public class LoginController {
 
     }
 
-    public void closeSession(int idSession) throws ControllerException {
+    public void closeSession(SessionBeanIn idSession) throws ControllerException {
         try {
-            SessionManager.getInstance().closeSession(idSession);
+            SessionManager.getInstance().closeSession(idSession.getIdSession());
         } catch (SQLException | SessionException e) {
             throw new ControllerException(e);
         }

@@ -85,7 +85,7 @@ public class ChatListGraphicController {
 
     public void logout(ActionEvent event) throws IOException {
         try {
-            new LoginController().closeSession(idSession);
+            new LoginController().closeSession(new SessionBeanIn(idSession));
         } catch (ControllerException e) {
             ExceptionHandler.handleException(ExceptionHandler.CONTROLLER_HEADER_TEXT,e.getMessage());
         }

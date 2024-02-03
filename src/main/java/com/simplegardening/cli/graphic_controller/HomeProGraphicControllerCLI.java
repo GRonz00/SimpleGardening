@@ -4,6 +4,7 @@ import com.simplegardening.CLIApplication;
 import com.simplegardening.bean.in.MessageInBean;
 import com.simplegardening.bean.in.RequestFormInBean;
 import com.simplegardening.bean.in.RequestInBean;
+import com.simplegardening.bean.in.SessionBeanIn;
 import com.simplegardening.bean.out.RequestOutBean;
 import com.simplegardening.cli.view.HomeProViewCLI;
 import com.simplegardening.cli.view.MessageViewCLI;
@@ -25,7 +26,7 @@ public class HomeProGraphicControllerCLI {
         ManageRequestController manageRequestController = new ManageRequestController();
         try {
             homeProViewCLI.init();
-            RequestOutBean requests = manageRequestController.getRequests(idSession);
+            RequestOutBean requests = manageRequestController.getRequests(new SessionBeanIn(idSession));
             for (int i = 0; i < requests.getPro().size(); i++) {
                 homeProViewCLI.viewRequest(List.of(requests.getClient().get(i),requests.getPlant().get(i).getName(),requests.getPlant().get(i).getSize(),requests.getPlant().get(i).getType(), requests.getPrice().get(i),requests.getStart().get(i).toString(),requests.getEnd().get(i).toString(),requests.getState().get(i),requests.getIdRequestForm().get(i).toString()));
             }

@@ -1,6 +1,7 @@
 package com.simplegardening.graphic_controller;
 
 import com.simplegardening.SimpleGardeningApplication;
+import com.simplegardening.bean.in.SessionBeanIn;
 import com.simplegardening.bean.out.RequestOutBean;
 import com.simplegardening.controller.LoginController;
 import com.simplegardening.controller.ManageRequestController;
@@ -40,7 +41,7 @@ public class RequestOverTimeGraphicController {
         ManageRequestController manageRequestController = new ManageRequestController();
         if(time==1)titleLabel.setText("Future Request");
         try {
-            RequestOutBean requests = manageRequestController.getRequests(idSession);
+            RequestOutBean requests = manageRequestController.getRequests(new SessionBeanIn(idSession));
             for (int i = 0; i < requests.getPro().size(); i++) {
                 if ((!Objects.equals(requests.getState().get(i), "ACCEPTED"))||
                         (time == 0 && !requests.getEnd().get(i).isBefore(LocalDate.now()))||
@@ -66,7 +67,7 @@ public class RequestOverTimeGraphicController {
     @FXML
     public void logout(ActionEvent event) throws IOException {
         try {
-            new LoginController().closeSession(idSession);
+            new LoginController().closeSession(new SessionBeanIn(idSession));
         } catch (ControllerException e) {
             ExceptionHandler.handleException(ExceptionHandler.CONTROLLER_HEADER_TEXT, e.getMessage());
         }

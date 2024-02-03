@@ -2,6 +2,7 @@ package com.simplegardening.graphic_controller;
 
 import com.simplegardening.SimpleGardeningApplication;
 import com.simplegardening.bean.in.RequestFormInBean;
+import com.simplegardening.bean.in.SessionBeanIn;
 import com.simplegardening.controller.LoginController;
 import com.simplegardening.controller.ManageRequestController;
 import com.simplegardening.exception.BeanException;
@@ -80,7 +81,7 @@ public class NewRequestFormGraphicController {
 
     public void logout(ActionEvent actionEvent) throws IOException {
         try {
-            new LoginController().closeSession(idSession);
+            new LoginController().closeSession(new SessionBeanIn(idSession));
         } catch (ControllerException e) {
             ExceptionHandler.handleException(ExceptionHandler.CONTROLLER_HEADER_TEXT,e.getMessage());
         }

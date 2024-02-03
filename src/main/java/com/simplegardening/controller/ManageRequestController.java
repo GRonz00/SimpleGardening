@@ -3,6 +3,7 @@ package com.simplegardening.controller;
 import com.simplegardening.bean.in.RequestFormInBean;
 import com.simplegardening.bean.in.FindRequestInBean;
 import com.simplegardening.bean.in.RequestInBean;
+import com.simplegardening.bean.in.SessionBeanIn;
 import com.simplegardening.bean.out.RequestOutBean;
 import com.simplegardening.dao.PlantDAO;
 import com.simplegardening.dao.RequestDAO;
@@ -74,11 +75,11 @@ public class ManageRequestController {
 
 
     }
-    public RequestOutBean getRequests(int idSession) throws ControllerException {
+    public RequestOutBean getRequests(SessionBeanIn idSession) throws ControllerException {
         RequestDAO requestDAO = new RequestDAO();
         try {
-            SessionManager.getInstance().validSession(idSession);
-            Session session = SessionManager.getInstance().getSession(idSession);
+            SessionManager.getInstance().validSession(idSession.getIdSession());
+            Session session = SessionManager.getInstance().getSession(idSession.getIdSession());
             List<Request> requests = requestDAO.getRequestFromUser(session.getUser(), session);
             return new RequestOutBean(requests);
 

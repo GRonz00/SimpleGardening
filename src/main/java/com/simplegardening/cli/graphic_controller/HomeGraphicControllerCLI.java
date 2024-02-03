@@ -1,6 +1,7 @@
 package com.simplegardening.cli.graphic_controller;
 
 import com.simplegardening.CLIApplication;
+import com.simplegardening.bean.in.SessionBeanIn;
 import com.simplegardening.bean.out.ListPlantOutBean;
 import com.simplegardening.bean.out.PlantOutBean;
 import com.simplegardening.cli.view.HomeViewCLI;
@@ -18,7 +19,7 @@ public class HomeGraphicControllerCLI {
         HomeViewCLI homeViewCLI = new HomeViewCLI();
         AddPlantController plantController = new AddPlantController();
         try {
-            ListPlantOutBean listPlant = plantController.getPlants(idSession);
+            ListPlantOutBean listPlant = plantController.getPlants(new SessionBeanIn(idSession));
             for(PlantOutBean plant : listPlant.getPlant()){
                 homeViewCLI.init(plant.getName(), plant.getType(), plant.getSize());
             }

@@ -1,6 +1,7 @@
 package com.simplegardening.graphic_controller;
 
 import com.simplegardening.SimpleGardeningApplication;
+import com.simplegardening.bean.in.SessionBeanIn;
 import com.simplegardening.bean.out.RequestOutBean;
 import com.simplegardening.controller.LoginController;
 import com.simplegardening.controller.ManageRequestController;
@@ -35,7 +36,7 @@ public class ManageRequestProGraphicController {
         requestPane.getChildren().clear();
         ManageRequestController manageRequestController = new ManageRequestController();
         try {
-            RequestOutBean requests = manageRequestController.getRequests(idSession);
+            RequestOutBean requests = manageRequestController.getRequests(new SessionBeanIn(idSession));
             for (int i=0;i<requests.getPro().size();i++){
                 if(!(Objects.equals(requests.getState().get(i), "ACCEPTED")&&
                         (requests.getEnd().get(i).isAfter(LocalDate.now())||requests.getEnd().get(i).isEqual(LocalDate.now()))&&
@@ -70,7 +71,7 @@ public class ManageRequestProGraphicController {
     @FXML
     public void logout(ActionEvent event) throws IOException {
         try {
-            new LoginController().closeSession(idSession);
+            new LoginController().closeSession(new SessionBeanIn(idSession));
         } catch (ControllerException e) {
             ExceptionHandler.handleException(ExceptionHandler.CONTROLLER_HEADER_TEXT,e.getMessage());
         }

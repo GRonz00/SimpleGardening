@@ -2,6 +2,7 @@ package com.simplegardening.graphic_controller;
 
 import com.simplegardening.SimpleGardeningApplication;
 import com.simplegardening.bean.in.RequestInBean;
+import com.simplegardening.bean.in.SessionBeanIn;
 import com.simplegardening.bean.out.RequestOutBean;
 import com.simplegardening.controller.LoginController;
 import com.simplegardening.controller.ManageRequestController;
@@ -77,7 +78,7 @@ public class SendRequestGraphicController {
     @FXML
     public void logout(ActionEvent event) throws IOException {
         try {
-            new LoginController().closeSession(idSession);
+            new LoginController().closeSession(new SessionBeanIn(idSession));
         } catch (ControllerException e) {
             ExceptionHandler.handleException(ExceptionHandler.CONTROLLER_HEADER_TEXT,e.getMessage());
         }

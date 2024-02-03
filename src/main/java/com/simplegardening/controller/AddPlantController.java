@@ -1,6 +1,7 @@
 package com.simplegardening.controller;
 
 import com.simplegardening.bean.in.AddPlantInBean;
+import com.simplegardening.bean.in.SessionBeanIn;
 import com.simplegardening.bean.out.ListPlantOutBean;
 import com.simplegardening.dao.PlantDAO;
 import com.simplegardening.exception.ControllerException;
@@ -27,10 +28,10 @@ public class AddPlantController {
 
     }
 
-    public ListPlantOutBean getPlants(int idSession) throws ControllerException {
+    public ListPlantOutBean getPlants(SessionBeanIn idSession) throws ControllerException {
         try {
-            SessionManager.getInstance().validSession(idSession);
-            Session session = SessionManager.getInstance().getSession(idSession);
+            SessionManager.getInstance().validSession(idSession.getIdSession());
+            Session session = SessionManager.getInstance().getSession(idSession.getIdSession());
             PlantDAO plantDAO = new PlantDAO();
             List<Plant> plants = plantDAO.getPlantsFromClient(session.getUser(),session);
             ListPlantOutBean listPlantOutBean = new ListPlantOutBean();

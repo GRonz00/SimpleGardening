@@ -2,6 +2,7 @@ package com.simplegardening.graphic_controller;
 
 import com.simplegardening.SimpleGardeningApplication;
 import com.simplegardening.bean.in.ReminderInBean;
+import com.simplegardening.bean.in.SessionBeanIn;
 import com.simplegardening.bean.out.ListPlantOutBean;
 import com.simplegardening.bean.out.PlantOutBean;
 import com.simplegardening.controller.AddPlantController;
@@ -42,7 +43,7 @@ public class HomeGraphicController {
         plantsPane.getChildren().clear();
         AddPlantController plantController = new AddPlantController();
         try {
-            ListPlantOutBean listPlant = plantController.getPlants(idSession);
+            ListPlantOutBean listPlant = plantController.getPlants(new SessionBeanIn(idSession));
             for (PlantOutBean plant: listPlant.getPlant()){
                 FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("plant.fxml"));
                 AnchorPane pane = fxmlLoader.load();
@@ -110,7 +111,7 @@ public class HomeGraphicController {
     @FXML
     public void logout(ActionEvent event) throws IOException {
         try {
-            new LoginController().closeSession(idSession);
+            new LoginController().closeSession(new SessionBeanIn(idSession));
         } catch (ControllerException e) {
             ExceptionHandler.handleException(ExceptionHandler.CONTROLLER_HEADER_TEXT,e.getMessage());
         }
