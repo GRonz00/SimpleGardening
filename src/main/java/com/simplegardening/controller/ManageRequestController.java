@@ -56,7 +56,7 @@ public class ManageRequestController {
             List<Request> requests = new ArrayList<>();
             for (RequestForm rf : requestFormList) {
                 User pro = new UserDAO().getUserByUsername(rf.getPro());
-                float price1 = calculatePrice(rf, bean.isPickUp(), bean.getStart(), bean.getEnd(), pro, client, session);
+                float price1 = calculatePrice(rf, bean.isPickUp(), bean.getStart(), bean.getEnd(), pro, client, new RequestDAO().newClient(pro, client, session));
                 Request r = new Request( plant, price1, bean.isPickUp(), (Pro) pro, client, bean.getStart(), bean.getEnd());
                 r.setRequestForm(rf);
                 r.setState(RequestState.SENT.toString());
@@ -102,7 +102,7 @@ public class ManageRequestController {
             if(!requestForm.getPlantSize().equals(plant.getSize()) || !requestForm.getPlantType().equals(plant.getType()))throw new ControllerException("Unacceptable plant");
             if((requestForm.getStart()).after(Date.from(bean.getStart().atStartOfDay(ZoneId.systemDefault()).toInstant())) ||
                     requestForm.getEnd().before(Date.from(bean.getEnd().atStartOfDay(ZoneId.systemDefault()).toInstant())))throw new ControllerException("Period not acceptable");
-            float price = calculatePrice(requestForm, bean.isPickup(), bean.getStart(),bean.getEnd(),pro, session.getUser(), session);
+            float price = calculatePrice(requestForm, bean.isPickup(), bean.getStart(),bean.getEnd(),pro, session.getUser(), new RequestDAO().newClient(pro, session.getUser(), session));
             Request request = new Request(plant,price, bean.isPickup(),(Pro) pro,(Client)session.getUser(),bean.getStart(),bean.getEnd());
             request.setRequestForm(requestForm);
             new RequestDAO().saveRequest(request, SessionManager.getInstance().getSession(bean.getIdSession()));
@@ -174,11 +174,11 @@ public class ManageRequestController {
         }
     }
 
-    private float calculatePrice(RequestForm requestForm, boolean pickup, LocalDate start, LocalDate end, User pro, User client, Session session) throws SQLException {
+    public float calculatePrice(RequestForm requestForm, boolean pickup, LocalDate start, LocalDate end, User pro, User client, boolean newClient)  {
         Price price;
         BasePrice bp = new BasePrice(start, end, requestForm.getBasePrice());
         price= bp;
-        if (!(requestForm.isNewCustomer() && new RequestDAO().newClient(pro, client, session))) {
+        if (!(requestForm.isNewCustomer() && newClient)) {
             ExtraHolidaysPrice ehpBp = new ExtraHolidaysPrice(bp);
             ehpBp.defineThePrize(start, end, requestForm.getBasePrice(), requestForm.getExtraHoliday());
             price = ehpBp;
@@ -224,7 +224,7 @@ public class ManageRequestController {
         requestFormList.removeIf(requestForm -> (requestForm.getStart()).after(Date.from(startRequest.atStartOfDay(ZoneId.systemDefault()).toInstant())) || requestForm.getEnd().before(Date.from(endRequest.atStartOfDay(ZoneId.systemDefault()).toInstant())));
     }
 
-    private double calculateDistance(double lat1, double longit1, double lat2, double longit2) {
+    public double calculateDistance(double lat1, double longit1, double lat2, double longit2) {
 
         double distance;
 
