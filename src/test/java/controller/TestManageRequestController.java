@@ -14,12 +14,12 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestManageRequestController {
+ class TestManageRequestController {
 
     // Ronzello Gianluca
 
     @Test
-    public void testCalculatePrice() {
+     void testCalculatePrice() {
         ManageRequestController controller = new ManageRequestController();
         RequestForm requestForm = new RequestForm(Date.valueOf("2024-02-01"),Date.valueOf("2024-02-09"),3f,true,30,10,0.5f);
         requestForm.requestForm2(PlantSize.SMALL, PlantType.INDOOR,false,20,6);
@@ -29,7 +29,7 @@ public class TestManageRequestController {
         assertEquals(28.3f, output,0.1);
     }
     @Test
-    public void testCalculateDistance() {
+     void testCalculateDistance() {
         ManageRequestController controller = new ManageRequestController();
         double output = controller.calculateDistance(41.8164419,12.6742834,41.8013875,12.5524073);
         assertEquals(10.24, output,0.01);

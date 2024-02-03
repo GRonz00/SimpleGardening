@@ -6,11 +6,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class TestLoginBean {
+ class TestLoginBean {
     private static final String RIGHT_LENGTH = "right_length";
 
     @Test
-    public void testLoginBean() {
+     void testLoginBean() {
         assertAll("LoginBean",
                 () -> assertThrows(BeanException.class, () -> new LoginBeanIn("a", "b","JDBC")),
                 () -> assertThrows(BeanException.class, () -> new LoginBeanIn(RIGHT_LENGTH, "b","JDBC")),
