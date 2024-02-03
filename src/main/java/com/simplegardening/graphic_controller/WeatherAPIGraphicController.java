@@ -19,7 +19,7 @@ public class WeatherAPIGraphicController {
         StringBuilder content = new StringBuilder();
         double lon = weatherAPIoutBean.getLongitude();
         double lat = weatherAPIoutBean.getLatitude();
-        String s = "https://api.open-meteo.com/v1/forecast?latitude=" + lon + "&longitude="+lat+"&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=auto";
+        String s = "https://api.open-meteo.com/v1/forecast?latitude=" + lat + "&longitude="+lon+"&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=auto";
             try {
                 url = new URL(s);
                 URLConnection urlConnection = url.openConnection(); // creating a urlconnection object
