@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.simplegardening.graphic_controller.LoginGraphicController">
+<BorderPane style="-fx-background-color: WHITE;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.simplegardening.graphic_controller.LoginGraphicController">
     <top>
         <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: rgba(20,195,17,0.55); -fx-background-radius: 0 0 16 16;" BorderPane.alignment="CENTER">
 

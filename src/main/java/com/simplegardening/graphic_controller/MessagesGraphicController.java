@@ -11,10 +11,13 @@ import com.simplegardening.utils.ExceptionHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.util.List;
@@ -52,12 +55,15 @@ public class MessagesGraphicController {
         }
     }
 
-    public TextField setMessage (String message){
-        TextField mes = new TextField();
+    public HBox setMessage (String message){
+        HBox mes = new HBox();
         mes.setAlignment(Pos.CENTER_LEFT);
+        BackgroundFill backgroundFill = new BackgroundFill(Color.rgb(245,245,245,0.66) , CornerRadii.EMPTY, Insets.EMPTY);
+        Background background = new Background(backgroundFill);
+        mes.setBackground(background);
         mes.setPrefHeight(48);
         mes.setPrefWidth(600);
-        mes.setText(message);
+        mes.getChildren().add(new Label(message));
         return mes;
     }
 

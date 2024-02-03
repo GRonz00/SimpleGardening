@@ -8,7 +8,7 @@
 
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0"
-            prefWidth="600.0" style="-fx-background-radius: 12px; -fx-border-color: #000000;"
+            prefWidth="600.0" style="-fx-background-color: rgba(245,245,245,0.66);"
             xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <Label fx:id="userLabel" layoutX="39.0" layoutY="32.0" text="Label" AnchorPane.leftAnchor="39.0">
       <font>

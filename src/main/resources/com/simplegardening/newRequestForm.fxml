@@ -10,7 +10,7 @@
 <?import javafx.scene.text.*?>
 <?import org.kordamp.ikonli.javafx.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.simplegardening.graphic_controller.NewRequestFormGraphicController">
+<BorderPane style="-fx-background-color: WHITE;"  maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.simplegardening.graphic_controller.NewRequestFormGraphicController">
    <left>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="520.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <TextField fx:id="basePriceField" alignment="CENTER" layoutX="208.0" layoutY="227.0" prefHeight="40.0" prefWidth="384.0" promptText="Base price for day" style="-fx-background-color: WHITE; -fx-background-radius: 12px" AnchorPane.leftAnchor="208.0" AnchorPane.topAnchor="88.0">

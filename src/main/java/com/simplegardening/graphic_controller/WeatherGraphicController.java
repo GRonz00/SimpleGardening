@@ -59,8 +59,8 @@ public class WeatherGraphicController {
                 FXMLLoader fxmlLoader = new FXMLLoader(SimpleGardeningApplication.class.getResource("weather_pane.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
                 if(i%2==0){
-                    anchorPane.setStyle("-fx-background-color: #FFF5EE");
-                }else anchorPane.setStyle("-fx-background-color: #C0C0C0");
+                    anchorPane.setStyle("-fx-background-color: #FFFFFF");
+                }else anchorPane.setStyle("-fx-background-color: #F5F5F5A8");
                 if(weatherClientOutBean.getFall().get(i)<40)
                 {(anchorPane.lookup("#rainIcon")).setVisible(false); }
                 else (anchorPane.lookup("#sunIcon")).setVisible(false);

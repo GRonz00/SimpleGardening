@@ -14,6 +14,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
 
 import java.io.IOException;
 import java.util.List;
@@ -44,7 +45,7 @@ public class MessagesProGraphicController {
             MessagesOutBean messagesOutBean = sendMessageController.getMessages(new ChatInBean(idSession,receiver));
             List<String> messages = messagesOutBean.getMessages();
             for (String message : messages){
-                TextField mes = new MessagesGraphicController().setMessage(message);
+                HBox mes = new MessagesGraphicController().setMessage(message);
                 flowPane.getChildren().add(mes);
             }
         } catch (ControllerException e) {

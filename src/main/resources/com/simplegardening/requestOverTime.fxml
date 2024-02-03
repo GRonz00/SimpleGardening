@@ -6,7 +6,7 @@
 <?import javafx.scene.text.*?>
 <?import org.kordamp.ikonli.javafx.*?>
 
-<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.simplegardening.graphic_controller.RequestOverTimeGraphicController">
+<BorderPane  style="-fx-background-color: #ffffff" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.simplegardening.graphic_controller.RequestOverTimeGraphicController">
    <center>
       <ScrollPane fitToWidth="true" prefHeight="500.0" prefWidth="688.0" style="-fx-background: #ffffff;">
          <opaqueInsets>

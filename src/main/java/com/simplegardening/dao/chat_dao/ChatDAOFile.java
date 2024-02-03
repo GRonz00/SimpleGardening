@@ -39,7 +39,8 @@ public class ChatDAOFile implements ChatDAO{
         while (( message = in.readLine()) != null){
             if(message.contains(session.getUser().getUsername())
                     && message.contains(receiver.getUsername())) {
-                String s2 = message.replaceFirst(session.getUser().getUsername(),"");
+                int f = message.indexOf(" ");
+                String s2 = message.substring(f+1);
                 messages.add(s2);
             }
         }
