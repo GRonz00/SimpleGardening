@@ -1,6 +1,6 @@
 package com.simplegardening.cli.graphic_controller;
 
-import com.simplegardening.bean.in.AddPlantInBean;
+import com.simplegardening.bean.in.PlantInBean;
 import com.simplegardening.cli.view.AddPlantViewCLI;
 import com.simplegardening.controller.AddPlantController;
 import com.simplegardening.exception.BeanException;
@@ -15,9 +15,9 @@ public class AddPlantGraphicControllerCLI {
         AddPlantViewCLI addPlantViewCLI = new AddPlantViewCLI();
         try {
             List<String> p = addPlantViewCLI.getPlant();
-            AddPlantInBean addPlantInBean = new AddPlantInBean(idSession,p.get(0), p.get(1),p.get(2),null);
+            PlantInBean plantInBean = new PlantInBean(idSession,p.get(0), p.get(1),p.get(2),null);
             AddPlantController addPlantController = new AddPlantController();
-            addPlantController.savePlant(addPlantInBean);
+            addPlantController.savePlant(plantInBean);
             new HomeGraphicControllerCLI().initialize(idSession);
 
         } catch (ControllerException | IOException | BeanException e) {

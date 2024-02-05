@@ -7,7 +7,7 @@ import com.simplegardening.utils.PlantType;
 import java.io.InputStream;
 import java.util.regex.Pattern;
 
-public class AddPlantInBean {
+public class PlantInBean {
     private int idSession;
     private String name;
     private PlantType type;
@@ -15,7 +15,7 @@ public class AddPlantInBean {
     private InputStream image;
 
 
-    public AddPlantInBean(int idSession,String name, String type, String size, InputStream image) throws BeanException {
+    public PlantInBean(int idSession, String name, String type, String size, InputStream image) throws BeanException {
         setIdSession(idSession);
         setImage(image);
         setSize(size);

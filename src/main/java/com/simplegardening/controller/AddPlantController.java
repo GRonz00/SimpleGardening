@@ -1,6 +1,6 @@
 package com.simplegardening.controller;
 
-import com.simplegardening.bean.in.AddPlantInBean;
+import com.simplegardening.bean.in.PlantInBean;
 import com.simplegardening.bean.in.SessionBeanIn;
 import com.simplegardening.bean.out.ListPlantOutBean;
 import com.simplegardening.dao.PlantDAO;
@@ -14,11 +14,11 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class AddPlantController {
-    public void savePlant(AddPlantInBean addPlantInBean) throws ControllerException {
+    public void savePlant(PlantInBean plantInBean) throws ControllerException {
         try {
-            SessionManager.getInstance().validSession(addPlantInBean.getIdSession());
-            Session session = SessionManager.getInstance().getSession(addPlantInBean.getIdSession());
-            Plant plant = new Plant(session.getUser(), addPlantInBean.getName(), addPlantInBean.getSize(),addPlantInBean.getType(),addPlantInBean.getImage());
+            SessionManager.getInstance().validSession(plantInBean.getIdSession());
+            Session session = SessionManager.getInstance().getSession(plantInBean.getIdSession());
+            Plant plant = new Plant(session.getUser(), plantInBean.getName(), plantInBean.getSize(), plantInBean.getType(), plantInBean.getImage());
             PlantDAO.savePlant(plant,session);
         }catch (SQLException e){
             throw new ControllerException("There is a plant whit the same name");

@@ -1,6 +1,6 @@
 package com.simplegardening.graphic_controller;
 
-import com.simplegardening.bean.in.AddPlantInBean;
+import com.simplegardening.bean.in.PlantInBean;
 import com.simplegardening.bean.in.ImageInBean;
 import com.simplegardening.controller.AddPlantController;
 import com.simplegardening.controller.UploadImageController;
@@ -40,9 +40,9 @@ public class AddPlantGraphicController {
     @FXML
     protected void add(){
         try {
-            AddPlantInBean addPlantInBean = new AddPlantInBean(idSession,name.getText(),type.getValue(),size.getValue(),image);
+            PlantInBean plantInBean = new PlantInBean(idSession,name.getText(),type.getValue(),size.getValue(),image);
             AddPlantController addPlantController = new AddPlantController();
-            addPlantController.savePlant(addPlantInBean);
+            addPlantController.savePlant(plantInBean);
             homeGraphicController.initialize(idSession);
         } catch (BeanException e) {
             ExceptionHandler.handleException(ExceptionHandler.BEAN_HEADER_TEXT,e.getMessage());
