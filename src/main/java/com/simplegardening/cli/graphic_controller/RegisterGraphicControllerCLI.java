@@ -3,7 +3,7 @@ package com.simplegardening.cli.graphic_controller;
 import com.simplegardening.bean.in.AddressInBean;
 import com.simplegardening.bean.in.LoginBeanIn;
 import com.simplegardening.bean.in.RegisterInBean;
-import com.simplegardening.bean.out.AddressOutBean;
+import com.simplegardening.bean.out.CoordinatesOutBean;
 import com.simplegardening.bean.out.LoginBeanOut;
 import com.simplegardening.cli.view.RegisterViewCLI;
 import com.simplegardening.controller.ConvertAddressController;
@@ -29,7 +29,7 @@ public class RegisterGraphicControllerCLI {
             try {
                 s = registerViewCLI.getAddress();
                 AddressInBean ad = new AddressInBean(s.get(3), s.get(4), s.get(6), s.get(5));
-                AddressOutBean cord = new ConvertAddressController().convert(ad);
+                CoordinatesOutBean cord = new ConvertAddressController().convert(ad);
                 String address = s.get(6) + s.get(7) + s.get(4) + s.get(5) + s.get(3);
                 RegisterInBean registerInBean = new RegisterInBean(s.get(0), s.get(1), address, s.get(2), cord.getLongitude(), cord.getLatitude());
                 new RegisterController().register(registerInBean);
@@ -47,8 +47,8 @@ public class RegisterGraphicControllerCLI {
                 homeGraphicControllerCLI.initialize(beanOut.getIdSession());
             }
             if (s.get(2).equals("pro")) {
-                HomeProGraphicControllerCLI homeProGraphicControllerCLI = new HomeProGraphicControllerCLI();
-                homeProGraphicControllerCLI.initialize(beanOut.getIdSession());
+                RequestProGraphicControllerCLI requestProGraphicControllerCLI = new RequestProGraphicControllerCLI();
+                requestProGraphicControllerCLI.initialize(beanOut.getIdSession());
             }
 
         }

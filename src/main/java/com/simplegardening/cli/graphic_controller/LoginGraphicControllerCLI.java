@@ -34,8 +34,8 @@ public class LoginGraphicControllerCLI {
             homeGraphicControllerCLI.initialize(beanOut.getIdSession());
         }
         if (beanOut.getTypeUser()==2) {
-            HomeProGraphicControllerCLI homeProGraphicControllerCLI = new HomeProGraphicControllerCLI();
-            homeProGraphicControllerCLI.initialize(beanOut.getIdSession());
+            RequestProGraphicControllerCLI requestProGraphicControllerCLI = new RequestProGraphicControllerCLI();
+            requestProGraphicControllerCLI.initialize(beanOut.getIdSession());
         }
 
 

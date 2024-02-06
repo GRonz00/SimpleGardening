@@ -4,7 +4,7 @@ import com.simplegardening.bean.in.ReminderInBean;
 import com.simplegardening.dao.ReminderDAO;
 import com.simplegardening.exception.ControllerException;
 import com.simplegardening.exception.SessionException;
-import com.simplegardening.model.SessionManager;
+import com.simplegardening.SessionManager;
 
 import java.sql.SQLException;
 

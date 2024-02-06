@@ -1,6 +1,7 @@
 package com.simplegardening.controller;
 
 
+import com.simplegardening.SessionManager;
 import com.simplegardening.bean.in.LoginBeanIn;
 import com.simplegardening.bean.in.SessionBeanIn;
 import com.simplegardening.bean.out.LoginBeanOut;

@@ -2,7 +2,7 @@ package com.simplegardening.graphic_controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.simplegardening.bean.in.AddressInAPIBean;
+import com.simplegardening.bean.in.CoordinatesInAPIBean;
 import com.simplegardening.bean.out.AddressOutAPIBean;
 import com.simplegardening.exception.APIException;
 
@@ -13,7 +13,7 @@ import java.net.URL;
 import java.net.URLConnection;
 
 public class ConvertAddressAPIGraphicController {
-    public AddressInAPIBean convertAddress(AddressOutAPIBean addressOutAPIBean) throws APIException {
+    public CoordinatesInAPIBean convertAddress(AddressOutAPIBean addressOutAPIBean) throws APIException {
         String s = "https://geocode.maps.co/search?q= "+ addressOutAPIBean.getStreet()+" + "+ addressOutAPIBean.getpC()+" + "+ addressOutAPIBean.getCity()+" + "+ addressOutAPIBean.getNation()+"&api_key="+System.getenv("API_KEY");
         try {
             URL url = new URL(s);
@@ -39,7 +39,7 @@ public class ConvertAddressAPIGraphicController {
         JsonNode rootNode = objectMapper.readTree(content.toString());
         JsonNode lat = rootNode.path("lat");
         JsonNode lon = rootNode.path("lon");
-        return new AddressInAPIBean(lat.asDouble(), lon.asDouble());
+        return new CoordinatesInAPIBean(lat.asDouble(), lon.asDouble());
         } catch (IOException e) {
             throw new APIException("address conversion failed");
         }

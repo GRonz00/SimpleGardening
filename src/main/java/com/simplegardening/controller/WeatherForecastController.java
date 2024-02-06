@@ -9,7 +9,7 @@ import com.simplegardening.exception.ControllerException;
 import com.simplegardening.exception.SessionException;
 import com.simplegardening.graphic_controller.WeatherAPIGraphicController;
 import com.simplegardening.model.Session;
-import com.simplegardening.model.SessionManager;
+import com.simplegardening.SessionManager;
 import com.simplegardening.model.Weather;
 
 import java.util.List;

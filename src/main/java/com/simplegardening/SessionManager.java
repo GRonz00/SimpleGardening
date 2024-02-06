@@ -1,6 +1,8 @@
-package com.simplegardening.model;
+package com.simplegardening;
 
 import com.simplegardening.exception.SessionException;
+import com.simplegardening.model.Session;
+import com.simplegardening.model.User;
 import com.simplegardening.utils.TypesOfPersistenceLayer;
 
 import java.sql.SQLException;

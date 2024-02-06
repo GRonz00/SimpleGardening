@@ -1,6 +1,7 @@
 package com.simplegardening.controller;
 
 import com.simplegardening.FactoryChatDAO;
+import com.simplegardening.SessionManager;
 import com.simplegardening.bean.in.ChatInBean;
 import com.simplegardening.bean.in.MessageInBean;
 import com.simplegardening.bean.in.SessionBeanIn;

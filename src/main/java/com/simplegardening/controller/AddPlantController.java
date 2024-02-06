@@ -8,7 +8,7 @@ import com.simplegardening.exception.ControllerException;
 import com.simplegardening.exception.SessionException;
 import com.simplegardening.model.Plant;
 import com.simplegardening.model.Session;
-import com.simplegardening.model.SessionManager;
+import com.simplegardening.SessionManager;
 
 import java.sql.SQLException;
 import java.util.List;

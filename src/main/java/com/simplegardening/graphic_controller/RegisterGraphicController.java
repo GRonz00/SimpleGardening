@@ -3,7 +3,7 @@ package com.simplegardening.graphic_controller;
 import com.simplegardening.SimpleGardeningApplication;
 import com.simplegardening.bean.in.AddressInBean;
 import com.simplegardening.bean.in.RegisterInBean;
-import com.simplegardening.bean.out.AddressOutBean;
+import com.simplegardening.bean.out.CoordinatesOutBean;
 import com.simplegardening.controller.ConvertAddressController;
 import com.simplegardening.controller.RegisterController;
 import com.simplegardening.exception.BeanException;
@@ -45,9 +45,9 @@ public class RegisterGraphicController {
         try {
         ConvertAddressController convertAddressController = new ConvertAddressController();
         AddressInBean addressInBean = new AddressInBean(nation.getText(),city.getText(),street.getText(),pC.getText());
-        AddressOutBean addressOutBean = convertAddressController.convert(addressInBean);
+        CoordinatesOutBean coordinatesOutBean = convertAddressController.convert(addressInBean);
         String address = street.getText()+" "+number.getText()+" "+city.getText()+" "+pC.getText();
-        RegisterInBean registerInBean = new RegisterInBean(usernameTextField.getText(),passwordTextField.getText(),address, userType.getValue(), addressOutBean.getLongitude(), addressOutBean.getLatitude());
+        RegisterInBean registerInBean = new RegisterInBean(usernameTextField.getText(),passwordTextField.getText(),address, userType.getValue(), coordinatesOutBean.getLongitude(), coordinatesOutBean.getLatitude());
         RegisterController registerController = new RegisterController();
         registerController.register(registerInBean);
         LoginGraphicController loginGraphicController = new LoginGraphicController();

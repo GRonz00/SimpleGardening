@@ -1,5 +1,6 @@
 package com.simplegardening.controller;
 
+import com.simplegardening.SessionManager;
 import com.simplegardening.bean.in.RequestFormInBean;
 import com.simplegardening.bean.in.FindRequestInBean;
 import com.simplegardening.bean.in.RequestInBean;

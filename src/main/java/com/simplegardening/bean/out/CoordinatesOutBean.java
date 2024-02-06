@@ -1,10 +1,10 @@
-package com.simplegardening.bean.in;
+package com.simplegardening.bean.out;
 
-public class AddressInAPIBean {
+public class CoordinatesOutBean {
     private double longitude;
     private double latitude;
 
-    public AddressInAPIBean(double latitude, double longitude){
+    public CoordinatesOutBean(double longitude, double latitude){
         setLatitude(latitude);
         setLongitude(longitude);
     }

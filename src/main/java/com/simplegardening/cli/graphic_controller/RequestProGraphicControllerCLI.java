@@ -13,14 +13,14 @@ import com.simplegardening.controller.SendMessageController;
 import com.simplegardening.exception.BeanException;
 import com.simplegardening.exception.ControllerException;
 import com.simplegardening.exception.SessionException;
-import com.simplegardening.model.SessionManager;
+import com.simplegardening.SessionManager;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 
-public class HomeProGraphicControllerCLI {
+public class RequestProGraphicControllerCLI {
     public void initialize(int idSession) {
         HomeProViewCLI homeProViewCLI = new HomeProViewCLI();
         ManageRequestController manageRequestController = new ManageRequestController();
@@ -63,7 +63,7 @@ public class HomeProGraphicControllerCLI {
             System.out.println("[ERR] " + e.getMessage());
             System.out.println("Please retry.");
         }finally {
-            new HomeProGraphicControllerCLI().initialize(idSession);
+            new RequestProGraphicControllerCLI().initialize(idSession);
         }
     }
 }
