@@ -7,7 +7,7 @@
 <?import javafx.scene.text.*?>
 <?import org.kordamp.ikonli.javafx.*?>
 
-<BorderPane  prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" style="-fx-background: #ffffff" fx:controller="com.simplegardening.graphic_controller.HomeGraphicController">
+<BorderPane prefHeight="600.0" prefWidth="800.0" style="-fx-background: #ffffff" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.simplegardening.graphic_controller.HomeGraphicController">
    <top>
       <BorderPane minHeight="80.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #14C3118C; -fx-background-radius: 0 0 16 16;" BorderPane.alignment="CENTER">
          <center>
@@ -23,7 +23,7 @@
                   <FontIcon iconLiteral="mdal-log_out" iconSize="32" />
                </graphic>
                <BorderPane.margin>
-                  <Insets right="16.0" />
+                  <Insets right="48.0" />
                </BorderPane.margin>
             </Button>
          </right>

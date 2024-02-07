@@ -21,7 +21,7 @@
                <Font size="24.0" />
             </font>
          </TextField>
-         <Button defaultButton="true" layoutX="612.0" layoutY="480.0" mnemonicParsing="false" onAction="#newRequestForm" prefHeight="42.0" prefWidth="132.0" style="-fx-background-color: #6EC6FF; -fx-font-size: 24px; -fx-background-radius: 16px;" text="Save" AnchorPane.bottomAnchor="28.0" AnchorPane.rightAnchor="56.0">
+         <Button defaultButton="true" layoutX="612.0" layoutY="480.0" mnemonicParsing="false" onAction="#newRequestForm" prefHeight="48.0" prefWidth="160.0" style="-fx-background-color: #6EC6FF; -fx-font-size: 24px; -fx-background-radius: 16px;" text="Save" AnchorPane.bottomAnchor="28.0" AnchorPane.rightAnchor="56.0">
             <effect>
                <DropShadow />
             </effect>
@@ -79,7 +79,7 @@
                <Cursor fx:constant="DEFAULT" />
             </cursor>
          </ComboBox>
-         <RadioButton fx:id="pickUpAviButton" layoutX="40.0" layoutY="245.0" mnemonicParsing="false" text="Pickup aviable" />
+         <RadioButton fx:id="pickUpAviButton" layoutX="40.0" layoutY="245.0" mnemonicParsing="false" text="Pickup available" />
          <TextField fx:id="priceKm" alignment="CENTER" layoutX="416.0" layoutY="228.0" prefHeight="51.0" prefWidth="175.0" promptText="cost per km" style="-fx-background-color: WHITE; -fx-background-radius: 12px" AnchorPane.topAnchor="228.0">
             <effect>
                <DropShadow />
@@ -132,7 +132,7 @@
                   <FontIcon iconLiteral="mdal-log_out" iconSize="32" />
                </graphic>
                <BorderPane.margin>
-                  <Insets right="16.0" />
+                  <Insets right="48.0" />
                </BorderPane.margin>
             </Button>
          </right>
